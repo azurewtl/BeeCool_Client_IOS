@@ -7,3 +7,4 @@
 //
 
 #import "AutoScrollView.h"
+#import "Tap.h"

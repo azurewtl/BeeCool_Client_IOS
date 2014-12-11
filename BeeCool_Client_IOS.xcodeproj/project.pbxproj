@@ -25,6 +25,7 @@
 		180396561A3950300001473B /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 180396441A3950300001473B /* UIImageView+HighlightedWebCache.m */; };
 		180396571A3950300001473B /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 180396461A3950300001473B /* UIImageView+WebCache.m */; };
 		180396581A3950300001473B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 180396481A3950300001473B /* UIView+WebCacheOperation.m */; };
+		1803965B1A3957700001473B /* ServiceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803965A1A3957700001473B /* ServiceDetailViewController.swift */; };
 		185ECEA21A39467000B568B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEA11A39467000B568B0 /* AppDelegate.swift */; };
 		185ECEA91A39467000B568B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEA71A39467000B568B0 /* Main.storyboard */; };
 		185ECEAB1A39467000B568B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEAA1A39467000B568B0 /* Images.xcassets */; };
@@ -85,6 +86,7 @@
 		180396471A3950300001473B /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		180396481A3950300001473B /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		180396591A39507C0001473B /* BridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
+		1803965A1A3957700001473B /* ServiceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceDetailViewController.swift; sourceTree = "<group>"; };
 		185ECE9C1A39467000B568B0 /* BeeCool_Client_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeCool_Client_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185ECEA01A39467000B568B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185ECEA11A39467000B568B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				185ECEC41A39469B00B568B0 /* MyAccountViewController.swift */,
 				185ECEC51A39469B00B568B0 /* OrderViewController.swift */,
 				185ECEC61A39469B00B568B0 /* ServiceViewController.swift */,
+				1803965A1A3957700001473B /* ServiceDetailViewController.swift */,
 				185ECEA71A39467000B568B0 /* Main.storyboard */,
 				185ECEAA1A39467000B568B0 /* Images.xcassets */,
 				185ECEAC1A39467000B568B0 /* LaunchScreen.xib */,
@@ -344,6 +347,7 @@
 				1803964C1A3950300001473B /* SDWebImageCompat.m in Sources */,
 				180396521A3950300001473B /* UIButton+WebCache.m in Sources */,
 				180396541A3950300001473B /* UIImage+MultiFormat.m in Sources */,
+				1803965B1A3957700001473B /* ServiceDetailViewController.swift in Sources */,
 				180396511A3950300001473B /* SDWebImagePrefetcher.m in Sources */,
 				185ECEC71A39469B00B568B0 /* MemberViewController.swift in Sources */,
 				180396581A3950300001473B /* UIView+WebCacheOperation.m in Sources */,

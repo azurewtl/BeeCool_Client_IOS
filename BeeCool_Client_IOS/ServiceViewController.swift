@@ -18,9 +18,12 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
         Autoscroll.imageUrls = ["http://m.meilijia.com/images/activity/rjds/m/banner-s.jpg", "http://www.meilijia.com/images/ad/iphone/1.jpg?v=0723", "http://m.meilijia.com/images/activity/rjds/m/banner.jpg"]
         Autoscroll.timeInterval = 3
         serverCollectionview.addSubview(Autoscroll)
+        Autoscroll.setTarget(self, action: "autoAction:")
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
+    func autoAction(tap:Tap) {
+        print(tap.flag)
+    }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 12
     }
@@ -39,8 +42,12 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
         return UIEdgeInsetsMake(120, 0, 0, 0)
     }
-    
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     var view = sender?.superview as UICollectionView
+     var tag = view.indexPathForCell(sender as UICollectionViewCell)?.item
+        
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
