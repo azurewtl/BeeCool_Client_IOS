@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		185ECEA21A39467000B568B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEA11A39467000B568B0 /* AppDelegate.swift */; };
-		185ECEA41A39467000B568B0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEA31A39467000B568B0 /* FirstViewController.swift */; };
-		185ECEA61A39467000B568B0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEA51A39467000B568B0 /* SecondViewController.swift */; };
 		185ECEA91A39467000B568B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEA71A39467000B568B0 /* Main.storyboard */; };
 		185ECEAB1A39467000B568B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEAA1A39467000B568B0 /* Images.xcassets */; };
 		185ECEAE1A39467000B568B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEAC1A39467000B568B0 /* LaunchScreen.xib */; };
 		185ECEBA1A39467000B568B0 /* BeeCool_Client_IOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEB91A39467000B568B0 /* BeeCool_Client_IOSTests.swift */; };
+		185ECEC71A39469B00B568B0 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEC31A39469B00B568B0 /* MemberViewController.swift */; };
+		185ECEC81A39469B00B568B0 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEC41A39469B00B568B0 /* MyAccountViewController.swift */; };
+		185ECEC91A39469B00B568B0 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEC51A39469B00B568B0 /* OrderViewController.swift */; };
+		185ECECA1A39469B00B568B0 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEC61A39469B00B568B0 /* ServiceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,14 +32,16 @@
 		185ECE9C1A39467000B568B0 /* BeeCool_Client_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeCool_Client_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185ECEA01A39467000B568B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185ECEA11A39467000B568B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		185ECEA31A39467000B568B0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		185ECEA51A39467000B568B0 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		185ECEA81A39467000B568B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		185ECEAA1A39467000B568B0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		185ECEAD1A39467000B568B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		185ECEB31A39467000B568B0 /* BeeCool_Client_IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeeCool_Client_IOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		185ECEB81A39467000B568B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185ECEB91A39467000B568B0 /* BeeCool_Client_IOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeeCool_Client_IOSTests.swift; sourceTree = "<group>"; };
+		185ECEC31A39469B00B568B0 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		185ECEC41A39469B00B568B0 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		185ECEC51A39469B00B568B0 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		185ECEC61A39469B00B568B0 /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				185ECEA11A39467000B568B0 /* AppDelegate.swift */,
-				185ECEA31A39467000B568B0 /* FirstViewController.swift */,
-				185ECEA51A39467000B568B0 /* SecondViewController.swift */,
+				185ECEC31A39469B00B568B0 /* MemberViewController.swift */,
+				185ECEC41A39469B00B568B0 /* MyAccountViewController.swift */,
+				185ECEC51A39469B00B568B0 /* OrderViewController.swift */,
+				185ECEC61A39469B00B568B0 /* ServiceViewController.swift */,
 				185ECEA71A39467000B568B0 /* Main.storyboard */,
 				185ECEAA1A39467000B568B0 /* Images.xcassets */,
 				185ECEAC1A39467000B568B0 /* LaunchScreen.xib */,
@@ -215,9 +221,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				185ECEA61A39467000B568B0 /* SecondViewController.swift in Sources */,
+				185ECEC71A39469B00B568B0 /* MemberViewController.swift in Sources */,
 				185ECEA21A39467000B568B0 /* AppDelegate.swift in Sources */,
-				185ECEA41A39467000B568B0 /* FirstViewController.swift in Sources */,
+				185ECEC81A39469B00B568B0 /* MyAccountViewController.swift in Sources */,
+				185ECECA1A39469B00B568B0 /* ServiceViewController.swift in Sources */,
+				185ECEC91A39469B00B568B0 /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -329,7 +337,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

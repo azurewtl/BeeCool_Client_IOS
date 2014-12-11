@@ -1,14 +1,14 @@
 //
 //  FirstViewController.swift
-//  BeeCool_Client_IOS
+//  BeeCool
 //
-//  Created by Apple on 14/12/11.
+//  Created by Apple on 14/12/9.
 //  Copyright (c) 2014年 Apple. All rights reserved.
 //
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class ServiceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
