@@ -30,6 +30,10 @@
 		180396611A3979650001473B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180396601A3979650001473B /* MapKit.framework */; };
 		180396631A3979A60001473B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180396621A3979A60001473B /* CoreLocation.framework */; };
 		180396661A3985820001473B /* myAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 180396651A3985820001473B /* myAnnotation.m */; };
+		180396AF1A3999380001473B /* CarTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180396AE1A3999380001473B /* CarTypeViewController.swift */; };
+		180396B11A3999560001473B /* DateTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180396B01A3999560001473B /* DateTimeViewController.swift */; };
+		180396B31A3999630001473B /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180396B21A3999630001473B /* StaffViewController.swift */; };
+		180396B51A399FA90001473B /* ServiceItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180396B41A399FA90001473B /* ServiceItemViewController.swift */; };
 		185ECEA21A39467000B568B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEA11A39467000B568B0 /* AppDelegate.swift */; };
 		185ECEA91A39467000B568B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEA71A39467000B568B0 /* Main.storyboard */; };
 		185ECEAB1A39467000B568B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEAA1A39467000B568B0 /* Images.xcassets */; };
@@ -96,6 +100,10 @@
 		180396621A3979A60001473B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		180396641A3985820001473B /* myAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myAnnotation.h; sourceTree = "<group>"; };
 		180396651A3985820001473B /* myAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myAnnotation.m; sourceTree = "<group>"; };
+		180396AE1A3999380001473B /* CarTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTypeViewController.swift; sourceTree = "<group>"; };
+		180396B01A3999560001473B /* DateTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeViewController.swift; sourceTree = "<group>"; };
+		180396B21A3999630001473B /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
+		180396B41A399FA90001473B /* ServiceItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceItemViewController.swift; sourceTree = "<group>"; };
 		185ECE9C1A39467000B568B0 /* BeeCool_Client_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeCool_Client_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185ECEA01A39467000B568B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185ECEA11A39467000B568B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +231,10 @@
 				185ECEC61A39469B00B568B0 /* ServiceViewController.swift */,
 				1803965A1A3957700001473B /* ServiceDetailViewController.swift */,
 				1803965E1A3978A70001473B /* MapViewContrlloer.swift */,
+				180396AE1A3999380001473B /* CarTypeViewController.swift */,
+				180396B01A3999560001473B /* DateTimeViewController.swift */,
+				180396B21A3999630001473B /* StaffViewController.swift */,
+				180396B41A399FA90001473B /* ServiceItemViewController.swift */,
 				180396641A3985820001473B /* myAnnotation.h */,
 				180396651A3985820001473B /* myAnnotation.m */,
 				185ECEA71A39467000B568B0 /* Main.storyboard */,
@@ -307,6 +319,11 @@
 				TargetAttributes = {
 					185ECE9B1A39467000B568B0 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					185ECEB21A39467000B568B0 = {
 						CreatedOnToolsVersion = 6.1;
@@ -367,12 +384,14 @@
 				1803965B1A3957700001473B /* ServiceDetailViewController.swift in Sources */,
 				180396511A3950300001473B /* SDWebImagePrefetcher.m in Sources */,
 				185ECEC71A39469B00B568B0 /* MemberViewController.swift in Sources */,
+				180396B51A399FA90001473B /* ServiceItemViewController.swift in Sources */,
 				180396581A3950300001473B /* UIView+WebCacheOperation.m in Sources */,
 				180396491A3950300001473B /* MKAnnotationView+WebCache.m in Sources */,
 				180396551A3950300001473B /* UIImage+WebP.m in Sources */,
 				180396261A394FE70001473B /* Tap.m in Sources */,
 				1803964F1A3950300001473B /* SDWebImageDownloaderOperation.m in Sources */,
 				180396661A3985820001473B /* myAnnotation.m in Sources */,
+				180396B31A3999630001473B /* StaffViewController.swift in Sources */,
 				1803964D1A3950300001473B /* SDWebImageDecoder.m in Sources */,
 				185ECEA21A39467000B568B0 /* AppDelegate.swift in Sources */,
 				180396561A3950300001473B /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -384,6 +403,8 @@
 				180396501A3950300001473B /* SDWebImageManager.m in Sources */,
 				185ECEC91A39469B00B568B0 /* OrderViewController.swift in Sources */,
 				1803964B1A3950300001473B /* SDImageCache.m in Sources */,
+				180396AF1A3999380001473B /* CarTypeViewController.swift in Sources */,
+				180396B11A3999560001473B /* DateTimeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +480,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -495,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -507,6 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BeeCool_Client_IOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = BeeCool_Client_IOS/BridgeHeader.h;
@@ -518,6 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BeeCool_Client_IOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = BeeCool_Client_IOS/BridgeHeader.h;

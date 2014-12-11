@@ -11,14 +11,16 @@
 @implementation myAnnotation
 - (CLLocationCoordinate2D)coordinate{
     CLLocationCoordinate2D center;
-    center.latitude = 40.029915;
-    center.longitude=116.347082;
+    center.latitude = self.latitude;
+    center.longitude= self.longtitude;
     return center;
 }
 - (NSString *)title{
-    return  @"北京大学";
+   
+    return self.detailposition;
 }
 - (NSString *)subtitle{
-    return @"你所查询的位置";
+    return @"爱车所在位置";
 }
+
 @end

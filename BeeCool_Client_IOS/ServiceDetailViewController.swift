@@ -14,7 +14,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -24,6 +24,8 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             return 1
         case 2:
             return 1
+        case 3:
+            return 1
         default:
             return 0
         }
@@ -32,8 +34,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         var cell = UITableViewCell()
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCellWithIdentifier("typeCell", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel.text = "请选择您的爱车"
-            cell.textLabel.textColor = UIColor.grayColor()
+    
         }
         if indexPath.section == 1 {
              cell = tableView.dequeueReusableCellWithIdentifier("mapCell", forIndexPath: indexPath) as UITableViewCell
@@ -45,6 +46,12 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             cell.textLabel.text = "请选择服务时间"
             cell.imageView.image = UIImage(named: "time")
             cell.textLabel.textColor = UIColor.grayColor()
+        }
+        if indexPath.section == 3 {
+            cell = tableView.dequeueReusableCellWithIdentifier("staffCell", forIndexPath: indexPath) as UITableViewCell
+            cell.textLabel.text = "请选择服务人员"
+            cell.textLabel.textColor = UIColor.grayColor()
+
         }
         return cell
     }

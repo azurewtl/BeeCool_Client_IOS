@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 @interface myAnnotation : NSObject<MKAnnotation>
+@property(nonatomic)CLLocationDegrees latitude;
+@property(nonatomic)CLLocationDegrees longtitude;
+@property(nonatomic)NSString *detailposition;
 
 @end
