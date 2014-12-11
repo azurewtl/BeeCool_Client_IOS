@@ -10,9 +10,14 @@ import UIKit
 
 class ServiceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
 
+    
     @IBOutlet var serverCollectionview: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        var Autoscroll = AutoScrollView(frame: CGRectMake(0, -64, self.view.frame.width, 184))
+        Autoscroll.imageUrls = ["http://m.meilijia.com/images/activity/rjds/m/banner-s.jpg", "http://www.meilijia.com/images/ad/iphone/1.jpg?v=0723", "http://m.meilijia.com/images/activity/rjds/m/banner.jpg"]
+        Autoscroll.timeInterval = 3
+        serverCollectionview.addSubview(Autoscroll)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
