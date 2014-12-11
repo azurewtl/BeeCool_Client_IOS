@@ -29,21 +29,36 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("detail", forIndexPath: indexPath) as UITableViewCell
+        var cell = UITableViewCell()
         if indexPath.section == 0 {
+            cell = tableView.dequeueReusableCellWithIdentifier("typeCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel.text = "请选择您的爱车"
             cell.textLabel.textColor = UIColor.grayColor()
         }
         if indexPath.section == 1 {
+             cell = tableView.dequeueReusableCellWithIdentifier("mapCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel.text = "请确定您车的位置"
             cell.textLabel.textColor = UIColor.grayColor()
         }
         if indexPath.section == 2 {
+            cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel.text = "请选择服务时间"
             cell.imageView.image = UIImage(named: "time")
             cell.textLabel.textColor = UIColor.grayColor()
         }
         return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 70
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "mapView" {
+            
+        }
     }
     
 }

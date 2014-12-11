@@ -26,6 +26,10 @@
 		180396571A3950300001473B /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 180396461A3950300001473B /* UIImageView+WebCache.m */; };
 		180396581A3950300001473B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 180396481A3950300001473B /* UIView+WebCacheOperation.m */; };
 		1803965B1A3957700001473B /* ServiceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803965A1A3957700001473B /* ServiceDetailViewController.swift */; };
+		1803965F1A3978A70001473B /* MapViewContrlloer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803965E1A3978A70001473B /* MapViewContrlloer.swift */; };
+		180396611A3979650001473B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180396601A3979650001473B /* MapKit.framework */; };
+		180396631A3979A60001473B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180396621A3979A60001473B /* CoreLocation.framework */; };
+		180396661A3985820001473B /* myAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 180396651A3985820001473B /* myAnnotation.m */; };
 		185ECEA21A39467000B568B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEA11A39467000B568B0 /* AppDelegate.swift */; };
 		185ECEA91A39467000B568B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEA71A39467000B568B0 /* Main.storyboard */; };
 		185ECEAB1A39467000B568B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEAA1A39467000B568B0 /* Images.xcassets */; };
@@ -87,6 +91,11 @@
 		180396481A3950300001473B /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		180396591A39507C0001473B /* BridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
 		1803965A1A3957700001473B /* ServiceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceDetailViewController.swift; sourceTree = "<group>"; };
+		1803965E1A3978A70001473B /* MapViewContrlloer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewContrlloer.swift; sourceTree = "<group>"; };
+		180396601A3979650001473B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		180396621A3979A60001473B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		180396641A3985820001473B /* myAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myAnnotation.h; sourceTree = "<group>"; };
+		180396651A3985820001473B /* myAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myAnnotation.m; sourceTree = "<group>"; };
 		185ECE9C1A39467000B568B0 /* BeeCool_Client_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeCool_Client_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185ECEA01A39467000B568B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185ECEA11A39467000B568B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +116,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180396631A3979A60001473B /* CoreLocation.framework in Frameworks */,
+				180396611A3979650001473B /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +194,8 @@
 		185ECE931A39467000B568B0 = {
 			isa = PBXGroup;
 			children = (
+				180396621A3979A60001473B /* CoreLocation.framework */,
+				180396601A3979650001473B /* MapKit.framework */,
 				185ECE9E1A39467000B568B0 /* BeeCool_Client_IOS */,
 				185ECEB61A39467000B568B0 /* BeeCool_Client_IOSTests */,
 				185ECE9D1A39467000B568B0 /* Products */,
@@ -209,6 +222,9 @@
 				185ECEC51A39469B00B568B0 /* OrderViewController.swift */,
 				185ECEC61A39469B00B568B0 /* ServiceViewController.swift */,
 				1803965A1A3957700001473B /* ServiceDetailViewController.swift */,
+				1803965E1A3978A70001473B /* MapViewContrlloer.swift */,
+				180396641A3985820001473B /* myAnnotation.h */,
+				180396651A3985820001473B /* myAnnotation.m */,
 				185ECEA71A39467000B568B0 /* Main.storyboard */,
 				185ECEAA1A39467000B568B0 /* Images.xcassets */,
 				185ECEAC1A39467000B568B0 /* LaunchScreen.xib */,
@@ -342,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1803965F1A3978A70001473B /* MapViewContrlloer.swift in Sources */,
 				180396571A3950300001473B /* UIImageView+WebCache.m in Sources */,
 				180396531A3950300001473B /* UIImage+GIF.m in Sources */,
 				1803964C1A3950300001473B /* SDWebImageCompat.m in Sources */,
@@ -355,6 +372,7 @@
 				180396551A3950300001473B /* UIImage+WebP.m in Sources */,
 				180396261A394FE70001473B /* Tap.m in Sources */,
 				1803964F1A3950300001473B /* SDWebImageDownloaderOperation.m in Sources */,
+				180396661A3985820001473B /* myAnnotation.m in Sources */,
 				1803964D1A3950300001473B /* SDWebImageDecoder.m in Sources */,
 				185ECEA21A39467000B568B0 /* AppDelegate.swift in Sources */,
 				180396561A3950300001473B /* UIImageView+HighlightedWebCache.m in Sources */,

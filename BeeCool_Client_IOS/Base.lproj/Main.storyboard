@@ -77,13 +77,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="uii-Ul-0sk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="uii-Ul-0sk">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detail" rowHeight="52" id="OvW-T1-jEU">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="typeCell" rowHeight="52" id="OvW-T1-jEU">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OvW-T1-jEU" id="zu1-Vf-wc3">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="mapCell" id="uJh-4y-9Fq">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uJh-4y-9Fq" id="zUx-HV-WSc">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="EwY-Rq-vGN" kind="push" identifier="mapView" id="9Ks-77-F5Q"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="timeCell" id="P76-hX-mLf">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P76-hX-mLf" id="h7j-9i-fYu">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -98,9 +115,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uii-Ul-0sk" firstAttribute="top" secondItem="ufA-yt-4Au" secondAttribute="topMargin" id="AI9-id-zPP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uii-Ul-0sk" secondAttribute="trailing" id="P2H-O6-qUx"/>
-                            <constraint firstItem="uii-Ul-0sk" firstAttribute="leading" secondItem="ufA-yt-4Au" secondAttribute="leadingMargin" id="Wqi-Js-l4L"/>
                             <constraint firstItem="uii-Ul-0sk" firstAttribute="bottom" secondItem="ufA-yt-4Au" secondAttribute="bottomMargin" id="eHq-pp-cp2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uii-Ul-0sk" secondAttribute="trailing" constant="-16" id="jeE-gT-ANe"/>
+                            <constraint firstItem="uii-Ul-0sk" firstAttribute="leading" secondItem="ufA-yt-4Au" secondAttribute="leadingMargin" constant="-16" id="kOE-he-K5K"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hhg-33-EDt"/>
@@ -112,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="241" y="-147"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Contrlloer-->
         <scene sceneID="OaE-UI-RFK">
             <objects>
-                <viewController id="EwY-Rq-vGN" sceneMemberID="viewController">
+                <viewController id="EwY-Rq-vGN" customClass="MapViewContrlloer" customModule="BeeCool_Client_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4rb-mp-d0g"/>
                         <viewControllerLayoutGuide type="bottom" id="XME-9Z-25c"/>
@@ -123,12 +140,25 @@
                     <view key="view" contentMode="scaleToFill" id="EEx-Cn-0tg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sb8-9c-qGl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="sb8-9c-qGl" secondAttribute="trailing" constant="-16" id="dZi-HS-FcH"/>
+                            <constraint firstItem="sb8-9c-qGl" firstAttribute="leading" secondItem="EEx-Cn-0tg" secondAttribute="leadingMargin" constant="-16" id="mxY-7y-Jkx"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="0ky-cj-Oga"/>
+                    <connections>
+                        <outlet property="mapView" destination="sb8-9c-qGl" id="bPA-CC-zot"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3vg-tk-n3N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="-139"/>
+            <point key="canvasLocation" x="847" y="-147"/>
         </scene>
         <!--Order View Controller-->
         <scene sceneID="wg7-f3-ORb">
