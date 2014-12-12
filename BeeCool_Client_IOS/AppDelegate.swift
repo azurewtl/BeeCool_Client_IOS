@@ -7,15 +7,49 @@
 //
 
 import UIKit
-
+import CoreLocation
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
-
-
+    var locationMananger = CLLocationManager()
+    var latitude = CLLocationDegrees()
+    var longtitude = CLLocationDegrees()
+    var detailLocation =  NSString()
+    func updateLocation(locationManager: CLLocationManager) {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 100.0
+        locationManager.delegate = self
+        if UIDevice.currentDevice().systemVersion >= "8.0" {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        locationManager.startUpdatingLocation()
+    }
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        var loc = locations.last as CLLocation
+        var coord = loc.coordinate
+        latitude = coord.latitude
+        longtitude = coord.longitude
+        var geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(loc, completionHandler: { (placemarks, error) -> Void in
+            if placemarks != nil {
+                var arr:NSArray = placemarks as NSArray
+                for place in arr {
+                    var test:NSDictionary = ((place as CLPlacemark).addressDictionary) as NSDictionary
+                    var str = NSString(format: "%@, %@, %@",test.objectForKey("Name") as NSString, test.objectForKey("State") as NSString, test.objectForKey("Street") as NSString) as NSString
+                    self.detailLocation = str
+                    print(str)
+                }
+                
+            }else {
+                print("定位失败")
+            }
+        })
+        manager.stopUpdatingLocation()
+    }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+       updateLocation(locationMananger)
         return true
     }
 
