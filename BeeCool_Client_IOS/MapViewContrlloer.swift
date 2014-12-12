@@ -13,7 +13,7 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
     var latitude = CLLocationDegrees()
     var longtitude = CLLocationDegrees()
     var cellString = NSString()
-    
+    var locationMananger = CLLocationManager()
     @IBAction func satelliteButoon(sender: UIButton) {
         if mapView.mapType == MKMapType.Standard {
             mapView.mapType = MKMapType.Hybrid
@@ -25,13 +25,59 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
     }
     
     @IBAction func guideButton(sender: UIButton) {
-        
-        
+         updateLocation(locationMananger)
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        let group = dispatch_group_create()
+        var ano = myAnnotation()
+        dispatch_group_async(group, queue) { () -> Void in
+            ano.latitude = self.latitude
+            ano.longtitude = self.longtitude
+            ano.detailposition = self.cellString
+            //            print(app.detailLocation)
+        }
+        dispatch_group_notify(group, queue) { () -> Void in
+            self.mapView.addAnnotation(ano)
+        }
     }
+    
     @IBOutlet var tableView: UITableView!
     @IBOutlet var mapView: MKMapView!
+    func updateLocation(locationManager: CLLocationManager) {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 100.0
+        locationManager.delegate = self
+        if UIDevice.currentDevice().systemVersion >= "8.0" {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        locationManager.startUpdatingLocation()
+    }
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        var loc = locations.last as CLLocation
+        var coord = loc.coordinate
+        latitude = coord.latitude
+        longtitude = coord.longitude
+        var geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(loc, completionHandler: { (placemarks, error) -> Void in
+            if placemarks != nil {
+                var arr:NSArray = placemarks as NSArray
+                for place in arr {
+                    var test:NSDictionary = ((place as CLPlacemark).addressDictionary) as NSDictionary
+                    var str = (test["FormattedAddressLines"] as NSArray).firstObject as NSString
+                   self.cellString = str
+                   self.tableView.reloadData()
+                    print(str)
+                }
+                
+            }else {
+                print("定位失败")
+            }
+        })
+        manager.stopUpdatingLocation()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         mapView.showsUserLocation = true
         mapView.delegate = self
         mapView.mapType = MKMapType.Standard

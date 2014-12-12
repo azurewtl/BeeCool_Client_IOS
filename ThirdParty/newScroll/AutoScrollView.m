@@ -366,14 +366,14 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //    NSLog(@"%@", NSStringFromCGPoint(scrollView.contentOffset));
-    int pageCount = 0;
+    NSInteger pageCount = 0;
     if (self.imageUrls) {
         pageCount = self.imageUrls.count;
     } else if (self.imageNames) {
         pageCount = self.imageNames.count;
     }
     
-    int pageNo = scrollView.pageNo;
+    NSInteger pageNo = scrollView.pageNo;
     if (pageNo == _currentPage) {
         return;
     }
