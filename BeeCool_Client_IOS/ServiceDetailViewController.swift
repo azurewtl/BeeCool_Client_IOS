@@ -8,10 +8,16 @@
 
 import UIKit
 
-class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, sendbackLocation{
+    var maplocation = "请确定您车的位置"
     @IBOutlet var tableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    func sendbackloc(str: NSString) {
+        print(str)
+        maplocation = str
+        tableview.reloadData()
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 5
@@ -40,7 +46,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
         if indexPath.section == 1 {
              cell = tableView.dequeueReusableCellWithIdentifier("mapCell", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel.text = "请确定您车的位置"
+            cell.textLabel.text = maplocation
             cell.textLabel.textColor = UIColor.grayColor()
         }
         if indexPath.section == 2 {
@@ -93,7 +99,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "mapView" {
-            
+            (segue.destinationViewController as MapViewContrlloer).delegate = self
         }
     }
     

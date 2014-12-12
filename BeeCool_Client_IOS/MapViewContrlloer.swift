@@ -9,12 +9,16 @@
 import UIKit
 import MapKit
 import CoreLocation
-class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
+protocol sendbackLocation {
+    func sendbackloc(str:NSString)
+}
+class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UITextViewDelegate{
+    var delegate = sendbackLocation?()
     var latitude = CLLocationDegrees()
     var longtitude = CLLocationDegrees()
     var cellString = NSString()
     var locationMananger = CLLocationManager()
-    @IBAction func satelliteButoon(sender: UIButton) {
+    @IBAction func satelliteButonOnclick(sender: UIButton) {
         if mapView.mapType == MKMapType.Standard {
             mapView.mapType = MKMapType.Hybrid
             sender.setTitle("标准", forState: UIControlState.Normal)
@@ -24,22 +28,31 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         }
     }
     
-    @IBAction func guideButton(sender: UIButton) {
+    @IBAction func locateButtonOnClick(sender: UIButton) {
          updateLocation(locationMananger)
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        let group = dispatch_group_create()
-        var ano = myAnnotation()
-        dispatch_group_async(group, queue) { () -> Void in
-            ano.latitude = self.latitude
-            ano.longtitude = self.longtitude
-            ano.detailposition = self.cellString
-            //            print(app.detailLocation)
-        }
-        dispatch_group_notify(group, queue) { () -> Void in
-            self.mapView.addAnnotation(ano)
-        }
+        var center =  CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
+        var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+        var region = MKCoordinateRegionMake(center, span)
+        
+        mapView.setRegion(region, animated: true)
     }
     
+    @IBAction func finishButonOnclick(sender: UIBarButtonItem) {
+        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
+        var textview = cell?.contentView.viewWithTag(101) as UITextView
+        self.delegate?.sendbackloc(textview.text)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
+    }
+
     @IBOutlet var tableView: UITableView!
     @IBOutlet var mapView: MKMapView!
     func updateLocation(locationManager: CLLocationManager) {
@@ -67,7 +80,6 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
                    self.tableView.reloadData()
                     print(str)
                 }
-                
             }else {
                 print("定位失败")
             }
@@ -77,30 +89,22 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         mapView.showsUserLocation = true
         mapView.delegate = self
         mapView.mapType = MKMapType.Standard
         var app = UIApplication.sharedApplication().delegate as AppDelegate
         latitude = app.latitude
         longtitude = app.longtitude
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        let group = dispatch_group_create()
-        var ano = myAnnotation()
-        dispatch_group_async(group, queue) { () -> Void in
-            ano.latitude = self.latitude
-            ano.longtitude = self.longtitude
-            ano.detailposition = app.detailLocation
-            self.cellString = app.detailLocation
-            self.tableView.reloadData()
-//            print(app.detailLocation)
-        }
-        dispatch_group_notify(group, queue) { () -> Void in
-            self.mapView.addAnnotation(ano)
-        }
+        self.cellString = app.detailLocation
+        self.tableView.reloadData()
+        var cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
+        var textview = cell?.contentView.viewWithTag(101) as UITextView
+        textview.delegate = self
+        textview.text = cellString
         var center =  CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
-        var span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-        var region = MKCoordinateRegionMakeWithDistance(center, 20, 20)
+        var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+        var region = MKCoordinateRegionMake(center, span)
+   
         mapView.setRegion(region, animated: true)
 
     }
@@ -130,8 +134,6 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("mapdetailCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = "位置"
-        cell.detailTextLabel?.text = cellString
         return cell
     }
  

@@ -8,4 +8,3 @@
 
 #import "AutoScrollView.h"
 #import "Tap.h"
-#import "myAnnotation.h"

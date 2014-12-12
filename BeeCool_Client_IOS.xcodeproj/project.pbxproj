@@ -29,7 +29,6 @@
 		1803965F1A3978A70001473B /* MapViewContrlloer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803965E1A3978A70001473B /* MapViewContrlloer.swift */; };
 		180396611A3979650001473B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180396601A3979650001473B /* MapKit.framework */; };
 		180396631A3979A60001473B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180396621A3979A60001473B /* CoreLocation.framework */; };
-		180396661A3985820001473B /* myAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 180396651A3985820001473B /* myAnnotation.m */; };
 		180396AF1A3999380001473B /* CarTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180396AE1A3999380001473B /* CarTypeViewController.swift */; };
 		180396B11A3999560001473B /* DateTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180396B01A3999560001473B /* DateTimeViewController.swift */; };
 		180396B31A3999630001473B /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180396B21A3999630001473B /* StaffViewController.swift */; };
@@ -98,8 +97,6 @@
 		1803965E1A3978A70001473B /* MapViewContrlloer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewContrlloer.swift; sourceTree = "<group>"; };
 		180396601A3979650001473B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		180396621A3979A60001473B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		180396641A3985820001473B /* myAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myAnnotation.h; sourceTree = "<group>"; };
-		180396651A3985820001473B /* myAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myAnnotation.m; sourceTree = "<group>"; };
 		180396AE1A3999380001473B /* CarTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTypeViewController.swift; sourceTree = "<group>"; };
 		180396B01A3999560001473B /* DateTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeViewController.swift; sourceTree = "<group>"; };
 		180396B21A3999630001473B /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
@@ -235,8 +232,6 @@
 				180396B01A3999560001473B /* DateTimeViewController.swift */,
 				180396B21A3999630001473B /* StaffViewController.swift */,
 				180396B41A399FA90001473B /* ServiceItemViewController.swift */,
-				180396641A3985820001473B /* myAnnotation.h */,
-				180396651A3985820001473B /* myAnnotation.m */,
 				185ECEA71A39467000B568B0 /* Main.storyboard */,
 				185ECEAA1A39467000B568B0 /* Images.xcassets */,
 				185ECEAC1A39467000B568B0 /* LaunchScreen.xib */,
@@ -390,7 +385,6 @@
 				180396551A3950300001473B /* UIImage+WebP.m in Sources */,
 				180396261A394FE70001473B /* Tap.m in Sources */,
 				1803964F1A3950300001473B /* SDWebImageDownloaderOperation.m in Sources */,
-				180396661A3985820001473B /* myAnnotation.m in Sources */,
 				180396B31A3999630001473B /* StaffViewController.swift in Sources */,
 				1803964D1A3950300001473B /* SDWebImageDecoder.m in Sources */,
 				185ECEA21A39467000B568B0 /* AppDelegate.swift in Sources */,
