@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 var arr:NSArray = placemarks as NSArray
                 for place in arr {
                     var test:NSDictionary = ((place as CLPlacemark).addressDictionary) as NSDictionary
-                    var str = NSString(format: "%@, %@, %@",test.objectForKey("Name") as NSString, test.objectForKey("State") as NSString, test.objectForKey("Street") as NSString) as NSString
+                    var str = (test["FormattedAddressLines"] as NSArray).firstObject as NSString
                     self.detailLocation = str
                     print(str)
                 }

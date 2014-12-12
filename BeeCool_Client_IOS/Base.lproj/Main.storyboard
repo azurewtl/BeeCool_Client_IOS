@@ -268,11 +268,25 @@
                                 <rect key="frame" x="0.0" y="293" width="320" height="226"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mapdetailCell" id="7Cg-TM-x2F">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mapdetailCell" textLabel="Tlz-3j-mo9" detailTextLabel="Qk6-IA-sh6" style="IBUITableViewCellStyleSubtitle" id="7Cg-TM-x2F">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Cg-TM-x2F" id="MoQ-8r-BKU">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tlz-3j-mo9">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qk6-IA-sh6">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -281,6 +295,26 @@
                                     <outlet property="delegate" destination="EwY-Rq-vGN" id="Vuq-iz-afY"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpX-Ut-G5n">
+                                <rect key="frame" x="276" y="64" width="38" height="40"/>
+                                <color key="backgroundColor" red="0.70206195372734281" green="0.7443808410819418" blue="0.84724195075757569" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="卫星">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="satelliteButoon:" destination="EwY-Rq-vGN" eventType="touchUpInside" id="Iw9-Zc-24Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVn-H8-eaZ">
+                                <rect key="frame" x="285" y="252" width="29" height="33"/>
+                                <color key="backgroundColor" red="0.63997430900546859" green="0.67842031696968808" blue="0.76625631313131315" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="guide">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="guideButton:" destination="EwY-Rq-vGN" eventType="touchUpInside" id="Ux9-EP-hJx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -289,14 +323,19 @@
                             <constraint firstItem="p7O-9t-Eje" firstAttribute="top" secondItem="4rb-mp-d0g" secondAttribute="bottom" id="8ji-es-Txh"/>
                             <constraint firstItem="XME-9Z-25c" firstAttribute="top" secondItem="p7O-9t-Eje" secondAttribute="bottom" constant="226" id="Abs-ud-Xxp"/>
                             <constraint firstItem="KAT-ch-rF0" firstAttribute="leading" secondItem="EEx-Cn-0tg" secondAttribute="leadingMargin" constant="-16" id="DYM-xA-mXt"/>
+                            <constraint firstItem="LpX-Ut-G5n" firstAttribute="top" secondItem="4rb-mp-d0g" secondAttribute="bottom" id="OG2-fh-OVP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LpX-Ut-G5n" secondAttribute="trailing" constant="-10" id="TXW-RT-W2c"/>
                             <constraint firstItem="p7O-9t-Eje" firstAttribute="leading" secondItem="EEx-Cn-0tg" secondAttribute="leadingMargin" constant="-16" id="WNq-u3-wIm"/>
                             <constraint firstItem="p7O-9t-Eje" firstAttribute="centerY" secondItem="Gqy-qf-Ck5" secondAttribute="centerY" constant="15" id="X46-8w-3CK"/>
                             <constraint firstItem="Gqy-qf-Ck5" firstAttribute="centerX" secondItem="p7O-9t-Eje" secondAttribute="centerX" id="X8D-QI-YeS"/>
+                            <constraint firstItem="LpX-Ut-G5n" firstAttribute="leading" secondItem="EEx-Cn-0tg" secondAttribute="leadingMargin" constant="252" id="haN-MY-xuL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KAT-ch-rF0" secondAttribute="trailing" constant="-16" id="j1f-mX-DxH"/>
                             <constraint firstItem="KAT-ch-rF0" firstAttribute="top" secondItem="p7O-9t-Eje" secondAttribute="bottom" id="xDR-KE-Sbc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0ky-cj-Oga"/>
+                    <navigationItem key="navigationItem" id="0ky-cj-Oga">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="X8z-su-J1C"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="p7O-9t-Eje" id="5GX-0E-BNi"/>
                         <outlet property="tableView" destination="KAT-ch-rF0" id="QDa-o9-Rgm"/>
@@ -520,7 +559,8 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="pin" width="32" height="32"/>
+        <image name="guide" width="96" height="96"/>
+        <image name="pin" width="274" height="274"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
