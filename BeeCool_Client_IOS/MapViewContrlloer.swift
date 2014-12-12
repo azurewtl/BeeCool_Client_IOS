@@ -42,8 +42,9 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
                     var arr:NSArray = placemarks as NSArray
                     for place in arr {
                         var test:NSDictionary = ((place as CLPlacemark).addressDictionary) as NSDictionary
-                        var str = NSString(format: "%@, %@, %@, %@",test.objectForKey("Name") as NSString, test.objectForKey("State") as NSString, test.objectForKey("Street") as NSString) as NSString
+                        var str = NSString(format: "%@, %@, %@",test.objectForKey("Name") as NSString, test.objectForKey("State") as NSString, test.objectForKey("Street") as NSString) as NSString
                         ano.detailposition = str
+                        print(str)
                     }
                 }
             })

@@ -81,14 +81,48 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="typeCell" rowHeight="52" id="OvW-T1-jEU">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="typeCell" rowHeight="51" id="OvW-T1-jEU">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OvW-T1-jEU" id="zu1-Vf-wc3">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nEE-wo-6BO">
+                                                    <rect key="frame" x="0.0" y="-1" width="320" height="62"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tMH-Vx-AWm">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="carType" id="6Dx-gC-zHR">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <connections>
+                                                                <segue destination="R1d-B1-Sbl" kind="push" identifier="typeView" id="X2V-4h-xWj"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="BTm-8r-OA9" id="ShR-ok-eTG"/>
+                                                        <outlet property="delegate" destination="BTm-8r-OA9" id="ohY-gu-nVY"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nEE-wo-6BO" firstAttribute="leading" secondItem="zu1-Vf-wc3" secondAttribute="leadingMargin" constant="-8" id="8te-I9-AFl"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="nEE-wo-6BO" secondAttribute="bottom" id="Bu2-bZ-J7X"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nEE-wo-6BO" secondAttribute="trailing" constant="-8" id="KDy-EM-bQd"/>
+                                                <constraint firstItem="nEE-wo-6BO" firstAttribute="top" secondItem="zu1-Vf-wc3" secondAttribute="topMargin" constant="-9" id="p4e-58-BLL"/>
+                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="R1d-B1-Sbl" kind="push" identifier="typeView" id="9sT-lJ-DyE"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="mapCell" id="uJh-4y-9Fq">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -125,10 +159,44 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7ri-0y-sGU" id="gOF-je-bvK">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IJP-Z2-DOt">
+                                                    <rect key="frame" x="8" y="0.0" width="287" height="43"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rqW-c1-amX">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="carService" id="KPy-gb-Z7W">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <connections>
+                                                                <segue destination="TGx-T5-tEH" kind="push" identifier="serviceView" id="2dX-M5-TLq"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="BTm-8r-OA9" id="Pc4-s7-7MW"/>
+                                                        <outlet property="delegate" destination="BTm-8r-OA9" id="br7-l6-pBE"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IJP-Z2-DOt" firstAttribute="leading" secondItem="gOF-je-bvK" secondAttribute="leadingMargin" id="AmD-xe-wD5"/>
+                                                <constraint firstItem="IJP-Z2-DOt" firstAttribute="top" secondItem="gOF-je-bvK" secondAttribute="topMargin" constant="-8" id="H26-OF-Npd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="IJP-Z2-DOt" secondAttribute="trailing" constant="-16" id="Itd-7E-6KL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="IJP-Z2-DOt" secondAttribute="bottom" constant="-8" id="sPM-IV-FDY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="TGx-T5-tEH" kind="push" identifier="serviceView" id="5K9-0Y-eHf"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -153,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTS-vp-iK7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="241" y="-147"/>
+            <point key="canvasLocation" x="241" y="-154"/>
         </scene>
         <!--Car Type View Controller-->
         <scene sceneID="1op-h8-pue">
