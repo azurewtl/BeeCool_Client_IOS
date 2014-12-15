@@ -8,3 +8,4 @@
 
 #import "AutoScrollView.h"
 #import "Tap.h"
+#import "Vertify.h"

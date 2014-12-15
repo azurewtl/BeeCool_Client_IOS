@@ -10,7 +10,8 @@ import UIKit
 import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
-
+    var appkey = "4682729a0788"
+    var appsecret = "14e6b542fb4780ec57c1ca6544c6a303"
     var window: UIWindow?
     var locationMananger = CLLocationManager()
     var latitude = CLLocationDegrees()
@@ -51,7 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+       SMS_SDK.registerApp(appkey, withSecret: appsecret)
        updateLocation(locationMananger)
+        print(NSTemporaryDirectory())
         return true
     }
 

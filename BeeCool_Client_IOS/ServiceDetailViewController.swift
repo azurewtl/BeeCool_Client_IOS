@@ -51,13 +51,14 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
         if indexPath.section == 2 {
             cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel.text = "请选择服务时间"
-            cell.imageView.image = UIImage(named: "time")
+            cell.textLabel.text = "请选择服务人员"
+           
             cell.textLabel.textColor = UIColor.grayColor()
         }
         if indexPath.section == 3 {
             cell = tableView.dequeueReusableCellWithIdentifier("staffCell", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel.text = "请选择服务人员"
+            cell.textLabel.text = "请选择服务时间"
+            cell.imageView.image = UIImage(named: "time")
             cell.textLabel.textColor = UIColor.grayColor()
 
         }
