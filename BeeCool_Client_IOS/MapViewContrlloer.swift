@@ -33,7 +33,6 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         var center =  CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
         var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         var region = MKCoordinateRegionMake(center, span)
-        
         mapView.setRegion(region, animated: true)
     }
     

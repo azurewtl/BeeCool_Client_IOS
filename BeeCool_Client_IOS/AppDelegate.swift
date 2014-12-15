@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 print("定位失败")
             }
         })
-//        manager.stopUpdatingLocation()
+        manager.stopUpdatingLocation()
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

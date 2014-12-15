@@ -10,6 +10,10 @@ import UIKit
 
 class CarTypeViewController: UIViewController {
 
+    
+    @IBAction func finishedOnclick(sender: UIBarButtonItem) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
