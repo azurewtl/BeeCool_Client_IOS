@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Gf5-BR-fCa">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -593,6 +593,63 @@
             </objects>
             <point key="canvasLocation" x="579" y="634"/>
         </scene>
+        <!--First View Controller-->
+        <scene sceneID="2sc-H3-D1j">
+            <objects>
+                <viewController id="Gf5-BR-fCa" customClass="FirstViewController" customModule="BeeCool_Client_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XOo-Fr-bNf"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Vh-2O-VAe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fJg-l8-Kie">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTk-Q7-IF2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNd-KY-Bql">
+                                <rect key="frame" x="40" y="450" width="240" height="38"/>
+                                <color key="backgroundColor" red="0.013674636684920543" green="0.68831143602945388" blue="0.87391493055555558" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="49e-Tb-3d3" kind="modal" identifier="firstpage" id="QeD-0a-50Y"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="z4h-8G-IDE">
+                                <rect key="frame" x="140" y="400" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vTk-Q7-IF2" firstAttribute="top" secondItem="fJg-l8-Kie" secondAttribute="topMargin" id="4mb-gB-QzB"/>
+                            <constraint firstItem="vTk-Q7-IF2" firstAttribute="leading" secondItem="fJg-l8-Kie" secondAttribute="leadingMargin" constant="-16" id="66n-Sy-9RP"/>
+                            <constraint firstItem="fNd-KY-Bql" firstAttribute="leading" secondItem="fJg-l8-Kie" secondAttribute="leadingMargin" constant="24" id="CUb-S9-LWQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fNd-KY-Bql" secondAttribute="trailing" constant="24" id="E3G-rb-9le"/>
+                            <constraint firstItem="8Vh-2O-VAe" firstAttribute="top" secondItem="fNd-KY-Bql" secondAttribute="bottom" constant="80" id="G0c-au-h2L"/>
+                            <constraint firstItem="fNd-KY-Bql" firstAttribute="top" secondItem="z4h-8G-IDE" secondAttribute="bottom" constant="13" id="b1q-2B-rpp"/>
+                            <constraint firstItem="z4h-8G-IDE" firstAttribute="top" secondItem="XOo-Fr-bNf" secondAttribute="bottom" constant="380" id="lCF-lQ-7SI"/>
+                            <constraint firstItem="8Vh-2O-VAe" firstAttribute="top" secondItem="vTk-Q7-IF2" secondAttribute="bottom" id="lJ4-3t-0pc"/>
+                            <constraint firstItem="z4h-8G-IDE" firstAttribute="leading" secondItem="fJg-l8-Kie" secondAttribute="leadingMargin" constant="124" id="uwf-86-3G2"/>
+                            <constraint firstItem="fNd-KY-Bql" firstAttribute="top" secondItem="z4h-8G-IDE" secondAttribute="bottom" constant="13" id="vRC-rh-XDQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z4h-8G-IDE" secondAttribute="trailing" constant="125" id="wlO-cS-wrb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vTk-Q7-IF2" secondAttribute="trailing" constant="-16" id="zza-og-ILZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="enterOnclick" destination="fNd-KY-Bql" id="T7J-JG-EC8"/>
+                        <outlet property="pageControll" destination="z4h-8G-IDE" id="Tle-v7-3Pr"/>
+                        <outlet property="scrollView" destination="vTk-Q7-IF2" id="fOJ-Ih-lQo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yDU-q6-bqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2003" y="856"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -946,6 +1003,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="V3J-R0-tBi"/>
+        <segue reference="xkf-HB-Ajc"/>
     </inferredMetricsTieBreakers>
 </document>

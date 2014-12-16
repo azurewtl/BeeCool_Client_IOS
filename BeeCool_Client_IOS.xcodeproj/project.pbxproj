@@ -55,6 +55,11 @@
 		18CFA6411A3EEE9000DC96F4 /* Vertify.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CFA6401A3EEE9000DC96F4 /* Vertify.m */; };
 		18CFA6451A4011F500DC96F4 /* UserprotocolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFA6441A4011F500DC96F4 /* UserprotocolViewController.swift */; };
 		18CFA6481A40150C00DC96F4 /* userprotocol.docx in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA6471A40150C00DC96F4 /* userprotocol.docx */; };
+		18CFA64A1A40354700DC96F4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFA6491A40354700DC96F4 /* FirstViewController.swift */; };
+		18CFA64F1A403ACA00DC96F4 /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA64B1A403ACA00DC96F4 /* 0.jpg */; };
+		18CFA6501A403ACA00DC96F4 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA64C1A403ACA00DC96F4 /* 1.jpg */; };
+		18CFA6511A403ACA00DC96F4 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA64D1A403ACA00DC96F4 /* 2.jpg */; };
+		18CFA6521A403ACA00DC96F4 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA64E1A403ACA00DC96F4 /* 3.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +146,11 @@
 		18CFA6421A3EEE9300DC96F4 /* Vertify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vertify.h; sourceTree = "<group>"; };
 		18CFA6441A4011F500DC96F4 /* UserprotocolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserprotocolViewController.swift; sourceTree = "<group>"; };
 		18CFA6471A40150C00DC96F4 /* userprotocol.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = userprotocol.docx; sourceTree = "<group>"; };
+		18CFA6491A40354700DC96F4 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		18CFA64B1A403ACA00DC96F4 /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
+		18CFA64C1A403ACA00DC96F4 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		18CFA64D1A403ACA00DC96F4 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		18CFA64E1A403ACA00DC96F4 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,10 +271,15 @@
 		185ECE9E1A39467000B568B0 /* BeeCool_Client_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				18CFA64B1A403ACA00DC96F4 /* 0.jpg */,
+				18CFA64C1A403ACA00DC96F4 /* 1.jpg */,
+				18CFA64D1A403ACA00DC96F4 /* 2.jpg */,
+				18CFA64E1A403ACA00DC96F4 /* 3.jpg */,
 				18CFA6471A40150C00DC96F4 /* userprotocol.docx */,
 				18CFA62E1A3ED53C00DC96F4 /* area.json */,
 				18CFA6301A3EDAE300DC96F4 /* result.json */,
 				180396591A39507C0001473B /* BridgeHeader.h */,
+				18CFA6491A40354700DC96F4 /* FirstViewController.swift */,
 				185ECEA11A39467000B568B0 /* AppDelegate.swift */,
 				185ECEC31A39469B00B568B0 /* MemberViewController.swift */,
 				185ECEC41A39469B00B568B0 /* MyAccountViewController.swift */,
@@ -400,7 +415,11 @@
 				18CFA6481A40150C00DC96F4 /* userprotocol.docx in Resources */,
 				18CFA6311A3EDAE300DC96F4 /* result.json in Resources */,
 				185ECEA91A39467000B568B0 /* Main.storyboard in Resources */,
+				18CFA6511A403ACA00DC96F4 /* 2.jpg in Resources */,
+				18CFA64F1A403ACA00DC96F4 /* 0.jpg in Resources */,
+				18CFA6521A403ACA00DC96F4 /* 3.jpg in Resources */,
 				185ECEAE1A39467000B568B0 /* LaunchScreen.xib in Resources */,
+				18CFA6501A403ACA00DC96F4 /* 1.jpg in Resources */,
 				18CFA62F1A3ED53C00DC96F4 /* area.json in Resources */,
 				185ECEAB1A39467000B568B0 /* Images.xcassets in Resources */,
 			);
@@ -429,6 +448,7 @@
 				1803965B1A3957700001473B /* ServiceDetailViewController.swift in Sources */,
 				180396511A3950300001473B /* SDWebImagePrefetcher.m in Sources */,
 				185ECEC71A39469B00B568B0 /* MemberViewController.swift in Sources */,
+				18CFA64A1A40354700DC96F4 /* FirstViewController.swift in Sources */,
 				180396B51A399FA90001473B /* ServiceItemViewController.swift in Sources */,
 				18CFA6451A4011F500DC96F4 /* UserprotocolViewController.swift in Sources */,
 				180396581A3950300001473B /* UIView+WebCacheOperation.m in Sources */,
