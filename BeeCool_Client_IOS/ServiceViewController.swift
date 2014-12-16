@@ -26,6 +26,10 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
         Autoscroll.setTarget(self, action: "autoAction:")
         // Do any additional setup after loading the view, typically from a nib.
     }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.tabBar.hidden = false
+    }
     func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
         if buttonIndex == 1 {
             var phone = "15590285730"

@@ -13,6 +13,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet var tableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.hidden = true
     }
     func sendbackloc(str: NSString) {
         print(str)

@@ -54,7 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Override point for customization after application launch.
        SMS_SDK.registerApp(appkey, withSecret: appsecret)
        updateLocation(locationMananger)
-        print(NSTemporaryDirectory())
+        var userdefault = NSUserDefaults.standardUserDefaults()
+        if userdefault.objectForKey("userLog") == nil {
+            userdefault.setObject("", forKey: "userLog")
+        }
+//        print(NSTemporaryDirectory())
         return true
     }
 

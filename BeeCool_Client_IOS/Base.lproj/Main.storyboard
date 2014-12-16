@@ -762,6 +762,7 @@
                         <outlet property="headImageView" destination="o41-UO-L7J" id="Ukf-Ya-3iE"/>
                         <outlet property="headLabel" destination="vuq-ni-a8r" id="dVi-rU-c5D"/>
                         <outlet property="tableView" destination="qYd-F8-iq4" id="qT2-Pi-Pm1"/>
+                        <outlet property="tapGesture" destination="ZPU-Rj-bEm" id="sOB-eU-Bhd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Umx-sY-qsL" sceneMemberID="firstResponder"/>

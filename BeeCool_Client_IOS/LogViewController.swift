@@ -78,6 +78,7 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             button1.backgroundColor = UIColor(red: 56 / 256.0, green: 94 / 256.0, blue: 15 / 256.0, alpha: 1)
             button1.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         }else {
+            button1.setTitle("验证", forState: UIControlState.Normal)
             button1.backgroundColor = UIColor.grayColor()
             button1.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             button1.enabled = false
@@ -138,13 +139,18 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func btnOnclick(sender:UIButton) {
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as UITableViewCell?
         var verifyTextField = cell?.contentView.viewWithTag(101) as UITextField
+        let cell1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
+        var phoneTextField = cell?.contentView.viewWithTag(101) as UITextField
         Vertify.getvertifynumber(verifyTextField.text) { (var result:Int32) -> Void in
             if result == 1 {
                 sender.setTitle("验证成功", forState: UIControlState.Normal)
                 sender.backgroundColor = UIColor.grayColor()
                 sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
                 sender.enabled = false
+                var userdefault = NSUserDefaults.standardUserDefaults()
+                userdefault.setObject(phoneTextField.text, forKey: "userLog")
                 self.navigationController?.popViewControllerAnimated(true)
+             
             }else {
                 sender.setTitle("验证失败", forState: UIControlState.Normal)
             }

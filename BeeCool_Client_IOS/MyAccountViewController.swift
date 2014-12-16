@@ -11,16 +11,30 @@ import UIKit
 class MyAccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
+    @IBOutlet var tapGesture: UITapGestureRecognizer!
     @IBOutlet var headImageView: UIImageView!
     @IBOutlet var headLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        var userdefault = NSUserDefaults.standardUserDefaults()
+        if (userdefault.objectForKey("userLog") as NSString) == "" {
+            headLabel.text = "立即登陆"
+        }else {
+            tapGesture.enabled = false
+            headLabel.text = userdefault.objectForKey("userLog") as NSString
+        }
+        
         headImageView.layer.borderWidth = 1;
         headImageView.layer.masksToBounds = true
         headImageView.layer.borderColor = UIColor.whiteColor().CGColor
         headImageView.layer.cornerRadius = headImageView.frame.width / 2
-        // Do any additional setup after loading the view.
+        self.tabBarController?.tabBar.hidden = false
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
@@ -76,6 +90,12 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if indexPath.section == 2 {
+            var userdefault = NSUserDefaults.standardUserDefaults()
+            userdefault.setObject("", forKey: "userLog")
+            headLabel.text = "立即登陆"
+            tapGesture.enabled = true
+        }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

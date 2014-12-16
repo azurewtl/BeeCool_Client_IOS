@@ -8,18 +8,18 @@
 
 import UIKit
 
-class UserprotocolViewController: UIViewController {
+class UserprotocolViewController: UIViewController{
 
     @IBOutlet var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.hidden = true
         var path = NSBundle.mainBundle().pathForResource("userprotocol", ofType:"docx")
         print(path)
         var url = NSURL(string: path!)
         var request = NSURLRequest(URL: url!)
         webView.loadRequest(request)
-        
-        // Do any additional setup after loading the view.
+        // Do any additonal setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
