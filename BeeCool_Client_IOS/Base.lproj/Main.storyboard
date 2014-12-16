@@ -56,7 +56,13 @@
                             <constraint firstItem="xkU-uj-8Tf" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="nHi-Vp-K4q"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ju3-gz-dE2"/>
+                    <navigationItem key="navigationItem" id="Ju3-gz-dE2">
+                        <barButtonItem key="rightBarButtonItem" image="telephone" id="68F-dq-iTJ">
+                            <connections>
+                                <action selector="teleOnclick:" destination="9pv-A4-QxB" id="KvR-jc-hFF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="serverCollectionview" destination="xkU-uj-8Tf" id="Y54-Ce-K3p"/>
                     </connections>
@@ -490,7 +496,7 @@
             </objects>
             <point key="canvasLocation" x="1105" y="588"/>
         </scene>
-        <!--Order View Controller-->
+        <!--当前订单-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="OrderViewController" customModule="BeeCool_Client_IOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -510,6 +516,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jj0-kf-Sfx">
                                 <rect key="frame" x="84" y="404" width="164" height="30"/>
+                                <color key="backgroundColor" red="0.44137891714028954" green="0.66222774621212122" blue="0.5474621495277574" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="请先登录">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -520,11 +527,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lbN-Y1-QQD"/>
+                    <navigationItem key="navigationItem" title="当前订单" id="lbN-Y1-QQD"/>
+                    <connections>
+                        <outlet property="logbtn" destination="jj0-kf-Sfx" id="8Du-KR-yQW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-284" y="588"/>
+            <point key="canvasLocation" x="-284" y="596"/>
         </scene>
         <!--Service Item View Controller-->
         <scene sceneID="2NW-Qr-YLb">
@@ -604,7 +614,7 @@
             </objects>
             <point key="canvasLocation" x="-904" y="596"/>
         </scene>
-        <!--Member View Controller-->
+        <!--会员-->
         <scene sceneID="ESt-V5-oLg">
             <objects>
                 <viewController id="ZSu-sj-3ek" customClass="MemberViewController" customModule="BeeCool_Client_IOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -617,7 +627,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YCj-mj-7xc"/>
+                    <navigationItem key="navigationItem" title="会员" id="YCj-mj-7xc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGT-zb-0eI" sceneMemberID="firstResponder"/>
             </objects>
@@ -642,7 +652,7 @@
             </objects>
             <point key="canvasLocation" x="-920" y="1310"/>
         </scene>
-        <!--My Account View Controller-->
+        <!--我的-->
         <scene sceneID="Hxf-m8-rMh">
             <objects>
                 <viewController id="rRX-1e-QHO" customClass="MyAccountViewController" customModule="BeeCool_Client_IOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -699,7 +709,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="qYd-F8-iq4" secondAttribute="trailing" constant="-16" id="KIe-8c-hgY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nnQ-tI-M3a"/>
+                    <navigationItem key="navigationItem" title="我的" id="nnQ-tI-M3a"/>
                     <connections>
                         <outlet property="headImageView" destination="o41-UO-L7J" id="Ukf-Ya-3iE"/>
                         <outlet property="headLabel" destination="vuq-ni-a8r" id="dVi-rU-c5D"/>
@@ -844,6 +854,7 @@
         <image name="guide" width="96" height="96"/>
         <image name="pin" width="274" height="274"/>
         <image name="second" width="30" height="30"/>
+        <image name="telephone" width="32" height="32"/>
         <image name="unlogin" width="1024" height="1024"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -852,6 +863,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Brm-pf-jrP"/>
+        <segue reference="V3J-R0-tBi"/>
     </inferredMetricsTieBreakers>
 </document>

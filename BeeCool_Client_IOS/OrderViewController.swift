@@ -10,9 +10,11 @@ import UIKit
 
 class OrderViewController: UIViewController {
 
+    @IBOutlet var logbtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        logbtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
     }
 
     override func didReceiveMemoryWarning() {

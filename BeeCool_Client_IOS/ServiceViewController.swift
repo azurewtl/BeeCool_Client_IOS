@@ -8,8 +8,13 @@
 
 import UIKit
 
-class ServiceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
-
+class ServiceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIAlertViewDelegate{
+    var alert = UIAlertView()
+    @IBAction func teleOnclick(sender: UIBarButtonItem) {
+        var phone = "15590285730"
+        alert = UIAlertView(title: "提示", message: phone, delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确定")
+        alert.show()
+    }
     
     @IBOutlet var serverCollectionview: UICollectionView!
     override func viewDidLoad() {
@@ -20,6 +25,16 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
         serverCollectionview.addSubview(Autoscroll)
         Autoscroll.setTarget(self, action: "autoAction:")
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            var phone = "15590285730"
+            var str = NSString(format:"tel://%@", phone)
+            var url = NSURL(string: str)
+            UIApplication.sharedApplication().openURL(url!)
+            alert = UIAlertView(title: "提示", message: "未安装SM卡", delegate: nil, cancelButtonTitle: "确定")
+            alert.show()
+        }
     }
     func autoAction(tap:Tap) {
         print(tap.flag)
