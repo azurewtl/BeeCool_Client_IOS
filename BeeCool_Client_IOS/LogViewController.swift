@@ -46,10 +46,13 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             timeInterval = 0
             text = "超时,请重发"
             button.enabled = true
-            button.backgroundColor = UIColor.greenColor()
+            button.backgroundColor = UIColor(red: 56 / 256.0, green: 94 / 256.0, blue: 15 / 256.0, alpha: 1)
             button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         }
         button.setTitle(text, forState: UIControlState.Normal)
+    }
+    func textFieldDidBeginEditing(textField: UITextField) {
+        print(textField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
     }
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
@@ -58,8 +61,13 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         var phonestr =  NSMutableString(string: phoneTextFiled.text)
         if phonestr.length == 10 {
             button.enabled = true
-            button.backgroundColor = UIColor.greenColor()
+            button.backgroundColor = UIColor(red: 56 / 256.0, green: 94 / 256.0, blue: 15 / 256.0, alpha: 1)
             button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        }else {
+            button.setTitle("获取验证码", forState: UIControlState.Normal)
+            button.backgroundColor = UIColor.grayColor()
+            button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            button.enabled = false
         }
         let cell1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as UITableViewCell?
         var verifyTextField = cell1?.contentView.viewWithTag(101) as UITextField
@@ -67,8 +75,12 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         var button1 = cell2?.contentView.viewWithTag(101) as UIButton
         if verifyTextField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 3 {
             button1.enabled = true
-            button1.backgroundColor = UIColor.greenColor()
+            button1.backgroundColor = UIColor(red: 56 / 256.0, green: 94 / 256.0, blue: 15 / 256.0, alpha: 1)
             button1.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        }else {
+            button1.backgroundColor = UIColor.grayColor()
+            button1.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            button1.enabled = false
         }
         return true
     }
@@ -84,11 +96,13 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             button.addTarget(self, action: "btnOnclick1:", forControlEvents: UIControlEvents.TouchUpInside)
             var textfiled = cell.contentView.viewWithTag(101) as UITextField
             textfiled.delegate = self
+            textfiled.keyboardType = UIKeyboardType.PhonePad
         }
         if indexPath.section == 1 {
             cell = tableView.dequeueReusableCellWithIdentifier("maskCell") as UITableViewCell
             var textfiled = cell.contentView.viewWithTag(101) as UITextField
             textfiled.delegate = self
+            textfiled.keyboardType = UIKeyboardType.PhonePad
         }
         if indexPath.section == 2 {
             cell = tableView.dequeueReusableCellWithIdentifier("okCell") as UITableViewCell
@@ -103,12 +117,13 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         return cell
     }
     func btnOnclick1(sender:UIButton) {
-        timeraction()
+        
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
         var phoneTextField = cell?.contentView.viewWithTag(101) as UITextField
             Vertify.getphone(phoneTextField.text, block: { (var result:Int32) -> Void in
                 if result == 1 {
                     sender.setTitle("获取成功", forState: UIControlState.Normal)
+                    self.timeraction()
                     sender.backgroundColor = UIColor.grayColor()
                     sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
                     sender.enabled = false

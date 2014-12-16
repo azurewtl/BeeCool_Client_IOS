@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, sendbackLocation{
+class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, sendbackLocation, sendbackstaffDelegate{
     var maplocation = "请确定您车的位置"
     @IBOutlet var tableview: UITableView!
     override func viewDidLoad() {
@@ -18,6 +18,10 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         print(str)
         maplocation = str
         tableview.reloadData()
+    }
+   func sdbk(str: NSString) {
+     let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as UITableViewCell?
+     cell?.textLabel.text = str
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 5
@@ -50,13 +54,13 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             cell.textLabel.textColor = UIColor.grayColor()
         }
         if indexPath.section == 2 {
-            cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("staffCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel.text = "请选择服务人员"
            
             cell.textLabel.textColor = UIColor.grayColor()
         }
         if indexPath.section == 3 {
-            cell = tableView.dequeueReusableCellWithIdentifier("staffCell", forIndexPath: indexPath) as UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel.text = "请选择服务时间"
             cell.imageView.image = UIImage(named: "time")
             cell.textLabel.textColor = UIColor.grayColor()
@@ -101,6 +105,9 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "mapView" {
             (segue.destinationViewController as MapViewContrlloer).delegate = self
+        }
+        if segue.identifier == "staffView" {
+            (segue.destinationViewController as StaffViewController).delegate = self
         }
     }
     

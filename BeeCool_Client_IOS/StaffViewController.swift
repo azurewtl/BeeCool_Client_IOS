@@ -7,9 +7,11 @@
 //
 
 import UIKit
-
-class StaffViewController: UIViewController {
-
+protocol sendbackstaffDelegate {
+    func sdbk(str:NSString)
+}
+class StaffViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    var delegate = sendbackstaffDelegate?()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,7 +22,21 @@ class StaffViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("staffCell") as UITableViewCell
+        cell.textLabel.text = "Mary"
+        cell.imageView.image = UIImage(named: "girl")
+        return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.delegate?.sdbk("Mary")
+        self.navigationController?.popViewControllerAnimated(true)
     
+    }
 
     /*
     // MARK: - Navigation

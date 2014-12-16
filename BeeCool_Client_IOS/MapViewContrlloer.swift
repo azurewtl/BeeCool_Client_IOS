@@ -45,6 +45,7 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
      func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             textView.resignFirstResponder()
+            tableView.contentOffset.y = -64
         }
         return true
     }
@@ -88,6 +89,8 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidShow:", name: UIKeyboardWillShowNotification, object: nil)
+        
         mapView.showsUserLocation = true
         mapView.delegate = self
         mapView.mapType = MKMapType.Standard
@@ -103,9 +106,13 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         var center =  CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
         var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         var region = MKCoordinateRegionMake(center, span)
-   
         mapView.setRegion(region, animated: true)
 
+    }
+    func handleKeyboardDidShow(notification:NSNotification) {
+        var dictionary = notification.userInfo as NSDictionary!
+        var kbsize = dictionary.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue().size
+        tableView.contentOffset.y = kbsize.height / 2
     }
     func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
         var region:MKCoordinateRegion?
@@ -120,6 +127,10 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
                     var test:NSDictionary = ((place as CLPlacemark).addressDictionary) as NSDictionary
                     var str = (test["FormattedAddressLines"] as NSArray).firstObject as NSString
                     self.cellString = str
+                    print(str)
+                    var cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
+                    var textview = cell?.contentView.viewWithTag(101) as UITextView
+                    textview.text = self.cellString
                     self.tableView.reloadData()
                 }
                 
