@@ -54,6 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Override point for customization after application launch.
        SMS_SDK.registerApp(appkey, withSecret: appsecret)
        updateLocation(locationMananger)
+        ShareSDK.registerApp(appkey)
+        ShareSDK.connectSinaWeiboWithAppKey("585583252", appSecret: "99347fc7fb789eff3243655dd4b539b5", redirectUri: "http://www.lanou3g.com")
+        var weibosdk = ShareSDK()
+        ShareSDK.connectSinaWeiboWithAppKey("585583252", appSecret: "99347fc7fb789eff3243655dd4b539b5", redirectUri: "http://www.lanou3g.com", weiboSDKCls: weibosdk.classForCoder)
+        ShareSDK.connectWeChatWithAppId("wx4868b35061f87885", appSecret: "64020361b8ec4c99936c0e3999a9f249", wechatCls: WXApi.self)
         var userdefault = NSUserDefaults.standardUserDefaults()
         if userdefault.objectForKey("userLog") == nil {
             userdefault.setObject("", forKey: "userLog")
@@ -61,7 +66,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 //        print(NSTemporaryDirectory())
         return true
     }
-
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return ShareSDK.handleOpenURL(url, wxDelegate: self)
+    }
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return ShareSDK.handleOpenURL(url, sourceApplication: sourceApplication, annotation: annotation, wxDelegate: self)
+    }
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

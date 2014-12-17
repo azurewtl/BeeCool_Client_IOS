@@ -10,15 +10,19 @@ import UIKit
 
 class FirstViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBAction func pagesender(sender: UIPageControl) {
+        
+        var viewsize = scrollView.frame.size
+        scrollView.contentOffset = CGPointMake(CGFloat(sender.currentPage) * viewsize.width, 0)
+    }
     @IBOutlet var pageControll: UIPageControl!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var enterOnclick: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        enterOnclick.hidden = true
-        enterOnclick.enabled = false
         enterOnclick.layer.masksToBounds = true
         enterOnclick.layer.cornerRadius = 5
+        enterOnclick.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         var scrollwidth = self.view.frame.width
         var scrollheight = self.view.frame.height
         scrollView.delegate = self
@@ -40,13 +44,7 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
         var offset = scrollView.contentOffset
         var bounds = scrollView.frame
         pageControll.currentPage = Int(offset.x / bounds.width)
-        if pageControll.currentPage == 3 {
-            enterOnclick.hidden = false
-            enterOnclick.enabled = true
-        }else {
-            enterOnclick.hidden = true
-            enterOnclick.enabled = false
-        }
+
     }
   
     override func didReceiveMemoryWarning() {

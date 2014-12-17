@@ -7,5 +7,8 @@
 //
 
 #import "AutoScrollView.h"
+#import "UIImageView+WebCache.h"
 #import "Tap.h"
 #import "Vertify.h"
+#import "ShareSDK/ShareSDK.h"
+#import "WXApi.h"

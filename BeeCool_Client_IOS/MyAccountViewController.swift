@@ -11,13 +11,25 @@ import UIKit
 class MyAccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
+    @IBOutlet var tableheaderView: UIView!
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     @IBOutlet var headImageView: UIImageView!
     @IBOutlet var headLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        var locatios:[CGFloat] = [0.9, 0.0, 0.0, 0.0]
+        var colors = [UIColor.redColor().CGColor, UIColor.greenColor().CGColor, UIColor.blueColor().CGColor, UIColor.yellowColor().CGColor]
+        var colorspace = CGColorSpaceCreateDeviceRGB()
+       var gradient = CGGradientCreateWithColors(colorspace, colors, locatios)
+        let bitmapinfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
+        var bitmapContext =  CGBitmapContextCreate(nil, 420, UInt(tableheaderView.frame.height), 8, 4 * 420, CGColorSpaceCreateDeviceRGB(), bitmapinfo)
+        var start = CGPointMake(0, 0)
+        var end = CGPointMake(420, tableheaderView.frame.height)
+        CGContextDrawLinearGradient(bitmapContext, gradient, start, end, 0)
+        var cgImage = CGBitmapContextCreateImage(bitmapContext)
+        var image = UIImage(CGImage: cgImage)
+        tableheaderView.backgroundColor = UIColor(patternImage: image!)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
@@ -90,6 +102,24 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        var imagepath = NSBundle.mainBundle().pathForResource("home", ofType: "jpg")
+        if indexPath.section == 1{
+            if indexPath.row == 0 {
+                var publishContent = ShareSDK.content("贝库洗车，值得拥有官网 http://www.beikool.com", defaultContent: "贝库", image: ShareSDK.imageWithPath(imagepath), title: "bee cool", url: "http://www.beikool.com", description: "bee cool", mediaType: SSPublishContentMediaTypeNews)
+                ShareSDK.showShareActionSheet(nil, shareList: nil, content: publishContent, statusBarTips: true, authOptions: nil, shareOptions: nil, result: { (var type:ShareType, var state:SSResponseState, var info:ISSPlatformShareInfo?, var error:ICMErrorInfo?, var end:Bool) -> Void in
+                    
+                    if Int(state.value) == 2{
+                        var alert = UIAlertView(title: "提示", message: "分享失败", delegate: nil, cancelButtonTitle: "确定")
+                        alert.show()
+                    }else if Int(state.value) == 1 {
+                        var alert = UIAlertView(title: "提示", message: "分享成功", delegate: nil, cancelButtonTitle: "确定")
+                        alert.show()
+                    }
+                })
+            }
+        }
+        
+        
         if indexPath.section == 2 {
             var userdefault = NSUserDefaults.standardUserDefaults()
             userdefault.setObject("", forKey: "userLog")
