@@ -263,8 +263,11 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             return cell
         
         }
-        
+     
        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("carService", forIndexPath: indexPath) as UICollectionViewCell
+        if indexPath.item == servicecollectioncellCount - 1 {
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier("addServiceCell", forIndexPath: indexPath) as UICollectionViewCell
+        }
        return cell
     }
     func press(longpress:UILongPressGestureRecognizer) {
