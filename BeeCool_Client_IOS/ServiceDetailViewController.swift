@@ -258,14 +258,8 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("carType", forIndexPath: indexPath) as UICollectionViewCell
             cell.backgroundColor = UIColor.yellowColor()
             if indexPath.item == typecollectioncellCount - 1 {
-                cell.backgroundColor = UIColor.redColor()
+                cell = collectionView.dequeueReusableCellWithReuseIdentifier("addInfo", forIndexPath: indexPath) as UICollectionViewCell
             }
-            var cell1 = UICollectionViewCell()
-            if cell1 == collectionView.dequeueReusableCellWithReuseIdentifier("addInfo", forIndexPath: indexPath) as UICollectionViewCell {
-                return cell1
-            }
-          
-            
             return cell
         }
         

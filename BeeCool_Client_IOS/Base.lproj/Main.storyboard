@@ -146,9 +146,6 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
-                                                            <connections>
-                                                                <segue destination="R1d-B1-Sbl" kind="push" identifier="typeView" id="tQY-Mv-3by"/>
-                                                            </connections>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addInfo" id="tkf-gd-vCs">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -163,6 +160,9 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
+                                                            <connections>
+                                                                <segue destination="R1d-B1-Sbl" kind="push" identifier="typeView" id="FaX-eW-b0z"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                     <connections>
