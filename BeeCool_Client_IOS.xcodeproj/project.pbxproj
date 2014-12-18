@@ -112,6 +112,8 @@
 		18C9311A1A41792E0068F698 /* ShareSDKShareActionSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C930D61A41792D0068F698 /* ShareSDKShareActionSheet.framework */; };
 		18C9311D1A417D960068F698 /* home.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18C9311C1A417D960068F698 /* home.jpg */; };
 		18C9311F1A418D2D0068F698 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C9311E1A418D2D0068F698 /* Images.xcassets */; };
+		18C931211A42B5210068F698 /* TimeActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C931201A42B5210068F698 /* TimeActionSheet.xib */; };
+		18C931231A42B5500068F698 /* TimeActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C931221A42B5500068F698 /* TimeActionSheet.swift */; };
 		18CFA62D1A3EC3BD00DC96F4 /* SelectCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFA62C1A3EC3BD00DC96F4 /* SelectCarViewController.swift */; };
 		18CFA62F1A3ED53C00DC96F4 /* area.json in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA62E1A3ED53C00DC96F4 /* area.json */; };
 		18CFA6311A3EDAE300DC96F4 /* result.json in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA6301A3EDAE300DC96F4 /* result.json */; };
@@ -280,6 +282,8 @@
 		18C930D61A41792D0068F698 /* ShareSDKShareActionSheet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKShareActionSheet.framework; sourceTree = "<group>"; };
 		18C9311C1A417D960068F698 /* home.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = home.jpg; sourceTree = "<group>"; };
 		18C9311E1A418D2D0068F698 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		18C931201A42B5210068F698 /* TimeActionSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeActionSheet.xib; sourceTree = "<group>"; };
+		18C931221A42B5500068F698 /* TimeActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeActionSheet.swift; sourceTree = "<group>"; };
 		18CFA62C1A3EC3BD00DC96F4 /* SelectCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCarViewController.swift; sourceTree = "<group>"; };
 		18CFA62E1A3ED53C00DC96F4 /* area.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = area.json; sourceTree = "<group>"; };
 		18CFA6301A3EDAE300DC96F4 /* result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = result.json; sourceTree = "<group>"; };
@@ -500,6 +504,8 @@
 				185ECEC51A39469B00B568B0 /* OrderViewController.swift */,
 				185ECEC61A39469B00B568B0 /* ServiceViewController.swift */,
 				1803965A1A3957700001473B /* ServiceDetailViewController.swift */,
+				18C931201A42B5210068F698 /* TimeActionSheet.xib */,
+				18C931221A42B5500068F698 /* TimeActionSheet.swift */,
 				1803965E1A3978A70001473B /* MapViewContrlloer.swift */,
 				180396AE1A3999380001473B /* CarTypeViewController.swift */,
 				18CFA62C1A3EC3BD00DC96F4 /* SelectCarViewController.swift */,
@@ -817,6 +823,7 @@
 				18C931131A41792E0068F698 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				185ECEA91A39467000B568B0 /* Main.storyboard in Resources */,
 				18C931161A41792E0068F698 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
+				18C931211A42B5210068F698 /* TimeActionSheet.xib in Resources */,
 				18C9311F1A418D2D0068F698 /* Images.xcassets in Resources */,
 				18C9310A1A41792E0068F698 /* WeiboSDK.bundle in Resources */,
 				18C931181A41792E0068F698 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
@@ -850,6 +857,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1803965F1A3978A70001473B /* MapViewContrlloer.swift in Sources */,
+				18C931231A42B5500068F698 /* TimeActionSheet.swift in Sources */,
 				180396571A3950300001473B /* UIImageView+WebCache.m in Sources */,
 				180396531A3950300001473B /* UIImage+GIF.m in Sources */,
 				1803964C1A3950300001473B /* SDWebImageCompat.m in Sources */,

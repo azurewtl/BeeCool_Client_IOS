@@ -146,6 +146,7 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
+                                                            <gestureRecognizers/>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addInfo" id="tkf-gd-vCs">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>

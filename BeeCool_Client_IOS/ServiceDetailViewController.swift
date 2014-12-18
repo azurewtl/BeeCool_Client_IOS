@@ -8,17 +8,23 @@
 
 import UIKit
 
-class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDataSource,UIPickerViewDelegate, sendbackLocation, carTypeDelegate{
+class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDataSource,UIPickerViewDelegate, sendbackLocation, carTypeDelegate, UIAlertViewDelegate{
     var maplocation = "请确定您车的位置"
-    var sheetView = UIView()
-    var backgroundview = UIView()
-    var pickerView = UIPickerView()
-    var date = NSArray()
-    var time = NSArray()
-    var timetoday = NSMutableArray()
-    var intertval = NSArray()
-    var servicecollectioncellCount = 10
-    var typecollectioncellCount = 1
+    var sheetView = UIView() // actionSheet
+    var backgroundview = UIView() // actionSheetOption
+    
+    // For Order Time Selection
+    var pickerView = UIPickerView() // orderTimePicker
+    var date = NSArray() // date
+    var time = NSArray() // hour
+    var timetoday = NSMutableArray() //hourToday
+    var intertval = NSArray() // minute
+    // For Vehical Selection
+    var selectedVehical = NSIndexPath()
+    var typecollectioncellCount = 1 // vehicleCollectionViewCount
+    // For Additional Service
+    var servicecollectioncellCount = 10 //additinalServiceCollectionViewCount
+    
     @IBOutlet var tableview: UITableView!
     func sendBackType() {
         typecollectioncellCount++
@@ -30,6 +36,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         //MARK: -下面弹出界面代码敲的
+        
         var nowdate = NSDate(timeIntervalSinceNow: 8 * 60 * 60)
         var strr = NSString(format: "%@", nowdate)
         var strarr = strr.componentsSeparatedByString(" ") as NSArray
@@ -76,6 +83,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         pickerView.dataSource = self
         pickerView.delegate = self
         sheetView.addSubview(pickerView)
+    
         
     }
     func cancelOnclick() {
@@ -254,22 +262,51 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var tableviewcell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
         if collectionView == tableviewcell?.contentView.viewWithTag(101) as UICollectionView {
-           
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("carType", forIndexPath: indexPath) as UICollectionViewCell
-            cell.backgroundColor = UIColor.yellowColor()
+            cell.layer.borderWidth = 1
+            var image = UIImage(named: "dashline")
+            var color = UIColor(patternImage: image!)
+            cell.layer.borderColor = color.CGColor
+            cell.layer.masksToBounds = true
+            cell.layer.cornerRadius = 5
+            var press = UILongPressGestureRecognizer(target: self, action: "press:")
+            cell.userInteractionEnabled = true
+            if indexPath.item == selectedVehical.item {
+                cell.layer.borderColor = UIColor.greenColor().CGColor
+            }
+        
             if indexPath.item == typecollectioncellCount - 1 {
                 cell = collectionView.dequeueReusableCellWithReuseIdentifier("addInfo", forIndexPath: indexPath) as UICollectionViewCell
+                
+            }else {
+                  cell.addGestureRecognizer(press)
             }
             return cell
+        
         }
         
        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("carService", forIndexPath: indexPath) as UICollectionViewCell
        return cell
     }
+    func press(longpress:UILongPressGestureRecognizer) {
+        if longpress.state == UIGestureRecognizerState.Began {
+        var alertview = UIAlertView(title: "提示", message: "确定要删除吗", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确定")
+            alertview.show()
+        }
+    }
+    func alertView(alertView: UIAlertView, willDismissWithButtonIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
+            var collectionView = cell?.contentView.viewWithTag(101) as UICollectionView
+            typecollectioncellCount--
+            collectionView.reloadData()
+        }
+    }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
         if collectionView == cell?.contentView.viewWithTag(101) as UICollectionView {
-            return CGSizeMake((self.view.frame.width - 40) / 3, 100)
+            let edgeLength = (self.view.frame.width - 40) / 3
+            return CGSizeMake(edgeLength, edgeLength)
         }
         
         return CGSizeMake(70, 70)
@@ -277,6 +314,27 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
         return UIEdgeInsetsMake(10, 10, 10, 10)
     }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        var tableviewcell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
+        if collectionView == tableviewcell?.contentView.viewWithTag(101) as UICollectionView {
+        
+        if indexPath.item == typecollectioncellCount - 1 {
+            
+        }else {
+            for index in 0...typecollectioncellCount - 2 {
+                var cell = collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) as UICollectionViewCell?
+                var image = UIImage(named: "dashline")
+                var color = UIColor(patternImage: image!)
+                cell?.layer.borderColor = color.CGColor
+            }
+           selectedVehical = indexPath
+            var cell = collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: indexPath.item, inSection: 0)) as UICollectionViewCell?
+            cell?.layer.borderColor = UIColor.greenColor().CGColor
+        }
+    }
+        
+}
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "mapView" {
             (segue.destinationViewController as MapViewContrlloer).delegate = self
