@@ -19,11 +19,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EV2-Hb-PVD">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLX-F4-trE">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLX-F4-trE">
                             <rect key="frame" x="266" y="16" width="46" height="34"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="uLX-F4-trE" secondAttribute="height" multiplier="23:17" id="bID-G5-QS5"/>
+                                <constraint firstAttribute="width" secondItem="uLX-F4-trE" secondAttribute="height" multiplier="23:17" id="RBm-Ny-jbT"/>
                             </constraints>
                             <state key="normal" title="确定">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,9 +51,12 @@
                         <constraint firstAttribute="centerY" secondItem="Fne-5J-F9f" secondAttribute="centerY" id="2yj-cW-sLa"/>
                         <constraint firstAttribute="width" constant="320" id="4yt-MP-D9r"/>
                         <constraint firstAttribute="centerX" secondItem="Fne-5J-F9f" secondAttribute="centerX" id="8Sb-r7-DQJ"/>
+                        <constraint firstAttribute="bottom" secondItem="uLX-F4-trE" secondAttribute="bottom" constant="13" id="IQK-wW-Lk7"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="OOg-lT-gAD"/>
+                        <constraint firstItem="uLX-F4-trE" firstAttribute="top" secondItem="EV2-Hb-PVD" secondAttribute="top" constant="16" id="R2i-2G-xuM"/>
                         <constraint firstAttribute="width" secondItem="EV2-Hb-PVD" secondAttribute="height" multiplier="320:63" id="aOr-vy-jVs"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="63" id="gpM-sq-mEd"/>
+                        <constraint firstAttribute="trailing" secondItem="uLX-F4-trE" secondAttribute="trailing" constant="8" id="lle-7E-MHp"/>
                         <constraint firstAttribute="height" constant="63" id="y3P-Vt-AqR"/>
                     </constraints>
                 </view>
