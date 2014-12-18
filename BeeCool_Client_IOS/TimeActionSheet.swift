@@ -10,11 +10,12 @@ import UIKit
 
 class TimeActionSheet: UIView {
     
-    
-    @IBOutlet var Label: UILabel!
+    @IBOutlet var finishButton: UIButton!
     
  
+    @IBOutlet var cancelButton: UIButton!
         
+    @IBOutlet var pickerView: UIPickerView!
     
     /*
     // Only override drawRect: if you perform custom drawing.

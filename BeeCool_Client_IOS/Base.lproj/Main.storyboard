@@ -550,7 +550,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GH5-8g-nvO"/>
+                    <navigationItem key="navigationItem" id="GH5-8g-nvO">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="2O1-T4-1uJ">
+                            <connections>
+                                <action selector="completeOnclick:" destination="TGx-T5-tEH" id="OGc-z6-naY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wxv-No-Ob3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -37,11 +37,7 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
             scrollView.addSubview(imageview)
         }
         pageControll.currentPage = 0
-        var nib = NSBundle.mainBundle().loadNibNamed("TimeActionSheet", owner: nil, options: nil) as NSArray
-        var tempview = nib.objectAtIndex(0) as UIView
-        tempview.frame = view.bounds
-        tempview.center = CGPointMake(view.frame.width / 2, view.frame.height / 2)
-        self.view.addSubview(tempview)
+      
         
         // Do any additional setup after loading the view.
     }

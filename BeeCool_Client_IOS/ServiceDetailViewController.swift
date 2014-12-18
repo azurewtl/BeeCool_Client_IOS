@@ -10,11 +10,10 @@ import UIKit
 
 class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDataSource,UIPickerViewDelegate, sendbackLocation, carTypeDelegate, UIAlertViewDelegate{
     var maplocation = "请确定您车的位置"
-    var sheetView = UIView() // actionSheet
+    var actionsheetView = TimeActionSheet() // actionSheet
     var backgroundview = UIView() // actionSheetOption
     
-    // For Order Time Selection
-    var pickerView = UIPickerView() // orderTimePicker
+    // For Order Time Selection // orderTimePicker
     var date = NSArray() // date
     var time = NSArray() // hour
     var timetoday = NSMutableArray() //hourToday
@@ -56,34 +55,18 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         backgroundview.hidden = true
         backgroundview.backgroundColor = UIColor(white: 0.5, alpha: 0.3)
         backgroundview.bringSubviewToFront(self.view)
-        self.sheetView = UIView(frame: CGRectMake(0, self.view.frame.height, self.view.frame.width, self.view.frame.height / 2))
-        sheetView.backgroundColor = UIColor.whiteColor()
-        self.view.addSubview(sheetView)
-        sheetView.bringSubviewToFront(backgroundview)
-        var topView = UIView(frame: CGRectMake(0, 0, sheetView.frame.width , sheetView.frame.height / 5))
-        sheetView.addSubview(topView)
-        topView.backgroundColor = UIColor(white: 0.8, alpha: 1)
-        var cancelButtton = UIButton(frame: CGRectMake(0, 0, topView.frame.width / 5, topView.frame.height))
-        cancelButtton.setTitle("取消", forState: UIControlState.Normal)
-        cancelButtton.backgroundColor = UIColor.whiteColor()
-        cancelButtton.setTitleColor(UIColor.cyanColor(), forState: UIControlState.Normal)
-        cancelButtton.addTarget(self, action: "cancelOnclick", forControlEvents: UIControlEvents.TouchUpInside)
-        sheetView.addSubview(cancelButtton)
-        var titleLabel = UILabel(frame: CGRectMake(cancelButtton.frame.width, 0, 0.6 * topView.frame.width, topView.frame.height))
-        titleLabel.text = "请选择"
-        titleLabel.textAlignment = NSTextAlignment.Center
-        sheetView.addSubview(titleLabel)
-        var finishButtton = UIButton(frame: CGRectMake(titleLabel.frame.origin.x + titleLabel.frame.width, 0, topView.frame.width / 5, topView.frame.height))
-        finishButtton.backgroundColor = UIColor.whiteColor()
-        finishButtton.setTitleColor(UIColor.cyanColor(), forState: UIControlState.Normal)
-        finishButtton.setTitle("确定", forState: UIControlState.Normal)
-        finishButtton.addTarget(self, action: "finishOnclick", forControlEvents: UIControlEvents.TouchUpInside)
-        sheetView.addSubview(finishButtton)
-        pickerView = UIPickerView(frame: CGRectMake(0, topView.frame.height, topView.frame.width, sheetView.frame.height - topView.frame.height))
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        sheetView.addSubview(pickerView)
+        
     
+        
+        var nib = NSBundle.mainBundle().loadNibNamed("TimeActionSheet", owner: nil, options: nil) as NSArray
+        actionsheetView = nib.objectAtIndex(0) as TimeActionSheet
+        actionsheetView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, self.view.frame.height / 2)
+        self.view.addSubview(actionsheetView)
+        actionsheetView.bringSubviewToFront(backgroundview)
+        actionsheetView.cancelButton.addTarget(self, action: "cancelOnclick", forControlEvents: UIControlEvents.TouchUpInside)
+        actionsheetView.finishButton.addTarget(self, action: "finishOnclick", forControlEvents: UIControlEvents.TouchUpInside)
+        actionsheetView.pickerView.dataSource = self
+        actionsheetView.pickerView.delegate = self
         
     }
     func cancelOnclick() {
@@ -94,10 +77,10 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         var datestr = NSString()
         var timestr = NSString()
         let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))
-        var daterow = pickerView.selectedRowInComponent(0)
+        var daterow = actionsheetView.pickerView.selectedRowInComponent(0)
         var selectstr = date.objectAtIndex(daterow) as NSString
-        var timerow = pickerView.selectedRowInComponent(1)
-        var intervalrow = pickerView.selectedRowInComponent(2)
+        var timerow = actionsheetView.pickerView.selectedRowInComponent(1)
+        var intervalrow = actionsheetView.pickerView.selectedRowInComponent(2)
         var nowdate = NSDate(timeIntervalSinceNow: 8 * 60 * 60)
         var tomorrowdate = NSDate(timeIntervalSinceNow: 32 * 60 * 60)
         var nowformatter = NSDateFormatter()
@@ -122,13 +105,13 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     func actionsheetshow() {
         UIView.animateWithDuration(0.2, animations: { () -> Void in
-            self.sheetView.frame = CGRectMake(0, self.view.frame.height / 2, self.view.frame.width, self.view.frame.height / 2)
+            self.actionsheetView.frame = CGRectMake(0, self.view.frame.height / 2, self.view.frame.width, self.view.frame.height / 2)
         })
         
     }
     func actionsheethide() {
         UIView.animateWithDuration(0.2, animations: { () -> Void in
-            self.sheetView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, self.view.frame.height / 2)
+            self.actionsheetView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, self.view.frame.height / 2)
         })
     }
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -241,13 +224,9 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
        
         if indexPath.section == 4 {
-            var height = servicecollectioncellCount / 4 * 90
-            if(servicecollectioncellCount % 4 != 0 && servicecollectioncellCount / 4 < 1){
-                return 90
-            }else if(servicecollectioncellCount % 4 == 0 && servicecollectioncellCount / 4 >= 1) {
-                return CGFloat(height)
-            }
-            return CGFloat(height + 90)
+            var height = ((servicecollectioncellCount / 4) + 1) * 90
+            return CGFloat(height)
+
         }
         return 70
     }

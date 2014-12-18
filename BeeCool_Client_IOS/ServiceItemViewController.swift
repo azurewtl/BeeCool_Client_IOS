@@ -9,6 +9,9 @@
 import UIKit
 
 class ServiceItemViewController: UIViewController {
+    @IBAction func completeOnclick(sender: UIBarButtonItem) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
