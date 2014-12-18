@@ -7,11 +7,14 @@
 //
 
 import UIKit
-
+protocol carTypeDelegate {
+    func sendBackType()
+}
 class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-  
+   var delegate = carTypeDelegate?()
     @IBAction func finishedOnclick(sender: UIBarButtonItem) {
+        self.delegate?.sendBackType()
         self.navigationController?.popViewControllerAnimated(true)
     }
     override func viewDidLoad() {

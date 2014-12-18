@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDataSource,UIPickerViewDelegate, sendbackLocation{
+class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDataSource,UIPickerViewDelegate, sendbackLocation, carTypeDelegate{
     var maplocation = "请确定您车的位置"
     var sheetView = UIView()
     var backgroundview = UIView()
@@ -17,8 +17,16 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     var time = NSArray()
     var timetoday = NSMutableArray()
     var intertval = NSArray()
-    
+    var servicecollectioncellCount = 10
+    var typecollectioncellCount = 1
     @IBOutlet var tableview: UITableView!
+    func sendBackType() {
+        typecollectioncellCount++
+        let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+        var collectionView = cell?.contentView.viewWithTag(101) as UICollectionView
+        collectionView.reloadData()
+        print(typecollectioncellCount)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         //MARK: -下面弹出界面代码敲的
@@ -68,6 +76,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         pickerView.dataSource = self
         pickerView.delegate = self
         sheetView.addSubview(pickerView)
+        
     }
     func cancelOnclick() {
         actionsheethide()
@@ -179,16 +188,19 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             return 0
         }
     }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCellWithIdentifier("typeCell", forIndexPath: indexPath) as UITableViewCell
-    
+            var collectionView = cell.contentView.viewWithTag(101) as UICollectionView
+            
         }
         if indexPath.section == 1 {
              cell = tableView.dequeueReusableCellWithIdentifier("mapCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel.text = maplocation
             cell.textLabel.textColor = UIColor.grayColor()
+            
         }
         if indexPath.section == 2 {
             cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as UITableViewCell
@@ -217,27 +229,55 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 90
+            return 120
         }
        
         if indexPath.section == 4 {
-            return 90
+            var height = servicecollectioncellCount / 4 * 90
+            if(servicecollectioncellCount % 4 != 0 && servicecollectioncellCount / 4 < 1){
+                return 90
+            }else if(servicecollectioncellCount % 4 == 0 && servicecollectioncellCount / 4 >= 1) {
+                return CGFloat(height)
+            }
+            return CGFloat(height + 90)
         }
         return 70
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+        if collectionView == cell!.contentView.viewWithTag(101) as UICollectionView{
+         return typecollectioncellCount
+        }
+            return servicecollectioncellCount
+        
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var tableviewcell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
         if collectionView == tableviewcell?.contentView.viewWithTag(101) as UICollectionView {
+           
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("carType", forIndexPath: indexPath) as UICollectionViewCell
+            cell.backgroundColor = UIColor.yellowColor()
+            if indexPath.item == typecollectioncellCount - 1 {
+                cell.backgroundColor = UIColor.redColor()
+            }
+            var cell1 = UICollectionViewCell()
+            if cell1 == collectionView.dequeueReusableCellWithReuseIdentifier("addInfo", forIndexPath: indexPath) as UICollectionViewCell {
+                return cell1
+            }
+          
+            
             return cell
         }
+        
        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("carService", forIndexPath: indexPath) as UICollectionViewCell
        return cell
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
+        let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+        if collectionView == cell?.contentView.viewWithTag(101) as UICollectionView {
+            return CGSizeMake((self.view.frame.width - 40) / 3, 100)
+        }
+        
         return CGSizeMake(70, 70)
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
@@ -247,7 +287,9 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         if segue.identifier == "mapView" {
             (segue.destinationViewController as MapViewContrlloer).delegate = self
         }
-       
+        if segue.identifier == "typeView" {
+            (segue.destinationViewController as CarTypeViewController).delegate = self
+        }
     }
     
 }
