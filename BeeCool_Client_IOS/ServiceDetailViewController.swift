@@ -9,6 +9,8 @@
 import UIKit
 
 class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDataSource,UIPickerViewDelegate, sendbackLocation, carTypeDelegate, UIAlertViewDelegate{
+    
+    var serviceDictionary = NSDictionary()
     var maplocation = "请确定您车的位置"
     var actionsheetView = TimeActionSheet() // actionSheet
     var backgroundview = UIView() // actionSheetOption
@@ -22,7 +24,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     var selectedVehical = NSIndexPath()
     var typecollectioncellCount = 1 // vehicleCollectionViewCount
     // For Additional Service
-    var servicecollectioncellCount = 10 //additinalServiceCollectionViewCount
+    var servicecollectioncellArray = NSMutableArray()//additinalServiceCollectionViewCount
     
     @IBOutlet var tableview: UITableView!
     func sendBackType() {
@@ -35,7 +37,10 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         //MARK: -下面弹出界面代码敲的
-        
+        var dic = serviceDictionary["additionalService"] as NSDictionary
+        for item in dic.allKeys {
+            servicecollectioncellArray.addObject(item)
+        }
         var nowdate = NSDate(timeIntervalSinceNow: 8 * 60 * 60)
         var strr = NSString(format: "%@", nowdate)
         var strarr = strr.componentsSeparatedByString(" ") as NSArray
@@ -224,18 +229,37 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
        
         if indexPath.section == 4 {
-            var height = ((servicecollectioncellCount / 4) + 1) * 90
+            var height = ((servicecollectioncellArray.count / 4) + 1) * 90
             return CGFloat(height)
 
         }
         return 70
+    }
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+           var headerview = UIView(frame: CGRectZero)
+        if section == 0 {
+            headerview.backgroundColor = UIColor(red: 245 / 256.0, green: 222 / 256.0, blue: 179 / 256.0, alpha: 1)
+            var label = UILabel(frame: CGRectMake(0, 0, view.frame.width, 48))
+            label.text = serviceDictionary["infoTitle"] as NSString
+            label.textColor = UIColor.blackColor()
+            label.textAlignment = NSTextAlignment.Center
+            headerview.addSubview(label)
+        }
+    return headerview
+        
+    }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 48
+        }
+        return 0
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
         if collectionView == cell!.contentView.viewWithTag(101) as UICollectionView{
          return typecollectioncellCount
         }
-            return servicecollectioncellCount
+            return servicecollectioncellArray.count
         
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -265,9 +289,8 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
      
        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("carService", forIndexPath: indexPath) as UICollectionViewCell
-        if indexPath.item == servicecollectioncellCount - 1 {
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier("addServiceCell", forIndexPath: indexPath) as UICollectionViewCell
-        }
+        var label = cell.contentView.viewWithTag(101) as UILabel
+        label.text = servicecollectioncellArray.objectAtIndex(indexPath.item) as NSString
        return cell
     }
     func press(longpress:UILongPressGestureRecognizer) {
@@ -323,6 +346,15 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
         if segue.identifier == "typeView" {
             (segue.destinationViewController as CarTypeViewController).delegate = self
+        }
+        if segue.identifier == "serviceView" {
+            var view = sender?.superview as UICollectionView
+            var tag = view.indexPathForCell(sender as UICollectionViewCell)?.item
+            var dic = serviceDictionary["additionalService"] as NSDictionary
+            var str = servicecollectioncellArray.objectAtIndex(tag!) as NSString
+            var dic1 = dic[str] as NSDictionary
+            (segue.destinationViewController as ServiceItemViewController).servicedetailDictionary = dic1
+            (segue.destinationViewController as ServiceItemViewController).title = str
         }
     }
     

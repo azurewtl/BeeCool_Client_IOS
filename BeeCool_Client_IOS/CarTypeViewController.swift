@@ -10,16 +10,27 @@ import UIKit
 protocol carTypeDelegate {
     func sendBackType()
 }
-class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+   var collectionView = UICollectionView?()
    var delegate = carTypeDelegate?()
+    var array = NSArray()
+    @IBOutlet var tableView: UITableView!
     @IBAction func finishedOnclick(sender: UIBarButtonItem) {
         self.delegate?.sendBackType()
         self.navigationController?.popViewControllerAnimated(true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        array = ["京", "浙", "津", "皖", "沪", "闽", "渝", "赣", "港", "鲁", "澳", "豫", "蒙", "鄂", "新", "湘", "宁", "粤", "藏", "琼", "桂", "川", "冀", "贵", "晋",  "云", "辽", "陕", "吉", "甘", "黑", "青", "苏", "台"] as NSArray
+        var layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+       self.collectionView = UICollectionView(frame: CGRectMake(0, view.frame.height, view.frame.width, view.frame.height / 3), collectionViewLayout: layout)
+        collectionView!.delegate = self
+        collectionView!.dataSource = self
+        collectionView!.backgroundColor = UIColor.whiteColor()
+        collectionView!.registerClass(ProvinceCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "provinceCell")
+        self.view.addSubview(collectionView!)
         // Do any additional setup after loading the view.
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -46,6 +57,7 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
             if indexPath.row == 0 {
             cell = tableView.dequeueReusableCellWithIdentifier("caridCell") as UITableViewCell
             cell.textLabel.text = "车牌号："
+         
             }
             if indexPath.row == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier("carcolorCell") as UITableViewCell
@@ -55,11 +67,45 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
         
     }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if indexPath.section == 1 {
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.collectionView!.frame = CGRectMake(0, 2 * self.view.frame.height / 3, self.view.frame.width, self.view.frame.height
+                 / 3)
+            })
+        }
+    }
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
             return "请输入车辆信息"
         }
         return ""
+    }
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 32
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("provinceCell", forIndexPath: indexPath) as ProvinceCollectionViewCell
+        cell.backgroundColor = UIColor.whiteColor()
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.grayColor().CGColor
+        cell.label.text = array.objectAtIndex(indexPath.row) as NSString
+        return cell
+    }
+     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
+        var size = self.view.frame.width / 6
+        return CGSizeMake(size, size)
+    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as UITableViewCell?
+        var button = cell?.viewWithTag(101) as UIButton
+        button.setTitle(array.objectAtIndex(indexPath.item) as NSString, forState: UIControlState.Normal)
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            
+            self.collectionView!.frame = CGRectMake(0,  self.view.frame.height , self.view.frame.width, self.view.frame.height
+                / 3)
+        })
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
