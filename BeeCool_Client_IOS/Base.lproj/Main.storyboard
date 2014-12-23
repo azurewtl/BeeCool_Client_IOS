@@ -983,6 +983,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="v7u-Ab-9Sp">
+                            <rect key="frame" x="0.0" y="431" width="320" height="137"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rJ-vd-g8V">
+                                    <rect key="frame" x="68" y="70" width="187" height="44"/>
+                                    <color key="backgroundColor" red="1" green="0.80920311711998116" blue="0.47772877816267445" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="下一步">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="nextstepOnclick:" destination="X5a-a7-Ryb" eventType="touchUpInside" id="qV5-K5-65j"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.94653566919191923" green="0.94653566919191923" blue="0.94653566919191923" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="9rJ-vd-g8V" firstAttribute="top" secondItem="v7u-Ab-9Sp" secondAttribute="top" constant="70" id="Euq-7g-iVR"/>
+                                <constraint firstAttribute="trailing" secondItem="9rJ-vd-g8V" secondAttribute="trailing" constant="65" id="LGy-Xe-FgS"/>
+                                <constraint firstItem="9rJ-vd-g8V" firstAttribute="leading" secondItem="v7u-Ab-9Sp" secondAttribute="leading" constant="68" id="jTE-b3-mnw"/>
+                                <constraint firstAttribute="bottom" secondItem="9rJ-vd-g8V" secondAttribute="bottom" constant="23" id="zzj-Ec-kAW"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection headerTitle="Section-1" id="Axk-dW-q9e">
                                 <cells>
@@ -1050,7 +1073,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Section-2" id="353-Y7-Akt">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="ybL-pT-CPW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" id="ybL-pT-CPW">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ybL-pT-CPW" id="b2R-5T-Vhu">
                                             <autoresizingMask key="autoresizingMask"/>

@@ -9,7 +9,18 @@
 import UIKit
 
 class BecomeMemberTableViewController: UITableViewController {
-
+    var flag = Int()
+    @IBAction func nextstepOnclick(sender: UIButton) {
+        if flag == 0 {
+            
+        }
+        if flag == 1{
+            
+        }
+        if flag == 2 {
+            print("上门办理")
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
@@ -34,6 +45,7 @@ class BecomeMemberTableViewController: UITableViewController {
         poscell?.textLabel.text = "上门办理"
         poscell?.detailTextLabel?.text =  "支持现金,POS机刷卡,支票支付"
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -66,6 +78,7 @@ class BecomeMemberTableViewController: UITableViewController {
                 cell?.accessoryType = UITableViewCellAccessoryType.None
             }
             let selectCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell?
+            flag = indexPath.row
             selectCell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
     }
