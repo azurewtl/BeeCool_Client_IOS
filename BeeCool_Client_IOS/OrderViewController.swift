@@ -40,12 +40,19 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         logbtn.layer.cornerRadius = 6
         self.tabBarController?.tabBar.hidden = false
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if userdefault.objectForKey("cellCount") == nil {
             return 0
         }
         var count = userdefault.objectForKey("cellCount") as Int
         return count
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        view.backgroundColor = tableView.backgroundColor
+        if userdefault.objectForKey("cellCount") == nil {
+            return 0
+        }
+       return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("orderCell") as UITableViewCell
@@ -53,18 +60,21 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var timelabel = cell.contentView.viewWithTag(102) as UILabel
         var resultlabel = cell.contentView.viewWithTag(103) as UILabel
         namelabel.text = "车名：科尼赛克one"
-        timelabel.text = "日期：2014 － 12 － 24 －8:00"
+        timelabel.text = "日期：2014－12－24－8:00"
         resultlabel.text = "等待确认"
         resultlabel.textColor = UIColor.redColor()
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 20
+       
         return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
 //        userdefault.removeObjectForKey("cellCount")
-//    }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
