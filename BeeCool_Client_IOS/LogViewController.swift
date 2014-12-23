@@ -15,7 +15,7 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.allowsSelection = false
+//        tableView.allowsSelection = false
         
         
         // Do any additional setup after loading the view.
@@ -144,7 +144,7 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as UITableViewCell?
         var verifyTextField = cell?.contentView.viewWithTag(101) as UITextField
         let cell1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
-        var phoneTextField = cell?.contentView.viewWithTag(101) as UITextField
+        var phoneTextField = cell1?.contentView.viewWithTag(101) as UITextField
         Vertify.getvertifynumber(verifyTextField.text) { (var result:Int32) -> Void in
             if result == 1 {
                 sender.setTitle("验证成功", forState: UIControlState.Normal)

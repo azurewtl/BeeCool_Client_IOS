@@ -122,14 +122,16 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
         
         if indexPath.section == 2 {
             var userdefault = NSUserDefaults.standardUserDefaults()
+            var str = userdefault.objectForKey("userLog") as NSString
+            if str == "" {
+                var alert = UIAlertView(title: "温馨提示", message: "您还未登录！", delegate: nil, cancelButtonTitle: "确定")
+                alert.show()
+            }
             userdefault.setObject("", forKey: "userLog")
             headLabel.text = "立即登陆"
             tapGesture.enabled = true
-            var str = userdefault.objectForKey("userLog") as NSString
-            if str == "" {
-            var alert = UIAlertView(title: "温馨提示", message: "您还未登录！", delegate: nil, cancelButtonTitle: "确定")
-            alert.show()
-            }
+          
+        
 
         }
     }

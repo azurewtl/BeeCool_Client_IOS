@@ -9,7 +9,7 @@
 import UIKit
 
 class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDataSource,UIPickerViewDelegate, sendbackLocation, carTypeDelegate, serviceItemDelegate,UIAlertViewDelegate{
-    
+    var dingDan = 0
     var serviceDictionary = NSDictionary()
     var maplocation = "请确定您车的位置"
     var actionsheetView = TimeActionSheet() // actionSheet
@@ -26,6 +26,19 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     // For Additional Service
     var servicecollectioncellArray = NSMutableArray()//additinalServiceCollectionViewCount
     var serviceSegueArray = NSMutableArray()
+    var userdefault = NSUserDefaults.standardUserDefaults()
+    @IBAction func sendOnclick(sender: UIButton) {
+        if userdefault.objectForKey("userLog") as NSString == "" {
+            var stroyborad = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            var logVC:LogViewController = storyboard?.instantiateViewControllerWithIdentifier("LogViewController") as LogViewController
+            self.navigationController?.pushViewController(logVC, animated: true)
+        }else {
+            dingDan++
+            userdefault.setObject(dingDan, forKey: "cellCount")
+            self.tabBarController?.selectedIndex = 1
+        }
+      
+    }
     
     @IBOutlet var tableview: UITableView!
     func sendBackType() {
@@ -237,15 +250,8 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             actionsheetshow()
             backgroundview.hidden = false
         }
-        if indexPath.section == 4 {
-            let cell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell?
-            var sendbutton = cell?.contentView.viewWithTag(101) as UIButton
-            sendbutton.addTarget(self, action: "sendOnclick", forControlEvents: UIControlEvents.TouchUpInside)
-        }
     }
-    func sendOnclick() {
-        self.performSegueWithIdentifier("logID", sender: self)
-    }
+
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 120

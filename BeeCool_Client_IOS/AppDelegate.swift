@@ -94,6 +94,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             userdefault.setObject("", forKey: "userLog")
         }
 //        print(NSTemporaryDirectory())
+     
+        
+        
+        
         return true
     }
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
