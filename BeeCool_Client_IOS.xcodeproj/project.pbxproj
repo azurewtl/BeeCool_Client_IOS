@@ -33,6 +33,7 @@
 		180396B51A399FA90001473B /* ServiceItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180396B41A399FA90001473B /* ServiceItemViewController.swift */; };
 		183B370F1A43FD2100B16193 /* ProvinceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183B370E1A43FD2100B16193 /* ProvinceCollectionViewCell.swift */; };
 		183B37111A44188500B16193 /* service.json in Resources */ = {isa = PBXBuildFile; fileRef = 183B37101A44188500B16193 /* service.json */; };
+		18434AF81A490DF000F6CBAD /* BecomeMemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18434AF71A490DF000F6CBAD /* BecomeMemberTableViewController.swift */; };
 		185ECEA21A39467000B568B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEA11A39467000B568B0 /* AppDelegate.swift */; };
 		185ECEA91A39467000B568B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEA71A39467000B568B0 /* Main.storyboard */; };
 		185ECEAE1A39467000B568B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEAC1A39467000B568B0 /* LaunchScreen.xib */; };
@@ -192,6 +193,7 @@
 		180396B41A399FA90001473B /* ServiceItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceItemViewController.swift; sourceTree = "<group>"; };
 		183B370E1A43FD2100B16193 /* ProvinceCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvinceCollectionViewCell.swift; sourceTree = "<group>"; };
 		183B37101A44188500B16193 /* service.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service.json; sourceTree = "<group>"; };
+		18434AF71A490DF000F6CBAD /* BecomeMemberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BecomeMemberTableViewController.swift; sourceTree = "<group>"; };
 		185ECE9C1A39467000B568B0 /* BeeCool_Client_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeCool_Client_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185ECEA01A39467000B568B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185ECEA11A39467000B568B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				18CFA6491A40354700DC96F4 /* FirstViewController.swift */,
 				185ECEA11A39467000B568B0 /* AppDelegate.swift */,
 				185ECEC31A39469B00B568B0 /* MemberViewController.swift */,
+				18434AF71A490DF000F6CBAD /* BecomeMemberTableViewController.swift */,
 				185ECEC41A39469B00B568B0 /* MyAccountViewController.swift */,
 				18CFA6441A4011F500DC96F4 /* UserprotocolViewController.swift */,
 				185ECEC51A39469B00B568B0 /* OrderViewController.swift */,
@@ -859,6 +862,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18434AF81A490DF000F6CBAD /* BecomeMemberTableViewController.swift in Sources */,
 				1803965F1A3978A70001473B /* MapViewContrlloer.swift in Sources */,
 				18C931231A42B5500068F698 /* TimeActionSheet.swift in Sources */,
 				180396571A3950300001473B /* UIImageView+WebCache.m in Sources */,

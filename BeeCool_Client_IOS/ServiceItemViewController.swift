@@ -7,28 +7,43 @@
 //
 
 import UIKit
-
-class ServiceItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol serviceItemDelegate {
+    func sendBackItem(str:NSString, tag:Int)
+}
+class ServiceItemViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var servicedetailDictionary = NSDictionary()
     var array = NSMutableArray()
-    @IBAction func completeOnclick(sender: UIBarButtonItem) {
-        self.navigationController?.popViewControllerAnimated(true)
+    var flag = Int()
+    var delegate = serviceItemDelegate?()
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return servicedetailDictionary.count + 1
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("serviceitemCell") as UITableViewCell
-        print(array.objectAtIndex(indexPath.row))
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("serviceItemCell", forIndexPath: indexPath) as UICollectionViewCell
+        var textLabel = cell.contentView.viewWithTag(101) as UILabel
+        var detailLabel = cell.contentView.viewWithTag(102) as UILabel
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.grayColor().CGColor
         var str = array.objectAtIndex(indexPath.row) as NSString
+        if indexPath.row >= 1 {
         var price = (servicedetailDictionary[str as NSString] as NSDictionary)["价格"] as Int
         var info =  (servicedetailDictionary[str] as NSDictionary)["info"] as NSString
-        cell.textLabel.text = NSString(format: "%@, %d块钱一次", str, price)
-        cell.detailTextLabel?.text = info
+        detailLabel.text = NSString(format: "%d元一次", price)
+        }
+        textLabel.text = str
         return cell
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return servicedetailDictionary.count
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.delegate?.sendBackItem(array.objectAtIndex(indexPath.row) as NSString, tag: flag)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
+        var length = collectionView.frame.width / 3
+        return CGSizeMake(length, length)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        array.addObject("不需要")
         for item in servicedetailDictionary.allKeys{
             array.addObject(item)
         }

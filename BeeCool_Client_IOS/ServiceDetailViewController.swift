@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDataSource,UIPickerViewDelegate, sendbackLocation, carTypeDelegate, UIAlertViewDelegate{
+class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDataSource,UIPickerViewDelegate, sendbackLocation, carTypeDelegate, serviceItemDelegate,UIAlertViewDelegate{
     
     var serviceDictionary = NSDictionary()
     var maplocation = "请确定您车的位置"
@@ -25,6 +25,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     var typecollectioncellCount = 1 // vehicleCollectionViewCount
     // For Additional Service
     var servicecollectioncellArray = NSMutableArray()//additinalServiceCollectionViewCount
+    var serviceSegueArray = NSMutableArray()
     
     @IBOutlet var tableview: UITableView!
     func sendBackType() {
@@ -32,7 +33,18 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
         var collectionView = cell?.contentView.viewWithTag(101) as UICollectionView
         collectionView.reloadData()
-        print(typecollectioncellCount)
+    }
+    func sendBackItem(str: NSString, tag: Int) {
+        servicecollectioncellArray.replaceObjectAtIndex(tag, withObject: str)
+        let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 4)) as UITableViewCell?
+        var collectionView = cell?.contentView.viewWithTag(101) as UICollectionView
+        var collectCell = collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: tag, inSection: 0)) as UICollectionViewCell?
+        collectCell?.layer.borderWidth = 1
+        collectCell?.layer.borderColor = UIColor.greenColor().CGColor
+        
+        var label = collectCell?.contentView.viewWithTag(101) as UILabel
+        label.textColor = UIColor.blackColor()
+        collectionView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +52,10 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         var dic = serviceDictionary["additionalService"] as NSDictionary
         for item in dic.allKeys {
             servicecollectioncellArray.addObject(item)
+            serviceSegueArray.addObject(item)
         }
+
+        self.title = serviceDictionary["iconstr"] as NSString
         var nowdate = NSDate(timeIntervalSinceNow: 8 * 60 * 60)
         var strr = NSString(format: "%@", nowdate)
         var strarr = strr.componentsSeparatedByString(" ") as NSArray
@@ -351,10 +366,12 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             var view = sender?.superview as UICollectionView
             var tag = view.indexPathForCell(sender as UICollectionViewCell)?.item
             var dic = serviceDictionary["additionalService"] as NSDictionary
-            var str = servicecollectioncellArray.objectAtIndex(tag!) as NSString
+            var str = serviceSegueArray.objectAtIndex(tag!) as NSString
             var dic1 = dic[str] as NSDictionary
             (segue.destinationViewController as ServiceItemViewController).servicedetailDictionary = dic1
             (segue.destinationViewController as ServiceItemViewController).title = str
+            (segue.destinationViewController as ServiceItemViewController).delegate = self
+            (segue.destinationViewController as ServiceItemViewController).flag = tag!
         }
     }
     

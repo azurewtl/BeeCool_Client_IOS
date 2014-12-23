@@ -59,21 +59,24 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         var phoneTextFiled = cell?.contentView.viewWithTag(101) as UITextField
         var button = cell?.contentView.viewWithTag(102) as UIButton
         var phonestr =  NSMutableString(string: phoneTextFiled.text)
+        let cell1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as UITableViewCell?
+        var verifyTextField = cell1?.contentView.viewWithTag(101) as UITextField
+        let cell2 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as UITableViewCell?
+        var button1 = cell2?.contentView.viewWithTag(101) as UIButton
+
+        if phoneTextFiled .isFirstResponder() {
         if phonestr.length == 10 {
             button.enabled = true
             button.backgroundColor = UIColor(red: 56 / 256.0, green: 94 / 256.0, blue: 15 / 256.0, alpha: 1)
             button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        }else {
+        }else{
             button.setTitle("获取验证码", forState: UIControlState.Normal)
             button.backgroundColor = UIColor.grayColor()
             button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             button.enabled = false
         }
-        let cell1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as UITableViewCell?
-        var verifyTextField = cell1?.contentView.viewWithTag(101) as UITextField
-        let cell2 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as UITableViewCell?
-        var button1 = cell2?.contentView.viewWithTag(101) as UIButton
-        if verifyTextField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 3 {
+        }else {
+            if verifyTextField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 3 {
             button1.enabled = true
             button1.backgroundColor = UIColor(red: 56 / 256.0, green: 94 / 256.0, blue: 15 / 256.0, alpha: 1)
             button1.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
@@ -82,6 +85,7 @@ class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             button1.backgroundColor = UIColor.grayColor()
             button1.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             button1.enabled = false
+        }
         }
         return true
     }
