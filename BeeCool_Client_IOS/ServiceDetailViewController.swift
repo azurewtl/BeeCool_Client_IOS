@@ -237,6 +237,14 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             actionsheetshow()
             backgroundview.hidden = false
         }
+        if indexPath.section == 4 {
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell?
+            var sendbutton = cell?.contentView.viewWithTag(101) as UIButton
+            sendbutton.addTarget(self, action: "sendOnclick", forControlEvents: UIControlEvents.TouchUpInside)
+        }
+    }
+    func sendOnclick() {
+        self.performSegueWithIdentifier("logID", sender: self)
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {

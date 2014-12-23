@@ -11,4 +11,9 @@
 #import "Tap.h"
 #import "Vertify.h"
 #import "ShareSDK/ShareSDK.h"
+#import <UIKit/UIKit.h>
+#import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
+#import "Order.h"
+#import "DataSigner.h"
+#import "JSenPayEngine.h"

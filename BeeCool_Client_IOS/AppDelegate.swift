@@ -9,7 +9,31 @@
 import UIKit
 import CoreLocation
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, WXApiDelegate {
+    //    微信支付参数：
+    //    注意 ：参数需要你自己提供
+    
+    var kWXAppID = "wx71ee9539ea8a79ab"
+    var kWXAppSecret  = "9d5b7c975a5ac253d622bb7fdb9a714d"
+    
+    /**
+    * 微信开放平台和商户约定的支付密钥
+    *
+    * 注意：不能hardcode在客户端，建议genSign这个过程由服务器端完成
+    */
+    var kWXPartnerKey  = "776d18cee51fe17745d6a30dba083bcd"
+    
+    /**
+    * 微信开放平台和商户约定的支付密钥
+    *
+    * 注意：不能hardcode在客户端，建议genSign这个过程由服务器端完成
+    */
+    var kWXAppKey = "QaBb4Zy1lrSQTEZ5zGufAC9QCtvIM1YKVPbG7mumaqj0sV7OHUfiGNeM8mX5923mZfeyClAuXgi7Ly4vDt9JvnTTXxzTyVq5eK4Ae0hM71dTzjS8fz934NaYeOyGEjjh"
+    
+    /**
+    *  微信公众平台商户模块生成的ID
+    */
+    var kWXPartnerId = "1221631701"
     var appkey = "4682729a0788"
     var appsecret = "14e6b542fb4780ec57c1ca6544c6a303"
     var window: UIWindow?
@@ -52,6 +76,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        var isok = WXApi.registerApp(kWXAppID)
+        if isok {
+            print("微信注册成功")
+        }else {
+            print("微信注册失败")
+        }
        SMS_SDK.registerApp(appkey, withSecret: appsecret)
        updateLocation(locationMananger)
         ShareSDK.registerApp(appkey)
@@ -70,7 +100,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return ShareSDK.handleOpenURL(url, wxDelegate: self)
     }
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        if sourceApplication == "com.tencent.xin" {
+            return WXApi.handleOpenURL(url, delegate: self)
+        }
+        if url.host == "safepay" {
+            AlipaySDK.defaultService().processOrderWithPaymentResult(url, standbyCallback: {(result) -> Void in
+                print(result as NSDictionary)
+            })
+            return true
+        }
         return ShareSDK.handleOpenURL(url, sourceApplication: sourceApplication, annotation: annotation, wxDelegate: self)
+    }
+    func onResp(resp: BaseResp!) {
+        print(resp)
+        print("*******")
+        if resp.isKindOfClass(PayResp.classForCoder()) {
+            var strTitle = "支付结果"
+            var strmessage = NSString(format:"errcode:%d", resp.errCode)
+            var alert = UIAlertView(title: strTitle, message: strmessage, delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+        }
     }
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
