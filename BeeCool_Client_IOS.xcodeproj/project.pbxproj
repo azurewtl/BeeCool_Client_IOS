@@ -60,6 +60,7 @@
 		18434BFE1A492F6400F6CBAD /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 18434BF31A492F6400F6CBAD /* AFURLRequestSerialization.m */; };
 		18434BFF1A492F6400F6CBAD /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 18434BF51A492F6400F6CBAD /* AFURLResponseSerialization.m */; };
 		18434C001A492F6400F6CBAD /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18434BF71A492F6400F6CBAD /* AFURLSessionManager.m */; };
+		18434C081A4962F800F6CBAD /* DetailOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18434C071A4962F800F6CBAD /* DetailOrderViewController.swift */; };
 		185ECEA21A39467000B568B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEA11A39467000B568B0 /* AppDelegate.swift */; };
 		185ECEA91A39467000B568B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEA71A39467000B568B0 /* Main.storyboard */; };
 		185ECEAE1A39467000B568B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185ECEAC1A39467000B568B0 /* LaunchScreen.xib */; };
@@ -346,6 +347,7 @@
 		18434BF51A492F6400F6CBAD /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		18434BF61A492F6400F6CBAD /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		18434BF71A492F6400F6CBAD /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		18434C071A4962F800F6CBAD /* DetailOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOrderViewController.swift; sourceTree = "<group>"; };
 		185ECE9C1A39467000B568B0 /* BeeCool_Client_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeCool_Client_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185ECEA01A39467000B568B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185ECEA11A39467000B568B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -831,6 +833,7 @@
 				185ECEC41A39469B00B568B0 /* MyAccountViewController.swift */,
 				18CFA6441A4011F500DC96F4 /* UserprotocolViewController.swift */,
 				185ECEC51A39469B00B568B0 /* OrderViewController.swift */,
+				18434C071A4962F800F6CBAD /* DetailOrderViewController.swift */,
 				185ECEC61A39469B00B568B0 /* ServiceViewController.swift */,
 				1803965A1A3957700001473B /* ServiceDetailViewController.swift */,
 				18C931201A42B5210068F698 /* TimeActionSheet.xib */,
@@ -1204,6 +1207,7 @@
 				180396511A3950300001473B /* SDWebImagePrefetcher.m in Sources */,
 				18434BFB1A492F6400F6CBAD /* AFNetworkReachabilityManager.m in Sources */,
 				18434C001A492F6400F6CBAD /* AFURLSessionManager.m in Sources */,
+				18434C081A4962F800F6CBAD /* DetailOrderViewController.swift in Sources */,
 				185ECEC71A39469B00B568B0 /* MemberViewController.swift in Sources */,
 				18434BF81A492F6400F6CBAD /* AFHTTPRequestOperation.m in Sources */,
 				18434BCC1A491CB600F6CBAD /* RSADataSigner.m in Sources */,

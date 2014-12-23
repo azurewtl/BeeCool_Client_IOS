@@ -49,15 +49,22 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("orderCell") as UITableViewCell
+        var namelabel = cell.contentView.viewWithTag(101) as UILabel
+        var timelabel = cell.contentView.viewWithTag(102) as UILabel
+        var resultlabel = cell.contentView.viewWithTag(103) as UILabel
+        namelabel.text = "车名：科尼赛克one"
+        timelabel.text = "日期：2014 － 12 － 24 －8:00"
+        resultlabel.text = "等待确认"
+        resultlabel.textColor = UIColor.redColor()
         return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        userdefault.removeObjectForKey("cellCount")
-    }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+//        userdefault.removeObjectForKey("cellCount")
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
