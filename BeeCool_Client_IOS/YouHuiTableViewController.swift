@@ -1,26 +1,18 @@
 //
-//  SelectCarViewController.swift
+//  YouHuiTableViewController.swift
 //  BeeCool_Client_IOS
 //
-//  Created by caiyang on 14/12/15.
+//  Created by caiyang on 14/12/24.
 //  Copyright (c) 2014年 Apple. All rights reserved.
 //
 
 import UIKit
 
-class SelectCarViewController: UITableViewController {
-    var array = NSMutableArray()
-    var arr = NSArray()
+class YouHuiTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        var path = NSBundle.mainBundle().pathForResource("area", ofType: "json")
-        var data = NSData(contentsOfFile: path!)
-        arr = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
-        for index in 0...arr.count - 1 {
-            var dic = arr.objectAtIndex(index) as NSDictionary
-            array.addObject(dic["province"] as NSString)
-        }
-     
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -38,32 +30,26 @@ class SelectCarViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return array.count
+        return 1
     }
-   
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        var dic = arr.objectAtIndex(section) as NSDictionary
-        var arr1 = dic["cityList"] as NSArray
-        return arr1.count
+        return 1
     }
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return (array.objectAtIndex(section) as NSString)
-    }
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
-        return array
-    }
+
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("selectcarCell", forIndexPath: indexPath) as UITableViewCell
-        var dic = arr.objectAtIndex(indexPath.section) as NSDictionary
-        var arr2 = dic["cityList"] as NSArray
-        cell.textLabel.text = arr2.objectAtIndex(indexPath.row) as NSString
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseCell", forIndexPath: indexPath) as UITableViewCell
+    
         // Configure the cell...
 
         return cell
     }
-
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -53,10 +53,13 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var array:NSArray = (segue.destinationViewController as UITabBarController).viewControllers! as NSArray
+        var vc = array.objectAtIndex(3) as UIViewController
+        vc.tabBarItem.badgeValue = "1"
+    }
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.

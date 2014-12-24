@@ -11,6 +11,7 @@ protocol carTypeDelegate {
     func sendBackType()
 }
 class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+   var selectedFlag = Int()
    var collectionView = UICollectionView?()
    var delegate = carTypeDelegate?()
     var array = NSArray()
@@ -70,11 +71,27 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.section == 1 {
+            if indexPath.row == 0 {
+            selectedFlag = 1
+                array = ["京", "浙", "津", "皖", "沪", "闽", "渝", "赣", "港", "鲁", "澳", "豫", "蒙", "鄂", "新", "湘", "宁", "粤", "藏", "琼", "桂", "川", "冀", "贵", "晋",  "云", "辽", "陕", "吉", "甘", "黑", "青", "苏", "台"] as NSArray
+            collectionView?.reloadData()
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.collectionView!.frame = CGRectMake(0, 2 * self.view.frame.height / 3, self.view.frame.width, self.view.frame.height
                  / 3)
             })
+            }
+            if indexPath.row == 1 {
+                selectedFlag = 2
+                array = ["黑", "白", "银", "红", "蓝", "黄", "钛灰"] as NSArray
+                collectionView?.reloadData()
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.collectionView!.frame = CGRectMake(0, 2 * self.view.frame.height / 3, self.view.frame.width, self.view.frame.height
+                        / 3)
+                })
+            }
         }
+      
+        
     }
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
@@ -83,7 +100,7 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
         return ""
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 32
+        return array.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("provinceCell", forIndexPath: indexPath) as ProvinceCollectionViewCell
@@ -93,19 +110,27 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.label.text = array.objectAtIndex(indexPath.row) as NSString
         return cell
     }
-     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         var size = self.view.frame.width / 6
         return CGSizeMake(size, size)
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as UITableViewCell?
         var button = cell?.viewWithTag(101) as UIButton
+        let cell1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1)) as UITableViewCell?
+        var textfield = cell1?.viewWithTag(102) as UITextField
+        if selectedFlag == 1 {
         button.setTitle(array.objectAtIndex(indexPath.item) as NSString, forState: UIControlState.Normal)
+        }
+        if selectedFlag == 2 {
+         textfield.text = array.objectAtIndex(indexPath.item) as NSString
+        }
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             
             self.collectionView!.frame = CGRectMake(0,  self.view.frame.height , self.view.frame.width, self.view.frame.height
                 / 3)
         })
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -18,6 +18,7 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.tabBarItem.badgeValue = nil
         var locatios:[CGFloat] = [0.9, 0.0, 0.0, 0.0]
         var colors = [UIColor.redColor().CGColor, UIColor.greenColor().CGColor, UIColor.blueColor().CGColor, UIColor.yellowColor().CGColor]
         var colorspace = CGColorSpaceCreateDeviceRGB()
@@ -72,8 +73,11 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.textLabel.text = "服务地址"
             }
             if indexPath.row == 1 {
-                cell = tableView.dequeueReusableCellWithIdentifier("meCell", forIndexPath: indexPath) as UITableViewCell
-                cell.textLabel.text = "我的优惠券"
+                cell = tableView.dequeueReusableCellWithIdentifier("youhuiCell", forIndexPath: indexPath) as UITableViewCell
+            var str = NSString(format: "已有%d张", 1)
+            var attribute = NSMutableAttributedString(string: str)
+            attribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSMakeRange(2, 1))
+                cell.detailTextLabel?.attributedText = attribute
             }
         }
         if indexPath.section == 1 {
