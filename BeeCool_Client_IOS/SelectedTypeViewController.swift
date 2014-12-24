@@ -11,13 +11,17 @@ import UIKit
 class SelectedTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
         var sectionArray = NSArray()
         var pathdic = NSDictionary()
+        var backgroundView = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundView.frame = view.frame
+        backgroundView.backgroundColor = UIColor(white: 0.5, alpha: 0.3)
+        backgroundView.hidden = true
+        self.view.addSubview(backgroundView)
         var path = NSBundle.mainBundle().pathForResource("car", ofType: "json")
         var data1 = NSData(contentsOfFile: path!)
         pathdic = NSJSONSerialization.JSONObjectWithData(data1!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         var arr =  NSMutableArray()
-        print(pathdic.allKeys as NSArray)
         for item in pathdic.allKeys {
             arr.addObject(item as NSString)
         }
@@ -53,6 +57,18 @@ class SelectedTypeViewController: UIViewController, UITableViewDelegate, UITable
     }
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         return sectionArray
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+          var str = sectionArray.objectAtIndex(indexPath.section) as NSString
+          var makeArray = (pathdic.objectForKey(str) as NSDictionary).allValues as NSArray
+         var detailDictionary = makeArray.objectAtIndex(indexPath.row) as NSDictionary
+        print(detailDictionary.allKeys)
+        backgroundView.hidden = false
+        backgroundView.bringSubviewToFront(view)
+    }
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        backgroundView.hidden = true
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
