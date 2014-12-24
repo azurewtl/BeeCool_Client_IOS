@@ -64,7 +64,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         resultlabel.text = "等待确认"
         resultlabel.textColor = UIColor.redColor()
         cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 20
+        cell.layer.cornerRadius = 10
        
         return cell
     }

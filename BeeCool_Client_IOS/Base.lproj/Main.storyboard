@@ -564,7 +564,7 @@
                                     <segue destination="YoF-XA-kkp" kind="push" id="Brm-pf-jrP"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" rowHeight="109" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="sI0-iD-tH6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="109" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="sI0-iD-tH6">
                                 <rect key="frame" x="16" y="30" width="288" height="544"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -718,6 +718,29 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="uE8-Na-0cg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="kqa-yf-jgw">
+                                    <rect key="frame" x="0.0" y="168" width="320" height="72"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1c-hV-hpH">
+                                            <rect key="frame" x="44" y="21" width="234" height="30"/>
+                                            <color key="backgroundColor" red="1" green="0.77606382392250306" blue="0.48489117978746332" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="下一步">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="nextStepOncick:" destination="mOB-H2-xI6" eventType="touchUpInside" id="Xhh-eu-dbp"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="k1c-hV-hpH" firstAttribute="leading" secondItem="kqa-yf-jgw" secondAttribute="leading" constant="44" id="CPZ-7K-6Zq"/>
+                                        <constraint firstItem="k1c-hV-hpH" firstAttribute="top" secondItem="kqa-yf-jgw" secondAttribute="top" constant="21" id="Q8f-kq-n5p"/>
+                                        <constraint firstAttribute="bottom" secondItem="k1c-hV-hpH" secondAttribute="bottom" constant="21" id="b3w-nW-H3F"/>
+                                        <constraint firstAttribute="trailing" secondItem="k1c-hV-hpH" secondAttribute="trailing" constant="42" id="xdw-0c-GuY"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="detailorderCell" textLabel="9Lb-0g-X8e" detailTextLabel="ZkL-wh-UA5" style="IBUITableViewCellStyleValue1" id="lVw-uE-RbN">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -731,7 +754,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZkL-wh-UA5">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZkL-wh-UA5">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -756,6 +779,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="精致洗车" id="Yjd-Ac-Dr1"/>
+                    <connections>
+                        <outlet property="nextButton" destination="k1c-hV-hpH" id="arr-c9-JT7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1c9-br-XYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
