@@ -8,7 +8,7 @@
 
 import UIKit
 protocol serviceItemDelegate {
-    func sendBackItem(str:NSString, tag:Int)
+    func sendBackItem(str:NSString, tag:Int, price:Int)
 }
 class ServiceItemViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var servicedetailDictionary = NSDictionary()
@@ -34,7 +34,13 @@ class ServiceItemViewController: UIViewController, UICollectionViewDelegate, UIC
         return cell
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.delegate?.sendBackItem(array.objectAtIndex(indexPath.row) as NSString, tag: flag)
+        if indexPath.row >= 1 {
+           var str = array.objectAtIndex(indexPath.row) as NSString
+            var price = (servicedetailDictionary[str as NSString] as NSDictionary)["价格"] as Int
+        self.delegate?.sendBackItem(array.objectAtIndex(indexPath.row) as NSString, tag: flag, price:price)
+        }else {
+            self.delegate?.sendBackItem("无", tag: flag, price: 0)
+        }
         self.navigationController?.popViewControllerAnimated(true)
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{

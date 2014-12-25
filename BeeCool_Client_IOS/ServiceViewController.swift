@@ -77,7 +77,6 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
      var tag = view.indexPathForCell(sender as UICollectionViewCell)?.item
         if segue.identifier == "serviceDetail" {
             (segue.destinationViewController as ServiceDetailViewController).serviceDictionary = array.objectAtIndex(tag!) as NSDictionary
-        
         }
     }
 

@@ -140,7 +140,7 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        (segue.destinationViewController as YouHuiTableViewController).useCount = 0
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

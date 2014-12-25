@@ -14,7 +14,8 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     var carname = ""
     var carid = ""
     var carcolor = ""
-    
+    //基本价钱
+    var basePrice = 0
     
     var serviceDictionary = NSDictionary()
     var maplocation = "请确定您车的位置"
@@ -33,6 +34,10 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     var servicecollectioncellArray = NSMutableArray()//additinalServiceCollectionViewCount
     var serviceSegueArray = NSMutableArray()
     var userdefault = NSUserDefaults.standardUserDefaults()
+    //每项服务的价格
+    var servprice1 = 0
+    var servprice2 = 0
+    @IBOutlet var priceLabel: UILabel!
     @IBAction func sendOnclick(sender: UIButton) {
         if userdefault.objectForKey("userLog") as NSString == "" {
             var stroyborad = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
@@ -57,14 +62,22 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         var collectionView = cell?.contentView.viewWithTag(101) as UICollectionView
         collectionView.reloadData()
     }
-    func sendBackItem(str: NSString, tag: Int) {
+    func sendBackItem(str: NSString, tag: Int, price:Int) {
+        if tag == 0{
+           servprice1 = price
+        }else if tag == 1 {
+            servprice2 = price
+        }
+        var totalPrice = basePrice + servprice1 + servprice2
+        var mutableattributestr = NSMutableAttributedString(string: NSString(format: "¥ %d.00", totalPrice))
+        mutableattributestr.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue-Bold", size: 25.0)!, range: NSMakeRange(0, 2))
+        priceLabel.attributedText = mutableattributestr
         servicecollectioncellArray.replaceObjectAtIndex(tag, withObject: str)
         let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 4)) as UITableViewCell?
         var collectionView = cell?.contentView.viewWithTag(101) as UICollectionView
         var collectCell = collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: tag, inSection: 0)) as UICollectionViewCell?
         collectCell?.layer.borderWidth = 1
         collectCell?.layer.borderColor = UIColor.greenColor().CGColor
-        
         var label = collectCell?.contentView.viewWithTag(101) as UILabel
         label.textColor = UIColor.blackColor()
         collectionView.reloadData()
@@ -73,6 +86,11 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         //MARK: -下面弹出界面代码敲的
         var dic = serviceDictionary["additionalService"] as NSDictionary
+        basePrice = serviceDictionary["baseprice"] as Int
+        var mutableattributestr = NSMutableAttributedString(string: NSString(format: "¥ %d.00", basePrice))
+        mutableattributestr.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue-Bold", size: 25.0)!, range: NSMakeRange(0, 2))
+        priceLabel.attributedText = mutableattributestr
+
         for item in dic.allKeys {
             servicecollectioncellArray.addObject(item)
             serviceSegueArray.addObject(item)
@@ -204,7 +222,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -217,6 +235,8 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         case 3:
             return 1
         case 4:
+            return 1
+        case 5:
             return 1
         default:
             return 0
@@ -252,6 +272,11 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             cell = tableView.dequeueReusableCellWithIdentifier("serviceCell", forIndexPath: indexPath) as UITableViewCell
           
         }
+        if indexPath.section == 5 {
+            cell = tableview.dequeueReusableCellWithIdentifier("youhuiCell", forIndexPath: indexPath) as UITableViewCell
+            cell.textLabel.text = "使用优惠券"
+            cell.textLabel.textColor = UIColor.grayColor()
+        }
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -260,8 +285,13 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             actionsheetshow()
             backgroundview.hidden = false
         }
+        if indexPath.section == 5 {
+            var stroyborad = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            var youhuiVC = storyboard?.instantiateViewControllerWithIdentifier("YouHuiTableViewController") as YouHuiTableViewController
+            youhuiVC.useCount = 1
+            self.navigationController?.pushViewController(youhuiVC, animated: true)
+        }
     }
-
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 120
@@ -272,7 +302,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             return CGFloat(height)
 
         }
-        return 70
+        return 40
     }
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
            var headerview = UIView(frame: CGRectZero)

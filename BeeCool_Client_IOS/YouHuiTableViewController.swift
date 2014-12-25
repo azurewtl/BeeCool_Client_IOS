@@ -9,7 +9,7 @@
 import UIKit
 
 class YouHuiTableViewController: UITableViewController {
-
+    var useCount = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +46,11 @@ class YouHuiTableViewController: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if useCount == 1 {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100

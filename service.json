@@ -1,7 +1,8 @@
 [
-	        {"iconstr":"精致洗车",
-			"infoImage":"urlPath", 
-			"infoTitle":"洗车35元一次,点击查看详情",
+	        {"iconstr":"外部块洗",
+			"infoImage":"urlPath",
+            "baseprice":25,
+			"infoTitle":"洗车25元一次,点击查看详情",
 			"additionalService":{
 					"玻璃水":{
 							"美孚":{"价格":4, "info":"效果好", "infoImage":"url"},
@@ -13,9 +14,10 @@
 							}
 					}
 			},
-			{"iconstr":"轮毂翻新",
-			"infoImage":"urlPath", 
-			"infoTitle":"轮胎25元一次,点击查看详情",
+			{"iconstr":"轮毂钢圈翻新",
+			"infoImage":"urlPath",
+            "baseprice":160,
+			"infoTitle":"轮胎160元一次,点击查看详情",
 			"additionalService":{
 					"修改轮胎":{
 							"打孔":{"价格":4, "info":"效果好", "infoImage":"url"},
@@ -27,9 +29,10 @@
 							}
 					}
 			},
-			{"iconstr":"精细护理",
-			"infoImage":"urlPath", 
-			"infoTitle":"护理135元一次,点击查看详情",
+			{"iconstr":"抛光上蜡",
+			"infoImage":"urlPath",
+            "baseprice":98,
+			"infoTitle":"抛光上蜡98元一次,点击查看详情",
 			"additionalService":{
 					"原料":{
 							"牛奶":{"价格":4, "info":"效果好", "infoImage":"url"},
@@ -41,9 +44,10 @@
 							}
 					}
 			},
-			{"iconstr":"高端养护",
-			"infoImage":"urlPath", 
-			"infoTitle":"养护1235元一次,点击查看详情",
+			{"iconstr":"发动机蒸汽护理",
+			"infoImage":"urlPath",
+            "baseprice":150,
+			"infoTitle":"发动机蒸汽护理150元一次,点击查看详情",
 			"additionalService":{
 					"养护品":{
 							"机油":{"价格":4, "info":"效果好", "infoImage":"url"},
@@ -55,50 +59,9 @@
 							}
 					}
 			},
-			{"iconstr":"抛光",
-			"infoImage":"urlPath", 
-			"infoTitle":"抛光400元一次,点击查看详情",
-			"additionalService":{
-					"材料":{
-							"磨砂纸":{"价格":4, "info":"效果好", "infoImage":"url"},
-							"毛玻璃":{"价格":100, "info":"老子就是有钱", "infoImage":"url"}
-							},
-					"技术": {
-							"两面夹击":{"价格":100, "info":"效果好", "infoImage":"url"},
-							"细细摩擦":{"价格":400,"info":"老子就是有钱", "infoImage":"url"}
-							}
-					}
-			},
-			{"iconstr":"发动机清洗",
-			"infoImage":"urlPath", 
-			"infoTitle":"发动机60元一次,点击查看详情",
-			"additionalService":{
-					"清洗剂":{
-							"美孚":{"价格":4, "info":"效果好", "infoImage":"url"},
-							"百事":{"价格":100, "info":"老子就是有钱", "infoImage":"url"}
-							},
-					"清洗方式": {
-							"燃油添加剂":{"价格":100, "info":"效果好", "infoImage":"url"},
-							"防冻液":{"价格":400,"info":"老子就是有钱", "infoImage":"url"}
-							}
-					}
-			},
-			{"iconstr":"全部服务",
-			"infoImage":"urlPath", 
-			"infoTitle":"洗车35元一次,点击查看详情",
-			"additionalService":{
-					"玻璃水":{
-							"美孚":{"价格":4, "info":"效果好", "infoImage":"url"},
-							"百事":{"价格":100, "info":"老子就是有钱", "infoImage":"url"}
-							},
-					"添加剂": {
-							"燃油添加剂":{"价格":100, "info":"效果好", "infoImage":"url"},
-							"防冻液":{"价格":400,"info":"老子就是有钱", "infoImage":"url"}
-							}
-					}
-			},
-			{"iconstr":"意见反馈",
-			"infoImage":"urlPath", 
+					{"iconstr":"意见反馈",
+			"infoImage":"urlPath",
+            "baseprice":35,
 			"infoTitle":"洗车35元一次,点击查看详情",
 			"additionalService":{
 					"玻璃水":{
@@ -112,7 +75,8 @@
 					}
 			},
 			{"iconstr":"上海",
-			"infoImage":"urlPath", 
+			"infoImage":"urlPath",
+            "baseprice":35,
 			"infoTitle":"洗车35元一次,点击查看详情",
 			"additionalService":{
 					"玻璃水":{
