@@ -72,6 +72,8 @@
 		185ECECA1A39469B00B568B0 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEC61A39469B00B568B0 /* ServiceViewController.swift */; };
 		18C8B6A81A4AC34100DF54C0 /* SelectedTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C8B6A71A4AC34100DF54C0 /* SelectedTypeViewController.swift */; };
 		18C8B6AC1A4AC4C400DF54C0 /* car.json in Resources */ = {isa = PBXBuildFile; fileRef = 18C8B6AB1A4AC4C400DF54C0 /* car.json */; };
+		18C8B6B21A4BA73C00DF54C0 /* DetailCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C8B6B11A4BA73C00DF54C0 /* DetailCarView.swift */; };
+		18C8B6B41A4BA75300DF54C0 /* DetailCarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C8B6B31A4BA75300DF54C0 /* DetailCarView.xib */; };
 		18C930731A4177950068F698 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C930721A4177950068F698 /* libz.1.2.5.dylib */; };
 		18C930771A4177FC0068F698 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C930761A4177FC0068F698 /* Security.framework */; };
 		18C930791A4178120068F698 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C930781A4178120068F698 /* SystemConfiguration.framework */; };
@@ -364,6 +366,8 @@
 		185ECEC61A39469B00B568B0 /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
 		18C8B6A71A4AC34100DF54C0 /* SelectedTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedTypeViewController.swift; sourceTree = "<group>"; };
 		18C8B6AB1A4AC4C400DF54C0 /* car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car.json; sourceTree = "<group>"; };
+		18C8B6B11A4BA73C00DF54C0 /* DetailCarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCarView.swift; sourceTree = "<group>"; };
+		18C8B6B31A4BA75300DF54C0 /* DetailCarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailCarView.xib; sourceTree = "<group>"; };
 		18C930721A4177950068F698 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		18C930761A4177FC0068F698 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		18C930781A4178120068F698 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -844,6 +848,8 @@
 				1803965E1A3978A70001473B /* MapViewContrlloer.swift */,
 				180396AE1A3999380001473B /* CarTypeViewController.swift */,
 				18C8B6A71A4AC34100DF54C0 /* SelectedTypeViewController.swift */,
+				18C8B6B11A4BA73C00DF54C0 /* DetailCarView.swift */,
+				18C8B6B31A4BA75300DF54C0 /* DetailCarView.xib */,
 				183B370E1A43FD2100B16193 /* ProvinceCollectionViewCell.swift */,
 				180396B41A399FA90001473B /* ServiceItemViewController.swift */,
 				18CFA6321A3EE74E00DC96F4 /* LogViewController.swift */,
@@ -1168,6 +1174,7 @@
 				18CFA64F1A403ACA00DC96F4 /* 0.jpg in Resources */,
 				18C930FD1A41792E0068F698 /* ShareSDKLocalizable.strings in Resources */,
 				18434B651A491C9800F6CBAD /* AlipaySDK.bundle in Resources */,
+				18C8B6B41A4BA75300DF54C0 /* DetailCarView.xib in Resources */,
 				18CFA6521A403ACA00DC96F4 /* 3.jpg in Resources */,
 				185ECEAE1A39467000B568B0 /* LaunchScreen.xib in Resources */,
 				18C8B6AC1A4AC4C400DF54C0 /* car.json in Resources */,
@@ -1220,6 +1227,7 @@
 				180396581A3950300001473B /* UIView+WebCacheOperation.m in Sources */,
 				18434BC91A491CB600F6CBAD /* MD5DataSigner.m in Sources */,
 				180396491A3950300001473B /* MKAnnotationView+WebCache.m in Sources */,
+				18C8B6B21A4BA73C00DF54C0 /* DetailCarView.swift in Sources */,
 				180396551A3950300001473B /* UIImage+WebP.m in Sources */,
 				18CFA6411A3EEE9000DC96F4 /* Vertify.m in Sources */,
 				180396261A394FE70001473B /* Tap.m in Sources */,

@@ -8,17 +8,32 @@
 
 import UIKit
 protocol carTypeDelegate {
-    func sendBackType()
+    func sendBackType(carName:NSString, carID:NSString, carColor:NSString)
 }
-class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, sendcarDelegate {
+    var typeName:NSString = "请选择车类型"
    var selectedFlag = Int()
    var collectionView = UICollectionView?()
    var delegate = carTypeDelegate?()
     var array = NSArray()
     @IBOutlet var tableView: UITableView!
     @IBAction func finishedOnclick(sender: UIBarButtonItem) {
-        self.delegate?.sendBackType()
+        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
+        let cell1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as UITableViewCell?
+        var textfiled = cell1?.contentView.viewWithTag(102) as UITextField
+        var button = cell1?.contentView.viewWithTag(101) as UIButton
+        let cell2 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1)) as UITableViewCell?
+        var textfield1 = cell2?.contentView.viewWithTag(102) as UITextField
+        var str = cell?.textLabel.text
+        var str1 = NSString(format: "%@%@", button.currentTitle!, textfiled.text)
+        var str2 = textfield1.text
+        if textfiled.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 6 {
+            var alert = UIAlertView(title: "提示", message: "请输入正确的车牌号", delegate: nil, cancelButtonTitle: "确定")
+            alert.show()
+        }else {
+        self.delegate?.sendBackType(str!, carID: str1, carColor: str2)
         self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +67,7 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCellWithIdentifier("carCell") as UITableViewCell
             cell.imageView.image = UIImage(named: "car")
-            cell.textLabel.text = "请选择车的类型"
+            cell.textLabel.text = typeName
         }
         if indexPath.section == 1 {
             if indexPath.row == 0 {
@@ -105,8 +120,8 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("provinceCell", forIndexPath: indexPath) as ProvinceCollectionViewCell
         cell.backgroundColor = UIColor.whiteColor()
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.grayColor().CGColor
+//        cell.layer.borderWidth = 1
+//        cell.layer.borderColor = UIColor.grayColor().CGColor
         cell.label.text = array.objectAtIndex(indexPath.row) as NSString
         return cell
     }
@@ -131,6 +146,13 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
                 / 3)
         })
         
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        (segue.destinationViewController as SelectedTypeViewController).delegate = self
+    }
+    func sendCarName(str: NSString) {
+        typeName = str
+        tableView.reloadData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

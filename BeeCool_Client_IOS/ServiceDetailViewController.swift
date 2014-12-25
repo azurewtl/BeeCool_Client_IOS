@@ -9,7 +9,13 @@
 import UIKit
 
 class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIPickerViewDataSource,UIPickerViewDelegate, sendbackLocation, carTypeDelegate, serviceItemDelegate,UIAlertViewDelegate{
+    //订单collectionview信息
     var dingDan = 0
+    var carname = ""
+    var carid = ""
+    var carcolor = ""
+    
+    
     var serviceDictionary = NSDictionary()
     var maplocation = "请确定您车的位置"
     var actionsheetView = TimeActionSheet() // actionSheet
@@ -41,7 +47,11 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @IBOutlet var tableview: UITableView!
-    func sendBackType() {
+    func sendBackType(carName: NSString, carID: NSString, carColor: NSString)
+    {
+        carname = carName
+        carid = carID
+        carcolor = carColor
         typecollectioncellCount++
         let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
         var collectionView = cell?.contentView.viewWithTag(101) as UICollectionView
@@ -295,6 +305,12 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         var tableviewcell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
         if collectionView == tableviewcell?.contentView.viewWithTag(101) as UICollectionView {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("carType", forIndexPath: indexPath) as UICollectionViewCell
+            var namelabel = cell.contentView.viewWithTag(101) as UILabel
+            namelabel.text = carname
+            var idlabel = cell.contentView.viewWithTag(102) as UILabel
+            idlabel.text = carid
+            var colorlabel = cell.contentView.viewWithTag(103) as UILabel
+            colorlabel.text = carcolor
             cell.layer.borderWidth = 1
             var image = UIImage(named: "dashline")
             var color = UIColor(patternImage: image!)
