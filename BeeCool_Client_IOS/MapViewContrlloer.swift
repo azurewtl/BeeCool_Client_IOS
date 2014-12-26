@@ -19,8 +19,8 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
     var longtitude = CLLocationDegrees()
     var cellString = NSString()
     var locationMananger = CLLocationManager()
-    
-    @IBOutlet var textField: UITextField!
+    var selectedFlag = -1
+    var userDefault = NSUserDefaults.standardUserDefaults()
     @IBOutlet var tableView: UITableView!
     @IBOutlet var mapView: MKMapView!
     
@@ -36,16 +36,33 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     @IBAction func locateButtonOnClick(sender: UIButton) {
          updateLocation(locationMananger)
+        selectedFlag = -1
         var center =  CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
         var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         var region = MKCoordinateRegionMake(center, span)
         mapView.setRegion(region, animated: true)
     }
 
-    @IBAction func finishOnclick(sender: UIButton) {
+    @IBAction func finishedOnclick(sender: UIBarButtonItem) {
+        if selectedFlag == -1 {
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
         var textview = cell?.contentView.viewWithTag(101) as UITextView
+        var textField = cell?.contentView.viewWithTag(102) as UITextField
+        var lati = mapView.centerCoordinate.latitude
+        var lonti = mapView.centerCoordinate.longitude
+        var dic = NSDictionary(objectsAndKeys:textview.text,"name",textField.text,"detail", lati,"lati", lonti,"lonti")
+        var arr = userDefault.objectForKey("historyLocation") as NSMutableArray
+        arr.insertObject(dic, atIndex: 0)
+        userDefault.setObject(arr, forKey: "historyLocation")
         self.delegate?.sendbackloc(textview.text, str1: textField.text)
+
+        }else {
+          let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: selectedFlag, inSection: 1)) as UITableViewCell?
+            var str = cell?.textLabel.text
+            var str1 = cell?.detailTextLabel?.text
+           self.delegate?.sendbackloc(str!, str1: str1!)
+        }
+        
         self.navigationController?.popViewControllerAnimated(true)
     }
 
@@ -62,10 +79,18 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         return true
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        if indexPath.section == 1 {
+            return 60
+        }
+        return 100
     }
 
-  
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return ""
+        }
+        return "历史位置"
+    }
     func updateLocation(locationManager: CLLocationManager) {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 100.0
@@ -100,10 +125,8 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.delegate = self
-        textField.text = ""
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidShow:", name: UIKeyboardWillShowNotification, object: nil)
-        
+    
         mapView.showsUserLocation = true
         mapView.delegate = self
         mapView.mapType = MKMapType.Standard
@@ -114,8 +137,11 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         self.tableView.reloadData()
         var cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
         var textview = cell?.contentView.viewWithTag(101) as UITextView
+        var textField = cell?.contentView.viewWithTag(102) as UITextField
         textview.delegate = self
         textview.text = cellString
+        textField.delegate = self
+        textField.text = ""
         var center =  CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
         var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         var region = MKCoordinateRegionMake(center, span)
@@ -128,6 +154,7 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         tableView.contentOffset.y = kbsize.height / 2
     }
     func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
+        selectedFlag = -1
         var region:MKCoordinateRegion?
         var centerCoordinate = mapView.region.center
         region?.center = centerCoordinate
@@ -149,15 +176,41 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
                 
             }
         })
-
-       
+    }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
         return 1
+        }
+        return userDefault.objectForKey("historyLocation")!.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
         var cell = tableView.dequeueReusableCellWithIdentifier("mapdetailCell", forIndexPath: indexPath) as UITableViewCell
         return cell
+        }
+        var cell = tableView.dequeueReusableCellWithIdentifier("historyCell", forIndexPath: indexPath) as UITableViewCell
+        var arr = userDefault.objectForKey("historyLocation") as NSMutableArray
+        if arr.count > 0 {
+        cell.textLabel.font = UIFont.boldSystemFontOfSize(14)
+        cell.textLabel.text = (arr.objectAtIndex(indexPath.row) as NSDictionary).objectForKey("name") as NSString
+        cell.detailTextLabel?.text = (arr.objectAtIndex(indexPath.row) as NSDictionary).objectForKey("detail") as NSString
+        }
+        return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 {
+           selectedFlag = indexPath.row
+            var arr = userDefault.objectForKey("historyLocation") as NSMutableArray
+            if arr.count > 0 {
+            var center =  CLLocationCoordinate2D(latitude: (arr.objectAtIndex(indexPath.row) as NSDictionary).objectForKey("lati") as Double, longitude: (arr.objectAtIndex(indexPath.row) as NSDictionary).objectForKey("lonti") as Double)
+            var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+            var region = MKCoordinateRegionMake(center, span)
+            mapView.setRegion(region, animated: true)
+            }
+        }
     }
  
 }

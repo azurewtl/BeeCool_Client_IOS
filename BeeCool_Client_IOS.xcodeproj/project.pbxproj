@@ -149,7 +149,6 @@
 		18C9311F1A418D2D0068F698 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C9311E1A418D2D0068F698 /* Images.xcassets */; };
 		18C931211A42B5210068F698 /* TimeActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C931201A42B5210068F698 /* TimeActionSheet.xib */; };
 		18C931231A42B5500068F698 /* TimeActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C931221A42B5500068F698 /* TimeActionSheet.swift */; };
-		18CB4F311A4D4F4F008711E9 /* HistoryLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB4F301A4D4F4F008711E9 /* HistoryLocationViewController.swift */; };
 		18CFA6331A3EE74E00DC96F4 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFA6321A3EE74E00DC96F4 /* LogViewController.swift */; };
 		18CFA6351A3EEDD700DC96F4 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CFA6341A3EEDD700DC96F4 /* SMS_SDK.framework */; };
 		18CFA6371A3EEE2300DC96F4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CFA6361A3EEE2300DC96F4 /* MessageUI.framework */; };
@@ -452,7 +451,6 @@
 		18C9311E1A418D2D0068F698 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		18C931201A42B5210068F698 /* TimeActionSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeActionSheet.xib; sourceTree = "<group>"; };
 		18C931221A42B5500068F698 /* TimeActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeActionSheet.swift; sourceTree = "<group>"; };
-		18CB4F301A4D4F4F008711E9 /* HistoryLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryLocationViewController.swift; sourceTree = "<group>"; };
 		18CFA6321A3EE74E00DC96F4 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		18CFA6341A3EEDD700DC96F4 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
 		18CFA6361A3EEE2300DC96F4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -848,7 +846,6 @@
 				18C931201A42B5210068F698 /* TimeActionSheet.xib */,
 				18C931221A42B5500068F698 /* TimeActionSheet.swift */,
 				1803965E1A3978A70001473B /* MapViewContrlloer.swift */,
-				18CB4F301A4D4F4F008711E9 /* HistoryLocationViewController.swift */,
 				180396AE1A3999380001473B /* CarTypeViewController.swift */,
 				18C8B6A71A4AC34100DF54C0 /* SelectedTypeViewController.swift */,
 				18C8B6B11A4BA73C00DF54C0 /* DetailCarView.swift */,
@@ -1219,7 +1216,6 @@
 				1803965B1A3957700001473B /* ServiceDetailViewController.swift in Sources */,
 				180396511A3950300001473B /* SDWebImagePrefetcher.m in Sources */,
 				18434BFB1A492F6400F6CBAD /* AFNetworkReachabilityManager.m in Sources */,
-				18CB4F311A4D4F4F008711E9 /* HistoryLocationViewController.swift in Sources */,
 				18434C001A492F6400F6CBAD /* AFURLSessionManager.m in Sources */,
 				18434C081A4962F800F6CBAD /* DetailOrderViewController.swift in Sources */,
 				185ECEC71A39469B00B568B0 /* MemberViewController.swift in Sources */,
