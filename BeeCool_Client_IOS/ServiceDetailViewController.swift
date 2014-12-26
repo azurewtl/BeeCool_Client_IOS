@@ -19,6 +19,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     
     var serviceDictionary = NSDictionary()
     var maplocation = "请确定您车的位置"
+    var maplocation1 = ""
     var actionsheetView = TimeActionSheet() // actionSheet
     var backgroundview = UIView() // actionSheetOption
     
@@ -215,8 +216,9 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         pickerView.reloadAllComponents()
     }
     //MARK: -代码敲的结束
-    func sendbackloc(str: NSString) {
+    func sendbackloc(str: NSString, str1: NSString) {
         print(str)
+        maplocation1 = str1
         maplocation = str
         tableview.reloadData()
     }
@@ -253,6 +255,8 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         if indexPath.section == 1 {
              cell = tableView.dequeueReusableCellWithIdentifier("mapCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel.text = maplocation
+            cell.detailTextLabel?.text = maplocation1
+            cell.textLabel.font = UIFont.boldSystemFontOfSize(14)
             cell.textLabel.textColor = UIColor.grayColor()
             
         }

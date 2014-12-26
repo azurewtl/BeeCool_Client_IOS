@@ -43,7 +43,7 @@
                 <outlet property="detailTableView" destination="WIJ-HU-GJE" id="uRv-Zw-c4r"/>
                 <outlet property="titleLabel" destination="xnu-GE-C3S" id="udf-ag-JiZ"/>
             </connections>
-            <point key="canvasLocation" x="523" y="368"/>
+            <point key="canvasLocation" x="-106" y="21"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

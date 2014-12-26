@@ -10,14 +10,20 @@ import UIKit
 import MapKit
 import CoreLocation
 protocol sendbackLocation {
-    func sendbackloc(str:NSString)
+    func sendbackloc(str:NSString, str1:NSString)
 }
-class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UITextViewDelegate{
+
+class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UITextViewDelegate, UITextFieldDelegate{
     var delegate = sendbackLocation?()
     var latitude = CLLocationDegrees()
     var longtitude = CLLocationDegrees()
     var cellString = NSString()
     var locationMananger = CLLocationManager()
+    
+    @IBOutlet var textField: UITextField!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var mapView: MKMapView!
+    
     @IBAction func satelliteButonOnclick(sender: UIButton) {
         if mapView.mapType == MKMapType.Standard {
             mapView.mapType = MKMapType.Hybrid
@@ -35,13 +41,14 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         var region = MKCoordinateRegionMake(center, span)
         mapView.setRegion(region, animated: true)
     }
-    
-    @IBAction func finishButonOnclick(sender: UIBarButtonItem) {
+
+    @IBAction func finishOnclick(sender: UIButton) {
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
         var textview = cell?.contentView.viewWithTag(101) as UITextView
-        self.delegate?.sendbackloc(textview.text)
+        self.delegate?.sendbackloc(textview.text, str1: textField.text)
         self.navigationController?.popViewControllerAnimated(true)
     }
+
      func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             textView.resignFirstResponder()
@@ -49,12 +56,16 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         }
         return true
     }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        tableView.contentOffset.y = -64
+        return true
+    }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return 50
     }
 
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var mapView: MKMapView!
+  
     func updateLocation(locationManager: CLLocationManager) {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 100.0
@@ -89,6 +100,8 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.delegate = self
+        textField.text = ""
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidShow:", name: UIKeyboardWillShowNotification, object: nil)
         
         mapView.showsUserLocation = true

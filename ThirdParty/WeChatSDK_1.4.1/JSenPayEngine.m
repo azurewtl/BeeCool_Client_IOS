@@ -118,7 +118,7 @@
         
         int errorCode = [responseObject[@"errcode"] intValue];
        NSString *ss = responseObject[@"errmsg"];
-        NSLog(@"%@", ss);
+        NSLog(@"*****%@", ss);
         if (0 == errorCode) {
             self.prepayid = responseObject[@"prepayid"];
             [self pay];
