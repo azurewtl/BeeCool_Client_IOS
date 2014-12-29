@@ -17,7 +17,6 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     //基本价钱
     var basePrice = 0
     
-    var  historyArr = NSMutableArray()
     
     var serviceDictionary = NSDictionary()
     var maplocation = "请确定您车的位置"
@@ -87,7 +86,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        historyArr = userdefault.objectForKey("historyLocation") as NSMutableArray
+      
         //MARK: -下面弹出界面代码敲的
         var dic = serviceDictionary["additionalService"] as NSDictionary
         basePrice = serviceDictionary["baseprice"] as Int
@@ -225,9 +224,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         maplocation = str
         tableview.reloadData()
     }
-    func sendhistory(arr: NSMutableArray) {
-        historyArr = arr
-    }
+ 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 6
     }
@@ -427,7 +424,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "mapView" {
             (segue.destinationViewController as MapViewContrlloer).delegate = self
-            (segue.destinationViewController as MapViewContrlloer).history = historyArr
+          
             
         }
         if segue.identifier == "typeView" {

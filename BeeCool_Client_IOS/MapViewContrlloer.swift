@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 protocol sendbackLocation {
     func sendbackloc(str:NSString, str1:NSString)
-    func sendhistory(arr:NSMutableArray)
+  
 }
 
 class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UITextViewDelegate, UITextFieldDelegate{
@@ -23,7 +23,7 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
     
     var selectedFlag = -1
     var userDefault = NSUserDefaults.standardUserDefaults()
-    var history = NSMutableArray()
+    
     @IBOutlet var tableView: UITableView!
     @IBOutlet var mapView: MKMapView!
     
@@ -45,31 +45,32 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         var region = MKCoordinateRegionMake(center, span)
         mapView.setRegion(region, animated: true)
     }
-
+    
     @IBAction func finishedOnclick(sender: UIBarButtonItem) {
         if selectedFlag == -1 {
-        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
-        var textview = cell?.contentView.viewWithTag(101) as UITextView
-        var textField = cell?.contentView.viewWithTag(102) as UITextField
-        var lati = mapView.centerCoordinate.latitude
-        var lonti = mapView.centerCoordinate.longitude
-        var historydic = NSDictionary(objectsAndKeys:textview.text,"name",textField.text,"detail", lati,"lati", lonti,"lonti")
-        history.insertObject(historydic, atIndex: 0)
-        userDefault.setObject(history, forKey: "historyLocation")
-        self.delegate?.sendbackloc(textview.text, str1: textField.text)
-        self.delegate?.sendhistory(history)
-
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
+            var textview = cell?.contentView.viewWithTag(101) as UITextView
+            var textField = cell?.contentView.viewWithTag(102) as UITextField
+            var lati = mapView.centerCoordinate.latitude
+            var lonti = mapView.centerCoordinate.longitude
+            var historydic = NSDictionary(objectsAndKeys:textview.text,"name",textField.text,"detail", lati,"lati", lonti,"lonti")
+            var historyarr = userDefault.objectForKey("historyLocation") as NSArray
+            var newarr:NSMutableArray = NSMutableArray(array: historyarr)
+            newarr.insertObject(historydic, atIndex: 0)
+            userDefault.setObject(newarr, forKey: "historyLocation")
+            
+            self.delegate?.sendbackloc(textview.text, str1: textField.text)
         }else {
-          let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: selectedFlag, inSection: 1)) as UITableViewCell?
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: selectedFlag, inSection: 1)) as UITableViewCell?
             var str = cell?.textLabel.text
             var str1 = cell?.detailTextLabel?.text
-           self.delegate?.sendbackloc(str!, str1: str1!)
+            self.delegate?.sendbackloc(str!, str1: str1!)
         }
         
         self.navigationController?.popViewControllerAnimated(true)
     }
-
-     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             textView.resignFirstResponder()
             tableView.contentOffset.y = -64
