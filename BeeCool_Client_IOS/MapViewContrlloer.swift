@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 protocol sendbackLocation {
     func sendbackloc(str:NSString, str1:NSString)
+    func sendhistory(arr:NSMutableArray)
 }
 
 class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UITextViewDelegate, UITextFieldDelegate{
@@ -19,8 +20,10 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
     var longtitude = CLLocationDegrees()
     var cellString = NSString()
     var locationMananger = CLLocationManager()
+    
     var selectedFlag = -1
     var userDefault = NSUserDefaults.standardUserDefaults()
+    var history = NSMutableArray()
     @IBOutlet var tableView: UITableView!
     @IBOutlet var mapView: MKMapView!
     
@@ -50,11 +53,11 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         var textField = cell?.contentView.viewWithTag(102) as UITextField
         var lati = mapView.centerCoordinate.latitude
         var lonti = mapView.centerCoordinate.longitude
-        var dic = NSDictionary(objectsAndKeys:textview.text,"name",textField.text,"detail", lati,"lati", lonti,"lonti")
-        var arr = userDefault.objectForKey("historyLocation") as NSMutableArray
-        arr.insertObject(dic, atIndex: 0)
-        userDefault.setObject(arr, forKey: "historyLocation")
+        var historydic = NSDictionary(objectsAndKeys:textview.text,"name",textField.text,"detail", lati,"lati", lonti,"lonti")
+        history.insertObject(historydic, atIndex: 0)
+        userDefault.setObject(history, forKey: "historyLocation")
         self.delegate?.sendbackloc(textview.text, str1: textField.text)
+        self.delegate?.sendhistory(history)
 
         }else {
           let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: selectedFlag, inSection: 1)) as UITableViewCell?
@@ -181,10 +184,20 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         return 2
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 1 {
+            if userDefault.objectForKey("historyLocation") == nil {
+                return 0
+            }else{
+                if userDefault.objectForKey("historyLocation")?.count > 5 {
+                    return 5
+                }
+                return userDefault.objectForKey("historyLocation")!.count
+                
+            }
+            
+    }
         return 1
-        }
-        return userDefault.objectForKey("historyLocation")!.count
+        
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -196,7 +209,7 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         if arr.count > 0 {
         cell.textLabel.font = UIFont.boldSystemFontOfSize(14)
         cell.textLabel.text = (arr.objectAtIndex(indexPath.row) as NSDictionary).objectForKey("name") as NSString
-        cell.detailTextLabel?.text = (arr.objectAtIndex(indexPath.row) as NSDictionary).objectForKey("detail") as NSString
+        cell.detailTextLabel?.text = (arr.objectAtIndex(indexPath.row) as NSDictionary).objectForKey("detail") as? NSString
         }
         return cell
     }

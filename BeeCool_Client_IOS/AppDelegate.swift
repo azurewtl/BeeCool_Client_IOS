@@ -93,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if userdefault.objectForKey("userLog") == nil {
             userdefault.setObject("", forKey: "userLog")
         }
+     
         var historyArr = [] as NSMutableArray
         if userdefault.objectForKey("historyLocation") == nil {
             userdefault.setObject(historyArr, forKey: "historyLocation")
