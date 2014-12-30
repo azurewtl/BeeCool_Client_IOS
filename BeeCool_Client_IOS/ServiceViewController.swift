@@ -67,7 +67,7 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         var width:CGFloat = 1 / 3
         width = width * self.view.frame.width
-    return CGSizeMake(width, width)
+    return CGSizeMake(width - 0.1, width)
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
         return UIEdgeInsetsMake(120, 0, 0, 0)

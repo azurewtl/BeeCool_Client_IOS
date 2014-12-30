@@ -19,8 +19,8 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.tabBarItem.badgeValue = nil
-        var locatios:[CGFloat] = [0.9, 0.0, 0.0, 0.0]
-        var colors = [UIColor.redColor().CGColor, UIColor.greenColor().CGColor, UIColor.blueColor().CGColor, UIColor.yellowColor().CGColor]
+        var locatios:[CGFloat] = [0.0, 0.0, 0.9]
+        var colors = [UIColor.redColor().CGColor, UIColor.greenColor().CGColor, UIColor.blueColor().CGColor]
         var colorspace = CGColorSpaceCreateDeviceRGB()
        var gradient = CGGradientCreateWithColors(colorspace, colors, locatios)
         let bitmapinfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
@@ -140,7 +140,9 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "youhui" {
         (segue.destinationViewController as YouHuiTableViewController).useCount = 0
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

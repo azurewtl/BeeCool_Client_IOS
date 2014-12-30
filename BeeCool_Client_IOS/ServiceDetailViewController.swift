@@ -40,6 +40,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     var servprice1 = 0
     var servprice2 = 0
     @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var tableview: UITableView!
     @IBAction func sendOnclick(sender: UIButton) {
         if userdefault.objectForKey("userLog") as NSString == "" {
             var stroyborad = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
@@ -53,7 +54,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
       
     }
     
-    @IBOutlet var tableview: UITableView!
+  
     func sendBackType(carName: NSString, carID: NSString, carColor: NSString)
     {
         carname = carName
@@ -75,7 +76,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         mutableattributestr.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue-Bold", size: 25.0)!, range: NSMakeRange(0, 2))
         priceLabel.attributedText = mutableattributestr
         servicecollectioncellArray.replaceObjectAtIndex(tag, withObject: str)
-        let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 4)) as UITableViewCell?
+        let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as UITableViewCell?
         var collectionView = cell?.contentView.viewWithTag(101) as UICollectionView
         var collectCell = collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: tag, inSection: 0)) as UICollectionViewCell?
         collectCell?.layer.borderWidth = 1
@@ -86,7 +87,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        tableview.tableFooterView?.backgroundColor = tableview.backgroundColor
         //MARK: -下面弹出界面代码敲的
         var dic = serviceDictionary["additionalService"] as NSDictionary
         basePrice = serviceDictionary["baseprice"] as Int
@@ -140,7 +141,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     func finishOnclick() {
         var datestr = NSString()
         var timestr = NSString()
-        let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))
+        let cell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))
         var daterow = actionsheetView.pickerView.selectedRowInComponent(0)
         var selectstr = date.objectAtIndex(daterow) as NSString
         var timerow = actionsheetView.pickerView.selectedRowInComponent(1)
@@ -226,72 +227,67 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
  
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 6
+        return 3
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 1
+            return 4
         case 1:
             return 1
         case 2:
-            return 1
-        case 3:
-            return 1
-        case 4:
-            return 1
-        case 5:
             return 1
         default:
             return 0
         }
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier("typeCell", forIndexPath: indexPath) as UITableViewCell
-            var collectionView = cell.contentView.viewWithTag(101) as UICollectionView
-            
+            if indexPath.row == 0 {
+                cell = tableView.dequeueReusableCellWithIdentifier("typeCell", forIndexPath: indexPath) as UITableViewCell
+                var collectionView = cell.contentView.viewWithTag(101) as UICollectionView
+            }
+            if indexPath.row == 1 {
+                cell = tableView.dequeueReusableCellWithIdentifier("mapCell", forIndexPath: indexPath) as UITableViewCell
+                cell.textLabel.text = maplocation
+                cell.detailTextLabel?.text = maplocation1
+                cell.textLabel.font = UIFont.boldSystemFontOfSize(14)
+                cell.textLabel.textColor = UIColor.grayColor()
+            }
+            if indexPath.row == 2 {
+                cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as UITableViewCell
+                cell.textLabel.text = "请选择服务时间"
+                cell.imageView.image = UIImage(named: "time")
+                cell.textLabel.textColor = UIColor.grayColor()
+            }
+            if indexPath.row == 3 {
+                cell = tableView.dequeueReusableCellWithIdentifier("staffCell", forIndexPath: indexPath) as UITableViewCell
+                cell.textLabel.text = "请选择服务人员"
+                cell.textLabel.textColor = UIColor.grayColor()
+            }
         }
         if indexPath.section == 1 {
-             cell = tableView.dequeueReusableCellWithIdentifier("mapCell", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel.text = maplocation
-            cell.detailTextLabel?.text = maplocation1
-            cell.textLabel.font = UIFont.boldSystemFontOfSize(14)
-            cell.textLabel.textColor = UIColor.grayColor()
-            
+            cell = tableView.dequeueReusableCellWithIdentifier("serviceCell", forIndexPath: indexPath) as UITableViewCell
         }
         if indexPath.section == 2 {
-            cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel.text = "请选择服务时间"
-            cell.imageView.image = UIImage(named: "time")
-            cell.textLabel.textColor = UIColor.grayColor()
-        }
-        if indexPath.section == 3 {
-            cell = tableView.dequeueReusableCellWithIdentifier("staffCell", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel.text = "请选择服务人员"
-            cell.textLabel.textColor = UIColor.grayColor()
-
-        }
-        if indexPath.section == 4 {
-            cell = tableView.dequeueReusableCellWithIdentifier("serviceCell", forIndexPath: indexPath) as UITableViewCell
-          
-        }
-        if indexPath.section == 5 {
             cell = tableview.dequeueReusableCellWithIdentifier("youhuiCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel.text = "使用优惠券"
             cell.textLabel.textColor = UIColor.grayColor()
+            
         }
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.section == 2 {
+        if indexPath.section == 0 {
+            if indexPath.row == 2 {
             actionsheetshow()
             backgroundview.hidden = false
+            }
         }
-        if indexPath.section == 5 {
+        if indexPath.section == 2 {
             var stroyborad = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             var youhuiVC = storyboard?.instantiateViewControllerWithIdentifier("YouHuiTableViewController") as YouHuiTableViewController
             youhuiVC.useCount = 1
@@ -300,15 +296,17 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
+            if indexPath.row == 0 {
             return 120
+            }
         }
        
-        if indexPath.section == 4 {
+        if indexPath.section == 1 {
             var height = ((servicecollectioncellArray.count / 4) + 1) * 90
             return CGFloat(height)
 
         }
-        return 40
+        return 45
     }
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
            var headerview = UIView(frame: CGRectZero)
@@ -397,9 +395,9 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         
         return CGSizeMake(70, 70)
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
-        return UIEdgeInsetsMake(10, 10, 10, 10)
-    }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
+//        return UIEdgeInsetsMake(10, 10, 10, 10)
+//    }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         var tableviewcell = tableview.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
         if collectionView == tableviewcell?.contentView.viewWithTag(101) as UICollectionView {

@@ -10,11 +10,13 @@ import UIKit
 protocol carTypeDelegate {
     func sendBackType(carName:NSString, carID:NSString, carColor:NSString)
 }
-class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, sendcarDelegate {
+class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, sendcarDelegate, UITextFieldDelegate {
+    var backgroundview = UIView()
+    
     var typeName:NSString = "请选择车类型"
-   var selectedFlag = Int()
-   var collectionView = UICollectionView?()
-   var delegate = carTypeDelegate?()
+    var selectedFlag = Int()
+    var collectionView = UICollectionView?()
+    var delegate = carTypeDelegate?()
     var array = NSArray()
     @IBOutlet var tableView: UITableView!
     @IBAction func finishedOnclick(sender: UIBarButtonItem) {
@@ -37,6 +39,11 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundview = UIView(frame: self.view.bounds)
+        self.view.addSubview(backgroundview)
+        backgroundview.hidden = true
+        backgroundview.backgroundColor = UIColor(white: 0.5, alpha: 0.3)
+        backgroundview.bringSubviewToFront(self.view)
         array = ["京", "浙", "津", "皖", "沪", "闽", "渝", "赣", "港", "鲁", "澳", "豫", "蒙", "鄂", "新", "湘", "宁", "粤", "藏", "琼", "桂", "川", "冀", "贵", "晋",  "云", "辽", "陕", "吉", "甘", "黑", "青", "苏", "台"] as NSArray
         var layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0
@@ -48,6 +55,15 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
         collectionView!.registerClass(ProvinceCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "provinceCell")
         self.view.addSubview(collectionView!)
         // Do any additional setup after loading the view.
+    }
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        backgroundview.hidden = true
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            
+            self.collectionView!.frame = CGRectMake(0,  self.view.frame.height , self.view.frame.width, self.view.frame.height
+                / 3)
+        })
+
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -71,13 +87,19 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         if indexPath.section == 1 {
             if indexPath.row == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier("caridCell") as UITableViewCell
-            cell.textLabel.text = "车牌号："
-         
+                
+                cell = tableView.dequeueReusableCellWithIdentifier("caridCell") as UITableViewCell
+                cell.textLabel.text = "车牌号："
+                var carIDTextField = cell.contentView.viewWithTag(102) as UITextField
+                carIDTextField.delegate = self
+                carIDTextField.keyboardType = UIKeyboardType.ASCIICapable
+                
             }
             if indexPath.row == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier("carcolorCell") as UITableViewCell
                 cell.textLabel.text = "车的颜色："
+                var carColorTextField = cell.contentView.viewWithTag(102) as UITextField
+                carColorTextField.delegate = self
             }
         }
         return cell
@@ -90,6 +112,7 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
             selectedFlag = 1
                 array = ["京", "浙", "津", "皖", "沪", "闽", "渝", "赣", "港", "鲁", "澳", "豫", "蒙", "鄂", "新", "湘", "宁", "粤", "藏", "琼", "桂", "川", "冀", "贵", "晋",  "云", "辽", "陕", "吉", "甘", "黑", "青", "苏", "台"] as NSArray
             collectionView?.reloadData()
+            backgroundview.hidden = false
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.collectionView!.frame = CGRectMake(0, 2 * self.view.frame.height / 3, self.view.frame.width, self.view.frame.height
                  / 3)
@@ -99,6 +122,7 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
                 selectedFlag = 2
                 array = ["黑", "白", "银", "红", "蓝", "黄", "钛灰"] as NSArray
                 collectionView?.reloadData()
+                backgroundview.hidden = false
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                     self.collectionView!.frame = CGRectMake(0, 2 * self.view.frame.height / 3, self.view.frame.width, self.view.frame.height
                         / 3)
@@ -140,12 +164,17 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
         if selectedFlag == 2 {
          textfield.text = array.objectAtIndex(indexPath.item) as NSString
         }
+        backgroundview.hidden = true
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             
             self.collectionView!.frame = CGRectMake(0,  self.view.frame.height , self.view.frame.width, self.view.frame.height
                 / 3)
         })
         
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         (segue.destinationViewController as SelectedTypeViewController).delegate = self

@@ -19,55 +19,62 @@ class BecomeMemberTableViewController: UITableViewController {
     var productlist = NSMutableArray()
     var selectFlag = Int()
     @IBAction func nextstepOnclick(sender: UIButton) {
-        if selectFlag == 0 {
-            JSenPayEngine.sharePayEngine().wxPayAction()
-        }
-        if selectFlag == 1{
-            var pro = productlist.objectAtIndex(0) as Product
-            var partner = "2088611075948671"
-            var seller = "support@xxx.com"
-            var privatekey = "MIICeQIBADANBgkqhkiG9w0BAQEFAASCAmMwggJfAgEAAoGBANJR7UFPe0rExR9/27CDaQqer5wHESBtE80hr10CoqBd8PAvdXqjxTc9/BGFk6lMggTQKNMGmI5Vvr8ZuJZq3tpR8S70ri6381iL0egPAlAwmEcjSRUswEV7wwL3edHvhAm443DKk2l00hkhfUaEiJGTs9cXqMQ+ykHHfIVUFdqdAgMBAAECgYEAz2SsUVfAG0WXoG0jRJcA0NEUGAa787675O7PjycXGI4qFZ6m+O1ffw7nbpvKtQpVt8tQRm9dphWVh7okVGdEIje5+Qd9lOdWd5MvN/cwOlD2BPy8EzE4S3QhsBxgqq8dqDh7R5p/2LwcuaaPlVmIMITZvEYMFohRpMPamXGIwT0CQQD75MLzCjberDnt2UkUo8sWHYwaAYmIXqB0EIRKFvswhLvlrRw9kymJcMyI8UDBXgxJmUl5sZ01rwp8e2/SsYVTAkEA1b+qGiaUPulsRq0uXjqwFkBZVNVZVhF5DsqZNb1JjcTHOBC5pPkbQ/wl4HnA1sfH3Pjx5QeuRfSTtWBA4JoSTwJBAJKSt9nijLEfuImtkTfgY5FX2ilb0aK3pVhEMCZInxvJcOihxbgSxO3D5FCfSZX7Wt0MxFN6xcbyNwDeduA8Ch8CQQC70d3zeqDbIxssg3JyBFnEQ6j7XTlR 4qqgL7Auw3RFaXqwrimiZ+3ocEEMHZAwan4ZknpjiLs+5yl/v+NiOKALAkEA8hLs UMy+jrkm9yoOOzufpgkOvts/BBO4GD7BQynv1lMK9dvBO9jYV0ACBca965gR6c7vi5cJ5ROn6X7DXcMngg=="
-            if partner.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 || seller.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 {
-                var alert = UIAlertView(title: "提示", message: "缺少id", delegate: nil, cancelButtonTitle: "确定")
-                alert.show()
-            }else {
-                var order = Order()
-                order.partner = partner
-                order.seller = seller
-                order.tradeNO = generateTradeNO()
-                order.productName = pro.subject
-                order.productDescription = pro.body
-                order.amount = pro.price.description
-                order.notifyURL = "www.sxsx.com"
-                order.service = "mobile.security.pay"
-                order.paymentType = "1"
-                order.inputCharset = "utf-8"
-                order.itBPay = "30m"
-                order.showUrl = "m.alipay.com"
-                
-                var appScheme = "alisdkdemo"
-                var orderSpec = order.description
-                //        print(orderSpec)
-                var signer = CreateRSADataSigner(privatekey) as DataSigner
-                var signedstr = signer.signString(orderSpec)
-                var orderstr = nil as NSString?
-                //        if signedstr != nil {
-                orderstr = NSString(format: "%@&sign=\"%@\"&sign_type=\"%@\"",orderSpec, "","RSA")
-                AlipaySDK.defaultService().payOrder(orderstr, fromScheme: appScheme, callback: { (result) -> Void in
-                    print(result as NSDictionary)
-                    //                9000代表支付成功
-                    //                8000正在处理
-                    //                4000失败
-                    //                6001用户中途取消
-                    //                6002网络出错
-                })
-                //            }
+        var userdefault = NSUserDefaults.standardUserDefaults()
+        if userdefault.objectForKey("userLog") as NSString == "" {
+            var stroyborad = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            var logVC:LogViewController = storyboard?.instantiateViewControllerWithIdentifier("LogViewController") as LogViewController
+            self.navigationController?.pushViewController(logVC, animated: true)
+        }else {
+            if selectFlag == 0 {
+                JSenPayEngine.sharePayEngine().wxPayAction()
             }
-            
-
-        }
-        if selectFlag == 2 {
-            print("上门办理")
+            if selectFlag == 1{
+                var pro = productlist.objectAtIndex(0) as Product
+                var partner = "2088611075948671"
+                var seller = "support@xxx.com"
+                var privatekey = "MIICeQIBADANBgkqhkiG9w0BAQEFAASCAmMwggJfAgEAAoGBANJR7UFPe0rExR9/27CDaQqer5wHESBtE80hr10CoqBd8PAvdXqjxTc9/BGFk6lMggTQKNMGmI5Vvr8ZuJZq3tpR8S70ri6381iL0egPAlAwmEcjSRUswEV7wwL3edHvhAm443DKk2l00hkhfUaEiJGTs9cXqMQ+ykHHfIVUFdqdAgMBAAECgYEAz2SsUVfAG0WXoG0jRJcA0NEUGAa787675O7PjycXGI4qFZ6m+O1ffw7nbpvKtQpVt8tQRm9dphWVh7okVGdEIje5+Qd9lOdWd5MvN/cwOlD2BPy8EzE4S3QhsBxgqq8dqDh7R5p/2LwcuaaPlVmIMITZvEYMFohRpMPamXGIwT0CQQD75MLzCjberDnt2UkUo8sWHYwaAYmIXqB0EIRKFvswhLvlrRw9kymJcMyI8UDBXgxJmUl5sZ01rwp8e2/SsYVTAkEA1b+qGiaUPulsRq0uXjqwFkBZVNVZVhF5DsqZNb1JjcTHOBC5pPkbQ/wl4HnA1sfH3Pjx5QeuRfSTtWBA4JoSTwJBAJKSt9nijLEfuImtkTfgY5FX2ilb0aK3pVhEMCZInxvJcOihxbgSxO3D5FCfSZX7Wt0MxFN6xcbyNwDeduA8Ch8CQQC70d3zeqDbIxssg3JyBFnEQ6j7XTlR 4qqgL7Auw3RFaXqwrimiZ+3ocEEMHZAwan4ZknpjiLs+5yl/v+NiOKALAkEA8hLs UMy+jrkm9yoOOzufpgkOvts/BBO4GD7BQynv1lMK9dvBO9jYV0ACBca965gR6c7vi5cJ5ROn6X7DXcMngg=="
+                if partner.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 || seller.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 {
+                    var alert = UIAlertView(title: "提示", message: "缺少id", delegate: nil, cancelButtonTitle: "确定")
+                    alert.show()
+                }else {
+                    var order = Order()
+                    order.partner = partner
+                    order.seller = seller
+                    order.tradeNO = generateTradeNO()
+                    order.productName = pro.subject
+                    order.productDescription = pro.body
+                    order.amount = pro.price.description
+                    order.notifyURL = "www.sxsx.com"
+                    order.service = "mobile.security.pay"
+                    order.paymentType = "1"
+                    order.inputCharset = "utf-8"
+                    order.itBPay = "30m"
+                    order.showUrl = "m.alipay.com"
+                    
+                    var appScheme = "alisdkdemo"
+                    var orderSpec = order.description
+                    //        print(orderSpec)
+                    var signer = CreateRSADataSigner(privatekey) as DataSigner
+                    var signedstr = signer.signString(orderSpec)
+                    var orderstr = nil as NSString?
+                    //        if signedstr != nil {
+                    orderstr = NSString(format: "%@&sign=\"%@\"&sign_type=\"%@\"",orderSpec, "","RSA")
+                    AlipaySDK.defaultService().payOrder(orderstr, fromScheme: appScheme, callback: { (result) -> Void in
+                        print(result as NSDictionary)
+                        //                9000代表支付成功
+                        //                8000正在处理
+                        //                4000失败
+                        //                6001用户中途取消
+                        //                6002网络出错
+                    })
+                    //            }
+                }
+                
+                
+            }
+            if selectFlag == 2 {
+                print("上门办理")
+            }
         }
     }
     func generateTradeNO() -> NSString {

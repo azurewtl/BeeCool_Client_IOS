@@ -57,6 +57,7 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
         var array:NSArray = (segue.destinationViewController as UITabBarController).viewControllers! as NSArray
         var vc = array.objectAtIndex(3) as UIViewController
         vc.tabBarItem.badgeValue = "1"
+        
     }
     /*
     // MARK: - Navigation
