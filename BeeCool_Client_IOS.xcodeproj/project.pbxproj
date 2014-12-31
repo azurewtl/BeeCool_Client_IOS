@@ -149,6 +149,9 @@
 		18C9311F1A418D2D0068F698 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C9311E1A418D2D0068F698 /* Images.xcassets */; };
 		18C931211A42B5210068F698 /* TimeActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C931201A42B5210068F698 /* TimeActionSheet.xib */; };
 		18C931231A42B5500068F698 /* TimeActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C931221A42B5500068F698 /* TimeActionSheet.swift */; };
+		18CD3BA51A5262F7002D5821 /* NVG.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BA41A5262F7002D5821 /* NVG.png */; };
+		18CD3BA71A526B8E002D5821 /* NVG1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BA61A526B8E002D5821 /* NVG1.png */; };
+		18CD3BA91A53C1A2002D5821 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BA81A53C1A2002D5821 /* Images-2.xcassets */; };
 		18CFA6331A3EE74E00DC96F4 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFA6321A3EE74E00DC96F4 /* LogViewController.swift */; };
 		18CFA6351A3EEDD700DC96F4 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CFA6341A3EEDD700DC96F4 /* SMS_SDK.framework */; };
 		18CFA6371A3EEE2300DC96F4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CFA6361A3EEE2300DC96F4 /* MessageUI.framework */; };
@@ -451,6 +454,9 @@
 		18C9311E1A418D2D0068F698 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		18C931201A42B5210068F698 /* TimeActionSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeActionSheet.xib; sourceTree = "<group>"; };
 		18C931221A42B5500068F698 /* TimeActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeActionSheet.swift; sourceTree = "<group>"; };
+		18CD3BA41A5262F7002D5821 /* NVG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NVG.png; sourceTree = "<group>"; };
+		18CD3BA61A526B8E002D5821 /* NVG1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NVG1.png; sourceTree = "<group>"; };
+		18CD3BA81A53C1A2002D5821 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		18CFA6321A3EE74E00DC96F4 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		18CFA6341A3EEDD700DC96F4 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
 		18CFA6361A3EEE2300DC96F4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -830,6 +836,8 @@
 				18CFA64C1A403ACA00DC96F4 /* 1.jpg */,
 				18CFA64D1A403ACA00DC96F4 /* 2.jpg */,
 				18CFA64E1A403ACA00DC96F4 /* 3.jpg */,
+				18CD3BA61A526B8E002D5821 /* NVG1.png */,
+				18CD3BA41A5262F7002D5821 /* NVG.png */,
 				18CFA6471A40150C00DC96F4 /* userprotocol.docx */,
 				180396591A39507C0001473B /* BridgeHeader.h */,
 				18CFA6491A40354700DC96F4 /* FirstViewController.swift */,
@@ -856,6 +864,7 @@
 				185ECEA71A39467000B568B0 /* Main.storyboard */,
 				18C9311E1A418D2D0068F698 /* Images.xcassets */,
 				185ECEAC1A39467000B568B0 /* LaunchScreen.xib */,
+				18CD3BA81A53C1A2002D5821 /* Images-2.xcassets */,
 				185ECE9F1A39467000B568B0 /* Supporting Files */,
 			);
 			path = BeeCool_Client_IOS;
@@ -1172,16 +1181,19 @@
 				18C931181A41792E0068F698 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				18CFA6511A403ACA00DC96F4 /* 2.jpg in Resources */,
 				18CFA64F1A403ACA00DC96F4 /* 0.jpg in Resources */,
+				18CD3BA51A5262F7002D5821 /* NVG.png in Resources */,
 				18C930FD1A41792E0068F698 /* ShareSDKLocalizable.strings in Resources */,
 				18434B651A491C9800F6CBAD /* AlipaySDK.bundle in Resources */,
 				18C8B6B41A4BA75300DF54C0 /* DetailCarView.xib in Resources */,
 				18CFA6521A403ACA00DC96F4 /* 3.jpg in Resources */,
 				185ECEAE1A39467000B568B0 /* LaunchScreen.xib in Resources */,
 				18C8B6AC1A4AC4C400DF54C0 /* car.json in Resources */,
+				18CD3BA91A53C1A2002D5821 /* Images-2.xcassets in Resources */,
 				18C9311D1A417D960068F698 /* home.jpg in Resources */,
 				18C931071A41792E0068F698 /* RennSDK.bundle in Resources */,
 				18CFA6501A403ACA00DC96F4 /* 1.jpg in Resources */,
 				18C931041A41792E0068F698 /* PinterestSDKResources.bundle in Resources */,
+				18CD3BA71A526B8E002D5821 /* NVG1.png in Resources */,
 				18C930FE1A41792E0068F698 /* Resource.bundle in Resources */,
 				18C931011A41792E0068F698 /* GooglePlus.bundle in Resources */,
 			);

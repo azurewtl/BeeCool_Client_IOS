@@ -20,6 +20,7 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet var serverCollectionview: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+       self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "NVG1"), forBarMetrics: UIBarMetrics.Default)
         var path1 = NSBundle.mainBundle().pathForResource("service", ofType:"json")
         var data1 = NSData(contentsOfFile: path1!)
         var arr = NSJSONSerialization.JSONObjectWithData(data1!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
@@ -58,9 +59,8 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("serviceCell", forIndexPath: indexPath) as UICollectionViewCell
-        cell.layer.borderWidth = 1;
-        var label = cell.contentView.viewWithTag(101) as UILabel
-        label.text = (array.objectAtIndex(indexPath.row) as NSDictionary)["iconstr"] as NSString
+        var imageview = cell.contentView.viewWithTag(101) as UIImageView
+        imageview.image = UIImage(named: (array.objectAtIndex(indexPath.row) as NSDictionary)["infoImage"] as NSString)
         cell.layer.borderColor = UIColor.grayColor().CGColor
         return cell
     }
