@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class DetailOrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     class Product: NSObject {
         private
@@ -16,7 +15,7 @@ class DetailOrderViewController: UIViewController, UITableViewDelegate, UITableV
         var body = NSString()
         var orderID = NSString()
     }
-    var  selectedFlag = 2
+    var  selectedFlag = 3
     var productlist = NSMutableArray()
     @IBOutlet var nextButton: UIButton!
     
@@ -68,6 +67,9 @@ class DetailOrderViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
         if selectedFlag == 2 {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        if selectedFlag == 3 {
             var alert = UIAlertView(title: "提示", message: "请选择支付方式", delegate: nil, cancelButtonTitle: "确定")
             alert.show()
             
@@ -119,7 +121,7 @@ class DetailOrderViewController: UIViewController, UITableViewDelegate, UITableV
         if section == 0 {
         return 6
         }
-        return 2
+        return 3
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("detailorderCell") as UITableViewCell
@@ -154,6 +156,8 @@ class DetailOrderViewController: UIViewController, UITableViewDelegate, UITableV
             cell.textLabel.text = "微信支付"
             case 1:
             cell.textLabel.text = "支付宝支付"
+            case 2:
+            cell.textLabel.text = "余额支付"
             default:
             cell.textLabel.text = ""
             }
@@ -165,21 +169,29 @@ class DetailOrderViewController: UIViewController, UITableViewDelegate, UITableV
         if indexPath.section == 1 {
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as UITableViewCell?
             let cell1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1)) as UITableViewCell?
-            
+            let cell2 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 1)) as UITableViewCell?
             if indexPath.row == 0 {
                 selectedFlag = 0
                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
                cell1?.accessoryType = UITableViewCellAccessoryType.None
+               cell2?.accessoryType = UITableViewCellAccessoryType.None
             }
             if indexPath.row == 1 {
                 selectedFlag = 1
                 cell?.accessoryType = UITableViewCellAccessoryType.None
                 cell1?.accessoryType = UITableViewCellAccessoryType.Checkmark
+                cell2?.accessoryType = UITableViewCellAccessoryType.None
+            }
+            if indexPath.row == 2 {
+                selectedFlag = 2
+                cell?.accessoryType = UITableViewCellAccessoryType.None
+                cell1?.accessoryType = UITableViewCellAccessoryType.None
+                cell2?.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
         }
     }
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 30
     }
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {

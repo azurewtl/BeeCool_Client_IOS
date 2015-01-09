@@ -20,7 +20,7 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var enterOnclick: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        NSThread.sleepForTimeInterval(1)
         enterOnclick.layer.masksToBounds = true
         enterOnclick.layer.cornerRadius = 5
         enterOnclick.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)

@@ -73,10 +73,12 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier("meCell", forIndexPath: indexPath) as UITableViewCell
-                cell.textLabel.text = "服务地址"
+                cell.textLabel.text = "账户余额"
+                cell.imageView.image = UIImage(named: "money")
             }
             if indexPath.row == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier("youhuiCell", forIndexPath: indexPath) as UITableViewCell
+                cell.imageView.image = UIImage(named:"you")
             var str = NSString(format: "已有%d张", 1)
             var attribute = NSMutableAttributedString(string: str)
             attribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSMakeRange(2, 1))
@@ -87,28 +89,41 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
             if indexPath.row == 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier("meCell", forIndexPath: indexPath) as UITableViewCell
                 cell.textLabel.text = "告诉朋友"
+                cell.imageView.image = UIImage(named: "share")
             }
             if indexPath.row == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier("meCell", forIndexPath: indexPath) as UITableViewCell
                 cell.textLabel.text = "给好评"
+                cell.imageView.image = UIImage(named: "comment")
             }
             if indexPath.row == 2 {
                 cell = tableView.dequeueReusableCellWithIdentifier("userprotoclCell", forIndexPath: indexPath) as UITableViewCell
                 cell.textLabel.text = "用户协议"
+                cell.imageView.image = UIImage(named: "protocol")
             }
             if indexPath.row == 3 {
                 cell = tableView.dequeueReusableCellWithIdentifier("meCell", forIndexPath: indexPath) as UITableViewCell
                 cell.textLabel.text = "版本升级"
+                cell.imageView.image = UIImage(named: "update")
             }
         }
         if indexPath.section == 2 {
             cell = tableView.dequeueReusableCellWithIdentifier("meCell", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel.text = "退出登录"
+            cell.imageView.image = UIImage(named: "shezhi")
         }
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                var alert = UIAlertView(title: "提示", message: "亲, 您还剩1000元", delegate: nil, cancelButtonTitle: "关闭")
+                alert.show()
+            }
+        }
+        
+        
         var imagepath = NSBundle.mainBundle().pathForResource("home", ofType: "jpg")
         if indexPath.section == 1{
             if indexPath.row == 0 {

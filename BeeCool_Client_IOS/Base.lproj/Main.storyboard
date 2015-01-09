@@ -95,7 +95,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="uii-Ul-0sk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="uii-Ul-0sk">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="fpH-rX-x8n">
@@ -104,11 +104,10 @@
                                     <subviews>
                                         <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozr-lE-WLc">
                                             <rect key="frame" x="77" y="57" width="166" height="32"/>
-                                            <color key="backgroundColor" red="0.98839962121212122" green="0.85872912596393558" blue="0.63600339064057509" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="hbX-XE-OgX"/>
                                             </constraints>
-                                            <state key="normal" title="提交订单">
+                                            <state key="normal" title="提交订单" backgroundImage="button.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -191,7 +190,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="zw9-c6-cfh">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add1" translatesAutoresizingMaskIntoConstraints="NO" id="zw9-c6-cfh">
                                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                     </imageView>
                                                                 </subviews>
@@ -258,7 +257,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7ri-0y-sGU" id="gOF-je-bvK">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IJP-Z2-DOt">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IJP-Z2-DOt">
                                                     <rect key="frame" x="0.0" y="8" width="320" height="43"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="rqW-c1-amX">
@@ -838,8 +837,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1c-hV-hpH">
                                             <rect key="frame" x="44" y="21" width="234" height="30"/>
-                                            <color key="backgroundColor" red="1" green="0.77606382392250306" blue="0.48489117978746332" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="下一步">
+                                            <state key="normal" title="下一步" backgroundImage="button.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -918,11 +916,10 @@
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNd-KY-Bql">
                                 <rect key="frame" x="40" y="450" width="240" height="38"/>
-                                <color key="backgroundColor" red="0.013674636684920543" green="0.68831143602945388" blue="0.87391493055555558" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="H1u-Bu-7cd"/>
                                 </constraints>
-                                <state key="normal" title="我已迫不及待">
+                                <state key="normal" title="我已迫不及待" backgroundImage="button.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1263,7 +1260,7 @@
         <scene sceneID="9He-2V-Mh2">
             <objects>
                 <tableViewController id="X5a-a7-Ryb" customClass="BecomeMemberTableViewController" customModule="BeeCool_Client_IOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fnp-YC-48I">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fnp-YC-48I">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1273,8 +1270,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rJ-vd-g8V">
                                     <rect key="frame" x="68" y="70" width="187" height="44"/>
-                                    <color key="backgroundColor" red="1" green="0.80920311711998116" blue="0.47772877816267445" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal" title="下一步">
+                                    <state key="normal" title="下一步" backgroundImage="button.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -1591,7 +1587,8 @@
     </scenes>
     <resources>
         <image name="0.jpg" width="658" height="987"/>
-        <image name="add" width="256" height="256"/>
+        <image name="add1" width="256" height="256"/>
+        <image name="button.png" width="120" height="33"/>
         <image name="guide" width="96" height="96"/>
         <image name="iconfont-Home" width="32" height="32"/>
         <image name="iconfont-dingdan" width="32" height="32"/>

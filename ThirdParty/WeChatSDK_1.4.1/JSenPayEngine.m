@@ -184,7 +184,7 @@
     [params setObject:request.partnerId forKey:@"partnerid"];
     [params setObject:request.prepayId forKey:@"prepayid"];
     [params setObject:self.timeStamp forKey:@"timestamp"];
-    request.sign = [self genSign:params];
+     request.sign = [self genSign:params];
     
     
     

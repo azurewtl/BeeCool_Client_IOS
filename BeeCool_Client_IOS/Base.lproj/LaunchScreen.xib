@@ -24,22 +24,29 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wEy-Ob-3Cf">
-                    <rect key="frame" x="120" y="140" width="240" height="128"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="闪图" translatesAutoresizingMaskIntoConstraints="NO" id="wEy-Ob-3Cf">
+                    <rect key="frame" x="-21" y="0.0" width="501" height="480"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="1/3" constant="1" id="5cJ-9S-tgC"/>
+                <constraint firstItem="wEy-Ob-3Cf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-21" id="6qj-12-LtZ"/>
+                <constraint firstItem="wEy-Ob-3Cf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HwC-5z-ac5"/>
                 <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="Koa-jz-hwk"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fvb-Df-36g"/>
+                <constraint firstAttribute="bottom" secondItem="wEy-Ob-3Cf" secondAttribute="bottom" id="ng4-up-c6q"/>
+                <constraint firstAttribute="trailing" secondItem="wEy-Ob-3Cf" secondAttribute="trailing" id="v6R-gm-01L"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
+    <resources>
+        <image name="闪图" width="1080" height="1920"/>
+    </resources>
 </document>

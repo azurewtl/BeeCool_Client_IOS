@@ -13,27 +13,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     //    微信支付参数：
     //    注意 ：参数需要你自己提供
     
-    var kWXAppID = "wx71ee9539ea8a79ab"
-    var kWXAppSecret  = "9d5b7c975a5ac253d622bb7fdb9a714d"
+    var kWXAppID = "wx51b75b45569c1381"
+    var kWXAppSecret  = "0996a915d7fdad46ffefca2f9033b210"
     
     /**
     * 微信开放平台和商户约定的支付密钥
     *
     * 注意：不能hardcode在客户端，建议genSign这个过程由服务器端完成
     */
-    var kWXPartnerKey  = "776d18cee51fe17745d6a30dba083bcd"
+    var kWXPartnerKey  = "T6PFFfBxinc3r1xdI8mf7aKMtwwNPLEo"
     
     /**
     * 微信开放平台和商户约定的支付密钥
     *
     * 注意：不能hardcode在客户端，建议genSign这个过程由服务器端完成
     */
-    var kWXAppKey = "QaBb4Zy1lrSQTEZ5zGufAC9QCtvIM1YKVPbG7mumaqj0sV7OHUfiGNeM8mX5923mZfeyClAuXgi7Ly4vDt9JvnTTXxzTyVq5eK4Ae0hM71dTzjS8fz934NaYeOyGEjjh"
+    var kWXAppKey = "ckiSt15xvafMOW1OtN8tQptbldF0pQvs"
     
     /**
     *  微信公众平台商户模块生成的ID
     */
-    var kWXPartnerId = "1221631701"
+    var kWXPartnerId = "1224831801"
+    
+    //sdk
     var appkey = "4682729a0788"
     var appsecret = "14e6b542fb4780ec57c1ca6544c6a303"
     var window: UIWindow?
@@ -63,8 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 for place in arr {
                     var test:NSDictionary = ((place as CLPlacemark).addressDictionary) as NSDictionary
                     var str = (test["FormattedAddressLines"] as NSArray).firstObject as NSString
-                    self.detailLocation = str
-                    print(str)
+                    self.detailLocation = str.substringFromIndex(2) as NSString
+                    print(self.detailLocation)
                 }
                 
             }else {

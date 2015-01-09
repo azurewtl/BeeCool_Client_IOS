@@ -116,9 +116,9 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
                 for place in arr {
                     var test:NSDictionary = ((place as CLPlacemark).addressDictionary) as NSDictionary
                     var str = (test["FormattedAddressLines"] as NSArray).firstObject as NSString
-                   self.cellString = str
+                   self.cellString = str.substringFromIndex(2)
                    self.tableView.reloadData()
-                    print(str)
+                    print(self.cellString)
                 }
             }else {
                 print("定位失败")
@@ -170,7 +170,7 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
                 for place in arr {
                     var test:NSDictionary = ((place as CLPlacemark).addressDictionary) as NSDictionary
                     var str = (test["FormattedAddressLines"] as NSArray).firstObject as NSString
-                    self.cellString = str
+                    self.cellString = str.substringFromIndex(2)
                     print(str)
                     var cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as UITableViewCell?
                     var textview = cell?.contentView.viewWithTag(101) as UITextView

@@ -152,6 +152,15 @@
 		18CD3BA51A5262F7002D5821 /* NVG.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BA41A5262F7002D5821 /* NVG.png */; };
 		18CD3BA71A526B8E002D5821 /* NVG1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BA61A526B8E002D5821 /* NVG1.png */; };
 		18CD3BA91A53C1A2002D5821 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BA81A53C1A2002D5821 /* Images-2.xcassets */; };
+		18CD3BAD1A53C2C2002D5821 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BAC1A53C2C2002D5821 /* launch.png */; };
+		18CD3BAF1A53C897002D5821 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BAE1A53C897002D5821 /* button.png */; };
+		18CD3BB11A53CF88002D5821 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BB01A53CF88002D5821 /* share.png */; };
+		18CD3BB31A53D03B002D5821 /* you.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BB21A53D03B002D5821 /* you.png */; };
+		18CD3BB51A53D040002D5821 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BB41A53D040002D5821 /* comment.png */; };
+		18CD3BB71A53D045002D5821 /* shezhi.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BB61A53D045002D5821 /* shezhi.png */; };
+		18CD3BB91A53D266002D5821 /* update.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BB81A53D266002D5821 /* update.png */; };
+		18CD3BBB1A53D2DF002D5821 /* protocol.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BBA1A53D2DF002D5821 /* protocol.png */; };
+		18CD3BBD1A53D463002D5821 /* money.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CD3BBC1A53D463002D5821 /* money.png */; };
 		18CFA6331A3EE74E00DC96F4 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFA6321A3EE74E00DC96F4 /* LogViewController.swift */; };
 		18CFA6351A3EEDD700DC96F4 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CFA6341A3EEDD700DC96F4 /* SMS_SDK.framework */; };
 		18CFA6371A3EEE2300DC96F4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CFA6361A3EEE2300DC96F4 /* MessageUI.framework */; };
@@ -457,6 +466,15 @@
 		18CD3BA41A5262F7002D5821 /* NVG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NVG.png; sourceTree = "<group>"; };
 		18CD3BA61A526B8E002D5821 /* NVG1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NVG1.png; sourceTree = "<group>"; };
 		18CD3BA81A53C1A2002D5821 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		18CD3BAC1A53C2C2002D5821 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
+		18CD3BAE1A53C897002D5821 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		18CD3BB01A53CF88002D5821 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		18CD3BB21A53D03B002D5821 /* you.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = you.png; sourceTree = "<group>"; };
+		18CD3BB41A53D040002D5821 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
+		18CD3BB61A53D045002D5821 /* shezhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shezhi.png; sourceTree = "<group>"; };
+		18CD3BB81A53D266002D5821 /* update.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = update.png; sourceTree = "<group>"; };
+		18CD3BBA1A53D2DF002D5821 /* protocol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = protocol.png; sourceTree = "<group>"; };
+		18CD3BBC1A53D463002D5821 /* money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money.png; sourceTree = "<group>"; };
 		18CFA6321A3EE74E00DC96F4 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		18CFA6341A3EEDD700DC96F4 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
 		18CFA6361A3EEE2300DC96F4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -831,6 +849,15 @@
 		185ECE9E1A39467000B568B0 /* BeeCool_Client_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				18CD3BBC1A53D463002D5821 /* money.png */,
+				18CD3BBA1A53D2DF002D5821 /* protocol.png */,
+				18CD3BB81A53D266002D5821 /* update.png */,
+				18CD3BB61A53D045002D5821 /* shezhi.png */,
+				18CD3BB41A53D040002D5821 /* comment.png */,
+				18CD3BB21A53D03B002D5821 /* you.png */,
+				18CD3BB01A53CF88002D5821 /* share.png */,
+				18CD3BAE1A53C897002D5821 /* button.png */,
+				18CD3BAC1A53C2C2002D5821 /* launch.png */,
 				18C9311C1A417D960068F698 /* home.jpg */,
 				18CFA64B1A403ACA00DC96F4 /* 0.jpg */,
 				18CFA64C1A403ACA00DC96F4 /* 1.jpg */,
@@ -1167,6 +1194,7 @@
 			files = (
 				18C931061A41792E0068F698 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				183B37111A44188500B16193 /* service.json in Resources */,
+				18CD3BBB1A53D2DF002D5821 /* protocol.png in Resources */,
 				18C930E21A41792D0068F698 /* InstapaperResource.bundle in Resources */,
 				18C9310F1A41792E0068F698 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				18CFA6481A40150C00DC96F4 /* userprotocol.docx in Resources */,
@@ -1178,21 +1206,29 @@
 				18C931211A42B5210068F698 /* TimeActionSheet.xib in Resources */,
 				18C9311F1A418D2D0068F698 /* Images.xcassets in Resources */,
 				18C9310A1A41792E0068F698 /* WeiboSDK.bundle in Resources */,
+				18CD3BB51A53D040002D5821 /* comment.png in Resources */,
 				18C931181A41792E0068F698 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				18CFA6511A403ACA00DC96F4 /* 2.jpg in Resources */,
 				18CFA64F1A403ACA00DC96F4 /* 0.jpg in Resources */,
 				18CD3BA51A5262F7002D5821 /* NVG.png in Resources */,
+				18CD3BB91A53D266002D5821 /* update.png in Resources */,
 				18C930FD1A41792E0068F698 /* ShareSDKLocalizable.strings in Resources */,
 				18434B651A491C9800F6CBAD /* AlipaySDK.bundle in Resources */,
 				18C8B6B41A4BA75300DF54C0 /* DetailCarView.xib in Resources */,
 				18CFA6521A403ACA00DC96F4 /* 3.jpg in Resources */,
 				185ECEAE1A39467000B568B0 /* LaunchScreen.xib in Resources */,
+				18CD3BAF1A53C897002D5821 /* button.png in Resources */,
 				18C8B6AC1A4AC4C400DF54C0 /* car.json in Resources */,
 				18CD3BA91A53C1A2002D5821 /* Images-2.xcassets in Resources */,
+				18CD3BAD1A53C2C2002D5821 /* launch.png in Resources */,
 				18C9311D1A417D960068F698 /* home.jpg in Resources */,
+				18CD3BB11A53CF88002D5821 /* share.png in Resources */,
+				18CD3BB31A53D03B002D5821 /* you.png in Resources */,
 				18C931071A41792E0068F698 /* RennSDK.bundle in Resources */,
 				18CFA6501A403ACA00DC96F4 /* 1.jpg in Resources */,
+				18CD3BB71A53D045002D5821 /* shezhi.png in Resources */,
 				18C931041A41792E0068F698 /* PinterestSDKResources.bundle in Resources */,
+				18CD3BBD1A53D463002D5821 /* money.png in Resources */,
 				18CD3BA71A526B8E002D5821 /* NVG1.png in Resources */,
 				18C930FE1A41792E0068F698 /* Resource.bundle in Resources */,
 				18C931011A41792E0068F698 /* GooglePlus.bundle in Resources */,

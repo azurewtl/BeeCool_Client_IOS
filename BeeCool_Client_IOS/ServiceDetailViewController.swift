@@ -253,6 +253,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
                 cell = tableView.dequeueReusableCellWithIdentifier("mapCell", forIndexPath: indexPath) as UITableViewCell
                 cell.textLabel.text = maplocation
                 cell.detailTextLabel?.text = maplocation1
+                 cell.imageView.image = UIImage(named: "iconfont-dizhi")
                 cell.textLabel.font = UIFont.boldSystemFontOfSize(14)
                 cell.textLabel.textColor = UIColor.grayColor()
             }
@@ -265,6 +266,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
             if indexPath.row == 3 {
                 cell = tableView.dequeueReusableCellWithIdentifier("staffCell", forIndexPath: indexPath) as UITableViewCell
                 cell.textLabel.text = "请选择服务人员"
+                 cell.imageView.image = UIImage(named: "iconfont-tianjiarenyuan")
                 cell.textLabel.textColor = UIColor.grayColor()
             }
         }

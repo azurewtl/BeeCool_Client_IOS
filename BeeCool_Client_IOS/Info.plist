@@ -40,7 +40,7 @@
 			<string>weixinpay</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx71ee9539ea8a79aa</string>
+				<string>wx51b75b45569c1381</string>
 			</array>
 		</dict>
 		<dict>
@@ -49,6 +49,14 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>alisdkdemo</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx4868b35061f87885</string>
 			</array>
 		</dict>
 	</array>
