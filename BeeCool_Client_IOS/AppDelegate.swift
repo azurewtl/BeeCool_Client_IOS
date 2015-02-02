@@ -44,8 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var longtitude = CLLocationDegrees()
     var detailLocation =  NSString()
     func updateLocation(locationManager: CLLocationManager) {
+        locationManager.distanceFilter = 1
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100.0
+     
         locationManager.delegate = self
         if UIDevice.currentDevice().systemVersion >= "8.0" {
             locationManager.requestWhenInUseAuthorization()

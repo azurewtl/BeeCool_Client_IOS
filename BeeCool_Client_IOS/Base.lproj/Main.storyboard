@@ -919,7 +919,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="H1u-Bu-7cd"/>
                                 </constraints>
-                                <state key="normal" title="我已迫不及待" backgroundImage="button.png">
+                                <state key="normal" backgroundImage="firstBtn">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1516,7 +1516,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="taI-JX-H57" id="8i9-j6-167">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="fh1-5B-cM7">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="fh1-5B-cM7">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
                                         </imageView>
                                     </subviews>
@@ -1586,9 +1586,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="0.jpg" width="658" height="987"/>
+        <image name="1" width="1080" height="1920"/>
         <image name="add1" width="256" height="256"/>
         <image name="button.png" width="120" height="33"/>
+        <image name="firstBtn" width="424" height="113"/>
         <image name="guide" width="96" height="96"/>
         <image name="iconfont-Home" width="32" height="32"/>
         <image name="iconfont-dingdan" width="32" height="32"/>

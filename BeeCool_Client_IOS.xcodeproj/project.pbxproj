@@ -172,10 +172,6 @@
 		18CFA6451A4011F500DC96F4 /* UserprotocolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFA6441A4011F500DC96F4 /* UserprotocolViewController.swift */; };
 		18CFA6481A40150C00DC96F4 /* userprotocol.docx in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA6471A40150C00DC96F4 /* userprotocol.docx */; };
 		18CFA64A1A40354700DC96F4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFA6491A40354700DC96F4 /* FirstViewController.swift */; };
-		18CFA64F1A403ACA00DC96F4 /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA64B1A403ACA00DC96F4 /* 0.jpg */; };
-		18CFA6501A403ACA00DC96F4 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA64C1A403ACA00DC96F4 /* 1.jpg */; };
-		18CFA6511A403ACA00DC96F4 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA64D1A403ACA00DC96F4 /* 2.jpg */; };
-		18CFA6521A403ACA00DC96F4 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18CFA64E1A403ACA00DC96F4 /* 3.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -487,10 +483,6 @@
 		18CFA6441A4011F500DC96F4 /* UserprotocolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserprotocolViewController.swift; sourceTree = "<group>"; };
 		18CFA6471A40150C00DC96F4 /* userprotocol.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = userprotocol.docx; sourceTree = "<group>"; };
 		18CFA6491A40354700DC96F4 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		18CFA64B1A403ACA00DC96F4 /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
-		18CFA64C1A403ACA00DC96F4 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		18CFA64D1A403ACA00DC96F4 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
-		18CFA64E1A403ACA00DC96F4 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -751,10 +743,6 @@
 				18CD3BAE1A53C897002D5821 /* button.png */,
 				18CD3BAC1A53C2C2002D5821 /* launch.png */,
 				18C9311C1A417D960068F698 /* home.jpg */,
-				18CFA64B1A403ACA00DC96F4 /* 0.jpg */,
-				18CFA64C1A403ACA00DC96F4 /* 1.jpg */,
-				18CFA64D1A403ACA00DC96F4 /* 2.jpg */,
-				18CFA64E1A403ACA00DC96F4 /* 3.jpg */,
 				18CD3BA61A526B8E002D5821 /* NVG1.png */,
 				18CD3BA41A5262F7002D5821 /* NVG.png */,
 				18CFA6471A40150C00DC96F4 /* userprotocol.docx */,
@@ -1206,13 +1194,10 @@
 				18C9310A1A41792E0068F698 /* WeiboSDK.bundle in Resources */,
 				18CD3BB51A53D040002D5821 /* comment.png in Resources */,
 				18C931181A41792E0068F698 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
-				18CFA6511A403ACA00DC96F4 /* 2.jpg in Resources */,
-				18CFA64F1A403ACA00DC96F4 /* 0.jpg in Resources */,
 				18CD3BA51A5262F7002D5821 /* NVG.png in Resources */,
 				18CD3BB91A53D266002D5821 /* update.png in Resources */,
 				18C930FD1A41792E0068F698 /* ShareSDKLocalizable.strings in Resources */,
 				18C8B6B41A4BA75300DF54C0 /* DetailCarView.xib in Resources */,
-				18CFA6521A403ACA00DC96F4 /* 3.jpg in Resources */,
 				185ECEAE1A39467000B568B0 /* LaunchScreen.xib in Resources */,
 				18CD3BAF1A53C897002D5821 /* button.png in Resources */,
 				18A0D4691A63A8570024DD01 /* AlipaySDK.bundle in Resources */,
@@ -1223,7 +1208,6 @@
 				18CD3BB11A53CF88002D5821 /* share.png in Resources */,
 				18CD3BB31A53D03B002D5821 /* you.png in Resources */,
 				18C931071A41792E0068F698 /* RennSDK.bundle in Resources */,
-				18CFA6501A403ACA00DC96F4 /* 1.jpg in Resources */,
 				18CD3BB71A53D045002D5821 /* shezhi.png in Resources */,
 				18C931041A41792E0068F698 /* PinterestSDKResources.bundle in Resources */,
 				18CD3BBD1A53D463002D5821 /* money.png in Resources */,

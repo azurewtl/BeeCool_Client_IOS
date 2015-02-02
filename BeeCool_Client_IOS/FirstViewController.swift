@@ -32,7 +32,7 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
         scrollView.pagingEnabled = true
         for index in 0...3 {
             var imageview = UIImageView(frame: CGRectMake(CGFloat(index) * scrollwidth, 0, scrollwidth, scrollheight))
-            var str = NSString(format: "%d.jpg", index)
+            var str = NSString(format: "%d.png", index)
             imageview.image = UIImage(named: str)
             scrollView.addSubview(imageview)
         }
@@ -69,7 +69,7 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
         CGContextDrawLinearGradient(bitmapContext, gradient, start, end, 0)
         var cgImage = CGBitmapContextCreateImage(bitmapContext)
         var image = UIImage(CGImage: cgImage)
-        (segue.destinationViewController as UITabBarController).tabBar.backgroundImage = UIImage(named: "NVG")
+//        (segue.destinationViewController as UITabBarController).tabBar.backgroundImage = UIImage(named: "NVG")
 
     }
     /*
