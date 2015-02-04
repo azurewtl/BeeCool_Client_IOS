@@ -16,7 +16,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var userdefault = NSUserDefaults.standardUserDefaults()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "NVG1"), forBarMetrics: UIBarMetrics.Default)
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "NVG1"), forBarMetrics: UIBarMetrics.Default)
 
         // Do any additional setup after loading the view, typically from a nib.
       

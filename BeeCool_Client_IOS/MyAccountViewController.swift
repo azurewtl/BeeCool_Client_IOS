@@ -20,7 +20,7 @@ class MyAccountViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         self.navigationController?.tabBarItem.badgeValue = nil
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "NVG1"), forBarMetrics: UIBarMetrics.Default)
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "NVG1"), forBarMetrics: UIBarMetrics.Default)
 
         var locatios:[CGFloat] = [0.1, 0.9]
         var colors = [UIColor.yellowColor().CGColor, UIColor.greenColor().CGColor]

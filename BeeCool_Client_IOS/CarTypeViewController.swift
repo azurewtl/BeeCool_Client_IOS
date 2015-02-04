@@ -97,7 +97,7 @@ class CarTypeViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             if indexPath.row == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier("carcolorCell") as UITableViewCell
-                cell.textLabel.text = "车的颜色："
+                cell.textLabel.text = "车的颜色▼："
                 var carColorTextField = cell.contentView.viewWithTag(102) as UITextField
                 carColorTextField.delegate = self
             }

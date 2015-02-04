@@ -38,13 +38,16 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
     }
     
     @IBAction func locateButtonOnClick(sender: UIButton) {
-         updateLocation(locationMananger)
         selectedFlag = -1
+        if mapView.userLocation.location == nil {
+            
+        }else {
         var center =  CLLocationCoordinate2D(latitude: mapView.userLocation.location.coordinate.latitude, longitude: mapView.userLocation.location.coordinate.longitude)
         var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         var region = MKCoordinateRegionMake(center, span)
-    
+        
         mapView.setRegion(region, animated: true)
+        }
     }
     
     @IBAction func finishedOnclick(sender: UIBarButtonItem) {
@@ -87,7 +90,7 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         if indexPath.section == 1 {
             return 60
         }
-        return 100
+        return 115
     }
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -128,10 +131,10 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardDidShow:", name: UIKeyboardWillShowNotification, object: nil)
-        
         mapView.showsUserLocation = true
         mapView.delegate = self
         mapView.mapType = MKMapType.Standard
+        cellString = ""
         var app = UIApplication.sharedApplication().delegate as AppDelegate
         latitude = app.latitude
         longtitude = app.longtitude
@@ -144,27 +147,28 @@ class MapViewContrlloer: UIViewController, MKMapViewDelegate, UITableViewDelegat
         textview.text = cellString
         textField.delegate = self
         textField.text = ""
-//        updateLocation(locationMananger)
-//        var center = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
-//        var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
-//        var region = MKCoordinateRegionMake(center, span)
-//        self.mapView.setRegion(region, animated: true)
-    
-
+        //draw line
+        var line = UIView(frame: CGRectMake(20, cell!.frame.height / 2, cell!.frame.width - 40, 0.5))
+        line.backgroundColor = UIColor(white: 0.8, alpha: 1)
+        cell?.contentView.addSubview(line)
+        
     }
+
     func handleKeyboardDidShow(notification:NSNotification) {
         var dictionary = notification.userInfo as NSDictionary!
         var kbsize = dictionary.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue().size
         tableView.contentOffset.y = kbsize.height / 2
     }
-    func mapViewDidFinishLoadingMap(mapView: MKMapView!) {
-        
-        var center =  CLLocationCoordinate2D(latitude: mapView.userLocation.location.coordinate.latitude, longitude: mapView.userLocation.location.coordinate.longitude)
-        var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
-        var region1 = MKCoordinateRegionMake(center, span)
-        mapView.setRegion(region1, animated: true)
-    
+    func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
+        if mapView.userLocation != nil {
+            var center =  CLLocationCoordinate2D(latitude: mapView.userLocation.location.coordinate.latitude, longitude: mapView.userLocation.location.coordinate.longitude)
+            var span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+            var region1 = MKCoordinateRegionMake(center, span)
+            mapView.setRegion(region1, animated: true)
+        }
     }
+
+
     func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
         selectedFlag = -1
         var region:MKCoordinateRegion?

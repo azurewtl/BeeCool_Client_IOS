@@ -58,17 +58,7 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
         var vc = array.objectAtIndex(3) as UIViewController
         vc.tabBarItem.badgeValue = "1"
         vc.navigationController?.navigationBar.hidden = true
-        var locatios:[CGFloat] = [0.0, 0.0, 0.9]
-        var colors = [UIColor.redColor().CGColor, UIColor.greenColor().CGColor, UIColor.blueColor().CGColor]
-        var colorspace = CGColorSpaceCreateDeviceRGB()
-        var gradient = CGGradientCreateWithColors(colorspace, colors, locatios)
-        let bitmapinfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
-        var bitmapContext =  CGBitmapContextCreate(nil, 420, UInt(view.frame.height), 8, 4 * 420, CGColorSpaceCreateDeviceRGB(), bitmapinfo)
-        var start = CGPointMake(0, 0)
-        var end = CGPointMake(420, view.frame.height)
-        CGContextDrawLinearGradient(bitmapContext, gradient, start, end, 0)
-        var cgImage = CGBitmapContextCreateImage(bitmapContext)
-        var image = UIImage(CGImage: cgImage)
+      
 //        (segue.destinationViewController as UITabBarController).tabBar.backgroundImage = UIImage(named: "NVG")
 
     }

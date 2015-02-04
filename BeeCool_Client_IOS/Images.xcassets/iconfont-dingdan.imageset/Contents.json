@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "iconfont-dingdan.png"
+      "filename" : "order32.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "order64.png"
     },
     {
       "idiom" : "universal",

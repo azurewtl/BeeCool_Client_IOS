@@ -20,7 +20,8 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet var serverCollectionview: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "NVG1"), forBarMetrics: UIBarMetrics.Default)
+//       self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "NVG1"), forBarMetrics: UIBarMetrics.Default)
+        self.title = "首页"
         var path1 = NSBundle.mainBundle().pathForResource("service", ofType:"json")
         var data1 = NSData(contentsOfFile: path1!)
         var arr = NSJSONSerialization.JSONObjectWithData(data1!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
@@ -46,8 +47,6 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
             var str = NSString(format:"tel://%@", phone)
             var url = NSURL(string: str)
             UIApplication.sharedApplication().openURL(url!)
-            alert = UIAlertView(title: "提示", message: "未安装SM卡", delegate: nil, cancelButtonTitle: "确定")
-            alert.show()
         }
     }
     func autoAction(tap:Tap) {

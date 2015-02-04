@@ -15,7 +15,7 @@ class MemberViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         cardArray = ["金卡", "铂金卡", "钻石卡"] as NSArray
         moneyArray = ["充1000(反100)", "充3000(反500)", "充 6000(反 1000)"] as NSArray
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "NVG1"), forBarMetrics: UIBarMetrics.Default)
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "NVG1"), forBarMetrics: UIBarMetrics.Default)
 
         // Do any additional setup after loading the view.
     }

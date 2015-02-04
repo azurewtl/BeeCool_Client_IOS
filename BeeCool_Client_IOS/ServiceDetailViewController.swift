@@ -125,7 +125,7 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
         
         var nib = NSBundle.mainBundle().loadNibNamed("TimeActionSheet", owner: nil, options: nil) as NSArray
         actionsheetView = nib.objectAtIndex(0) as TimeActionSheet
-        actionsheetView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, self.view.frame.height / 2)
+        actionsheetView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 225)
         self.view.addSubview(actionsheetView)
         actionsheetView.bringSubviewToFront(backgroundview)
         actionsheetView.cancelButton.addTarget(self, action: "cancelOnclick", forControlEvents: UIControlEvents.TouchUpInside)
@@ -170,13 +170,13 @@ class ServiceDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     func actionsheetshow() {
         UIView.animateWithDuration(0.2, animations: { () -> Void in
-            self.actionsheetView.frame = CGRectMake(0, self.view.frame.height / 2, self.view.frame.width, self.view.frame.height / 2)
+            self.actionsheetView.frame = CGRectMake(0, self.view.frame.height - 225, self.view.frame.width, 225)
         })
         
     }
     func actionsheethide() {
         UIView.animateWithDuration(0.2, animations: { () -> Void in
-            self.actionsheetView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, self.view.frame.height / 2)
+            self.actionsheetView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 225)
         })
     }
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
