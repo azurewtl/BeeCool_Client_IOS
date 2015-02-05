@@ -32,6 +32,7 @@ class ServiceViewController: UIViewController, UICollectionViewDataSource, UICol
 //        array = ["精致洗车", "轮毂翻新", "精细护理", "高端养护", "抛光", "发动机清洗", "全部服务", "意见反馈","上海"] as NSArray
         var Autoscroll = AutoScrollView(frame: CGRectMake(0, -64, self.view.frame.width, 184))
         Autoscroll.imageUrls = ["http://m.meilijia.com/images/activity/rjds/m/banner-s.jpg", "http://www.meilijia.com/images/ad/iphone/1.jpg?v=0723", "http://m.meilijia.com/images/activity/rjds/m/banner.jpg"]
+        
         Autoscroll.timeInterval = 3
         serverCollectionview.addSubview(Autoscroll)
         Autoscroll.setTarget(self, action: "autoAction:")

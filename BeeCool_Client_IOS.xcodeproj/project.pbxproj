@@ -57,6 +57,7 @@
 		185ECEC81A39469B00B568B0 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEC41A39469B00B568B0 /* MyAccountViewController.swift */; };
 		185ECEC91A39469B00B568B0 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEC51A39469B00B568B0 /* OrderViewController.swift */; };
 		185ECECA1A39469B00B568B0 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ECEC61A39469B00B568B0 /* ServiceViewController.swift */; };
+		1893CE0A1A8368F400002B08 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893CE091A8368F400002B08 /* OrderTableViewCell.swift */; };
 		18A0D4691A63A8570024DD01 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A0D4071A63A8570024DD01 /* AlipaySDK.bundle */; };
 		18A0D46A1A63A8570024DD01 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A0D4081A63A8570024DD01 /* AlipaySDK.framework */; };
 		18A0D46B1A63A8580024DD01 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A0D4091A63A8570024DD01 /* libcrypto.a */; };
@@ -274,6 +275,7 @@
 		185ECEC41A39469B00B568B0 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		185ECEC51A39469B00B568B0 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		185ECEC61A39469B00B568B0 /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
+		1893CE091A8368F400002B08 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		18A0D4071A63A8570024DD01 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		18A0D4081A63A8570024DD01 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		18A0D4091A63A8570024DD01 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
@@ -733,6 +735,7 @@
 		185ECE9E1A39467000B568B0 /* BeeCool_Client_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				1893CE081A8368C800002B08 /* Views */,
 				18CD3BBC1A53D463002D5821 /* money.png */,
 				18CD3BBA1A53D2DF002D5821 /* protocol.png */,
 				18CD3BB81A53D266002D5821 /* update.png */,
@@ -800,6 +803,14 @@
 				185ECEB81A39467000B568B0 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1893CE081A8368C800002B08 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1893CE091A8368F400002B08 /* OrderTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		18A0D40B1A63A8570024DD01 /* openssl */ = {
@@ -1269,6 +1280,7 @@
 				180396561A3950300001473B /* UIImageView+HighlightedWebCache.m in Sources */,
 				18A0D4701A63A8580024DD01 /* MD5DataSigner.m in Sources */,
 				18A0D4771A63A88C0024DD01 /* Order.m in Sources */,
+				1893CE0A1A8368F400002B08 /* OrderTableViewCell.swift in Sources */,
 				18CFA6331A3EE74E00DC96F4 /* LogViewController.swift in Sources */,
 				1803964A1A3950300001473B /* NSData+ImageContentType.m in Sources */,
 				1803964E1A3950300001473B /* SDWebImageDownloader.m in Sources */,
